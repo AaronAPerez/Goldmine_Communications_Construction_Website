@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image';
 
 import { Calendar, MapPin, Building } from 'lucide-react';
-import { Project } from '@/hooks/types/project';
+import { Project } from '@/types/project';
 
 interface ProjectCardProps {
   project: Project;

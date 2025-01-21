@@ -1,6 +1,6 @@
 'use client'
-// components/Header/Header.tsx
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -20,6 +20,33 @@ const navigation: NavigationItem[] = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isMenuOpen]);
+
+  // Focus trap in mobile menu
+  useEffect(() => {
+    if (isMenuOpen) {
+      const focusableElements = menuRef.current?.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (focusableElements?.length) {
+        (focusableElements[0] as HTMLElement).focus();
+      }
+    }
+  }, [isMenuOpen]);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +58,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header 
+    <header
       className={`
         fixed w-full z-50 transition-all duration-300
         ${scrolled ? 'bg-black/90 shadow-lg py-2' : 'bg-transparent py-4'}
@@ -41,16 +68,16 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo Container */}
-          <Link 
-            href="/" 
-            className="flex items-center" 
+          <Link
+            href="/"
+            className="flex items-center"
             aria-label="Goldmine Communications and Construction - Home"
           >
             {/* Desktop Logo */}
-            <div 
+            <div
               className={`
                 relative hidden md:block transition-all duration-300
-                ${scrolled ? 'w-40 h-10' : 'w-48 h-12'}
+                ${scrolled ? 'w-40 h-10' : 'w-56 h-20'}
               `}
             >
               <Image
@@ -63,7 +90,7 @@ const Header = () => {
             </div>
 
             {/* Mobile Logo */}
-            <div 
+            <div
               className={`
                 relative md:hidden transition-all duration-300
                 ${scrolled ? 'w-32 h-8' : 'w-40 h-10'}
@@ -80,12 +107,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav 
+          <nav
             className={`
               hidden md:flex space-x-8 transition-all duration-300
               ${scrolled ? 'text-sm' : 'text-base'}
-            `} 
-            role="navigation" 
+            `}
+            role="navigation"
             aria-label="Main navigation"
           >
             {navigation.map((item) => (
@@ -124,11 +151,11 @@ const Header = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M4 6h16M4 12h16M4 18h16" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
           </button>
@@ -144,7 +171,7 @@ const Header = () => {
         `}
         id="mobile-menu"
       >
-        <div 
+        <div
           className={`
             px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/90
             ${scrolled ? 'shadow-lg' : ''}

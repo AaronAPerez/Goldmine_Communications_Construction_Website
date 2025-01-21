@@ -5,29 +5,31 @@ import { ServiceIcon } from './ServiceIcon';
 import { Service } from '@/types/service';
 import { ChevronRight, X } from 'lucide-react';
 
-interface EnhancedServiceCardProps {
+interface ServiceCardProps {
   service: Service;
   index: number;
 }
 
-export function ServiceCard({ service, index }: EnhancedServiceCardProps) {
+export function ServiceCard({ service, index }: ServiceCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
     const [isFlipped, setIsFlipped] = useState(false);
-    const [isExpanded, setIsExpanded] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
   
-    // Handle keyboard navigation
-    const handleKeyPress = (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        setIsFlipped(!isFlipped);
-      }
-      if (e.key === 'Escape' && isExpanded) {
-        setIsExpanded(false);
-      }
-    };
-  
-    return (
-      <div 
+     // Handle keyboard navigation / interactions
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setIsExpanded(!isExpanded);
+    }
+  };
+
+  return (
+    <div
+      role="region"
+      aria-expanded={isExpanded}
+      aria-label={`${service.title} service information`}
+      tabIndex={0}
+      onKeyDown={handleKeyPress}
         className={`
           group relative perspective-1000 w-full h-[400px]
           transform transition-transform duration-300

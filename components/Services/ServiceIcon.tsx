@@ -1,6 +1,5 @@
 'use client';
 
-import { WrenchScrewdriverIcon } from '@heroicons/react/16/solid';
 import { 
     Network, 
     Building2,  
@@ -18,13 +17,13 @@ import {
     'blueprint': ClipboardList,
   };
   
-  // Update the interface to ensure type safety
+  // interface to ensure type safety
   interface ServiceIconProps extends Omit<LucideProps, 'ref'> {
     icon: keyof typeof iconMap;
   }
   
   export function ServiceIcon({ icon, ...props }: ServiceIconProps) {
-    // Add a safety check
+    // safety check
     const IconComponent = iconMap[icon];
     
     if (!IconComponent) {

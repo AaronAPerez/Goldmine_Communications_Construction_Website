@@ -19,7 +19,6 @@ interface ProjectModalProps {
 }
 
 
-
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     if (!project) return null;
   
