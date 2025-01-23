@@ -64,7 +64,7 @@ const services: Service[] = [
 const Services = () => {
   return (
     <section 
-      className="py-20 bg-gray-500"
+      className="py-20"
       aria-labelledby="services-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

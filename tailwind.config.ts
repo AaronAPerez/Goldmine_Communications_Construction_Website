@@ -1,99 +1,78 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      colors: {
+        // Primary brand colors
+        primary: {
+          50: '#F7F7F7',
+          100: '#E3E3E3',
+          200: '#C8C8C8',
+          300: '#A4A4A4',
+          400: '#818181',
+          500: '#666666',
+          600: '#515151',
+          700: '#434343',
+          800: '#383838',
+          900: '#222222',
+        } as const,
+        // Gold accent colors
+        gold: {
+          50: '#FFF9E6',
+          100: '#FFF2CC',
+          200: '#FFE699',
+          300: '#FFD966',
+          400: '#D4AF37', // Main brand gold
+          500: '#BF9B30',
+          600: '#A68729',
+          700: '#8C7322',
+          800: '#735F1C',
+          900: '#594A15',
+        } as const,
+        // Additional accent colors
+        accent: {
+          success: '#10B981', // Green
+          warning: '#F59E0B', // Amber
+          error: '#EF4444',   // Red
+          info: '#3B82F6',    // Blue
+        } as const,
+      },
+      backgroundColor: {
+        dark: '#1A1A1A',
+        light: '#FAFAFA',
+      },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        heading: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
+      boxShadow: {
+        'gold': '0 4px 14px 0 rgba(212, 175, 55, 0.25)',
+      },
       animation: {
-        'fade-up': 'fadeUp 0.5s ease-out forwards',
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'fade-up': 'fadeUp 0.5s ease-in-out',
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         fadeUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
-      colors: {
-        gold: {
-          400: '#D4AF37',
-          500: '#C5A028',
-        },
-        primary: {
-          900: '#1a1a1a',
-          800: '#2d2d2d',
-        }
-      },
-      scale: {
-        '102': '1.02',
-      },
-      transformStyle: {
-        '3d': 'preserve-3d',
-      },
-      perspective: {
-        '1000': '1000px',
-      },
-      backfaceVisibility: {
-        'hidden': 'hidden',
-      },
-      rotate: {
-        'y-180': 'rotateY(180deg)',
-      },
-      transitionProperty: {
-        'transform': 'transform',
-      },
     },
   },
-    animation: {
-      'fade-up': 'fadeUp 0.5s ease-out forwards',
-      'line-move': 'lineMove 3s infinite',
-    },
-    keyframes: {
-      fadeUp: {
-        '0%': { opacity: '0', transform: 'translateY(20px)' },
-        '100%': { opacity: '1', transform: 'translateY(0)' },
-      },
-      lineMove: {
-        '0%': { 
-          opacity: '0',
-          transform: 'translateY(100%)'
-        },
-        '20%': {
-          opacity: '0.5',
-        },
-        '80%': {
-          opacity: '0.5',
-        },
-        '100%': { 
-          opacity: '0',
-          transform: 'translateY(-100%)'
-        },
-      },
-    },
-  plugins: [
-    require('@tailwindcss/typography'),
-    // Note: @tailwindcss/line-clamp is now included in tailwindcss core as 'line-clamp'
-    function({ addUtilities }: { addUtilities: (utilities: Record<string, any>, variants?: string[]) => void }) {
-      const newUtilities = {
-        '.perspective-1000': {
-          perspective: '1000px',
-        },
-        '.transform-style-3d': {
-          transformStyle: 'preserve-3d',
-        },
-        '.backface-hidden': {
-          backfaceVisibility: 'hidden',
-        },
-        '.rotate-y-180': {
-          transform: 'rotateY(180deg)',
-        },
-      };
-      addUtilities(newUtilities, ['responsive', 'hover']);
-    },
-  ],
-} satisfies Config;
+  plugins: [],
+} satisfies Config
 
-export default config;
+export default config

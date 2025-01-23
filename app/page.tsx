@@ -1,7 +1,8 @@
-import HeroDynamic from "@/components/Hero/HeroDynamic";
+import AboutSection from "@/components/AboutSection";
+
+import HeroShowcase from "@/components/Hero/HeroShowcase";
 import { Testimonials } from "@/components/Testimonials/Testimonials";
 import Contact from "@/pages/Contact";
-import ServicesPage from "@/pages/services";
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
@@ -35,7 +36,14 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Load immediately as it's above the fold */}
-      <HeroDynamic />
+      {/* <HeroDynamic />  */}
+      <section id="Hero">
+      <HeroShowcase />
+   </section>
+
+   <section id="About">
+    <AboutSection/>
+   </section>
 
       {/* Suspense boundaries for smooth loading */}
       <Suspense fallback={<LoadingSection />}>
