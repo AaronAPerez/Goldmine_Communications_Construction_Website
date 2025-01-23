@@ -1,10 +1,9 @@
 import AboutSection from "@/components/AboutSection";
-
 import HeroShowcase from "@/components/Hero/HeroShowcase";
-import { Testimonials } from "@/components/Testimonials/Testimonials";
 import Contact from "@/pages/Contact";
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+
 
 // Dynamic imports for better performance
 const Services = dynamic(() => import("@/components/Services/Services"), {
@@ -15,9 +14,9 @@ const ProjectPortfolio = dynamic(() => import("@/components/Projects/ProjectPort
   loading: () => <LoadingSection />
 });
 
-// const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"), {
-//   loading: () => <LoadingSection />
-// });
+const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"), {
+  loading: () => <LoadingSection />
+});
 
 // const Contact = dynamic(() => import("@/components/Contact/Contact"), {
 //   loading: () => <LoadingSection />
@@ -36,14 +35,14 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Load immediately as it's above the fold */}
-      {/* <HeroDynamic />  */}
-      <section id="Hero">
-      <HeroShowcase />
-   </section>
 
-   <section id="About">
-    <AboutSection/>
-   </section>
+      <section id="Hero">
+        <HeroShowcase />
+      </section>
+
+      <section id="About">
+        <AboutSection />
+      </section>
 
       {/* Suspense boundaries for smooth loading */}
       <Suspense fallback={<LoadingSection />}>

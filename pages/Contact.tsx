@@ -60,7 +60,7 @@ const Contact = () => {
         setSubmitStatus(null);
 
         try {
-            // Replace with your actual API endpoint
+            // Replace with API endpoint
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
@@ -80,7 +80,7 @@ const Contact = () => {
                 message: '',
                 service: '',
             });
-        } catch (error) {
+        } catch {
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
@@ -106,8 +106,8 @@ const Contact = () => {
                         Get In Touch
                     </h1>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Have a project in mind? We'd love to hear from you. Send us a message
-                        and we'll respond as soon as possible.
+                        Have a project in mind? We&apos;d love to hear from you. Send us a message
+                        and we&apos;ll respond as soon as possible.
                     </p>
                 </div>
 
@@ -356,7 +356,7 @@ const Contact = () => {
                             {/* Status Messages */}
                             {submitStatus === 'success' && (
                                 <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-lg">
-                                    Thank you for your message! We'll get back to you soon.
+                                    Thank you for your message! We&quot;ll get back to you soon.
                                 </div>
                             )}
 

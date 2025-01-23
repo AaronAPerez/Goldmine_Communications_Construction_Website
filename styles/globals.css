@@ -72,3 +72,40 @@
     backface-visibility: hidden;
   }
 }
+
+.navbar {
+  height: 80px; /* Default height */
+  transition: height 0.3s ease;
+}
+
+/* Responsive height adjustments */
+@media (max-width: 767px) {
+  .navbar {
+    height: 64px;
+  }
+}
+
+/* Safety First logo responsive sizing */
+.safety-logo {
+  width: 80px; /* Default size */
+  height: auto;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .safety-logo {
+    width: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .safety-logo {
+    width: 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .safety-logo {
+    width: 50px;
+  }
+}

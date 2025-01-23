@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/footer/Footer";
+
 
 
 // Initialize font
@@ -53,7 +54,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </a>
 
         <Header />
-        
+     
         <main 
           id="main-content" 
           className="flex-grow"

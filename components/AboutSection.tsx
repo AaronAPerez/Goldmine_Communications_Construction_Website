@@ -85,7 +85,7 @@ const AboutSection = () => {
               <div className="relative">
                 <h2 className="text-2xl font-bold text-primary-900 mb-4">Our Legacy</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  At Goldmine Communications, we've established ourselves as industry leaders 
+                  At Goldmine Communications, we&apos;ve established ourselves as industry leaders 
                   through years of pioneering innovation and excellence in the telecom sector. 
                   Our expert management and seamless service delivery uphold the highest 
                   standards of integrity, serving a diverse and growing customer base.

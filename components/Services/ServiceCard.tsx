@@ -25,8 +25,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
 
   return (
     <div
-      role="region"
-      aria-expanded={isExpanded}
+      role="article"
       aria-label={`${service.title} service information`}
       tabIndex={0}
       onKeyDown={handleKeyPress}
