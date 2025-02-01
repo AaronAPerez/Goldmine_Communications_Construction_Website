@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { useState, useMemo } from 'react';
-import { ProjectCard } from './ProjectCard';
-import { ProjectModal } from './ProjectModal';
+import { ProjectCard } from '../../app/projects/ProjectCard';
+import { ProjectModal } from '../../app/projects/ProjectModal';
 import { Project, projectCategories, ProjectCategory, projects } from '@/types/project';
 
 

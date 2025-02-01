@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/footer/Footer";
-
-
+import Header from "./Header";
+import Footer from "./Footer";
 
 // Initialize font
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
@@ -32,38 +30,30 @@ export const metadata: Metadata = {
   robots: "index, follow",
 };
 
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}) {
   return (
-    <html 
-      lang="en" 
-      suppressHydrationWarning 
+    <html
+      lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} font-sans`}
     >
-      <body className="flex flex-col min-h-screen">
+      <body className="min-h-screen bg-gray-50">
         {/* Skip to main content link for accessibility */}
-        <a 
+        <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
                    bg-gold-400 text-white px-4 py-2 rounded-md z-50"
         >
           Skip to main content
         </a>
-
         <Header />
-     
-        <main 
-          id="main-content" 
-          className="flex-grow"
-        >
-          {children}
-        </main>
-
-        <Footer />
+        <main>{children}</main>
       </body>
+      <Footer />
     </html>
   );
 }

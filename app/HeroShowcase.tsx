@@ -24,7 +24,7 @@ const HeroShowcase = () => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [ images.length ]);
 
   return (
     <div className="relative h-screen w-full overflow-hidden pt-8">
@@ -68,7 +68,7 @@ const HeroShowcase = () => {
           {/* Hero Text */}
           <div className="relative z-20">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Building Tomorrow's
+              Building Tomorrow&apos;s
               <span className="block text-gold-400 mt-2">Infrastructure Today</span>
             </h1>
             
@@ -95,7 +95,7 @@ const HeroShowcase = () => {
 
           {/* Safety Badge */}
           <div className="absolute bottom-2 right-2 bg-black/30 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2 z-20">
-            <img
+            <Image
               src="/icons/OrangeSafetyVest-Icon.png"
               className="safety-logo"
               alt="Safety First Orange Vest Icon"

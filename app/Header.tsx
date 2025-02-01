@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -12,8 +12,8 @@ interface NavigationItem {
 const navigation: NavigationItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'About', href: '/about' },
+  { label: 'Communications', href: '/projects' },
+  { label: 'Construction', href: '/construction' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -100,8 +100,8 @@ const Header = () => {
                 <Image
                   src="/images/logo-banner.png"
                   alt="Goldmine Communications and Construction Logo"
-                  width={130}
-                  height={80}
+                  width={160}
+                  height={40}
                   className="width"
                   priority
                 />

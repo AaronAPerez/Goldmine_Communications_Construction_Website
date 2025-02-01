@@ -1,18 +1,21 @@
 import AboutSection from "@/components/AboutSection";
-import HeroShowcase from "@/components/Hero/HeroShowcase";
+
 import Contact from "@/pages/Contact";
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import Servicespage from "./services/page";
+import ProjectPortfolio from "./projects/ProjectPortfolio";
+import HeroShowcase from "./HeroShowcase";
 
 
 // Dynamic imports for better performance
-const Services = dynamic(() => import("@/components/Services/Services"), {
-  loading: () => <LoadingSection />
-});
+// const Services = dynamic(() => import("@/components/Services/Services"), {
+//   loading: () => <LoadingSection />
+// });
 
-const ProjectPortfolio = dynamic(() => import("@/components/Projects/ProjectPortfolio"), {
-  loading: () => <LoadingSection />
-});
+// const ProjectPortfolio = dynamic(() => import("@/components/Projects/ProjectPortfolio"), {
+//   loading: () => <LoadingSection />
+// });
 
 const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"), {
   loading: () => <LoadingSection />
@@ -34,32 +37,34 @@ function LoadingSection() {
 export default function Home() {
   return (
     <>
-      {/* Hero Section - Load immediately as it's above the fold */}
+      <main>
+        {/* Hero Section - Load immediately as it's above the fold */}
+        <section id="Hero">
+          <HeroShowcase />
+        </section>
 
-      <section id="Hero">
-        <HeroShowcase />
-      </section>
+        <section id="About">
+          <AboutSection />
+        </section>
 
-      <section id="About">
-        <AboutSection />
-      </section>
+        {/* Suspense boundaries for smooth loading */}
+        <Suspense fallback={<LoadingSection />}>
+          <Servicespage/>
+        </Suspense>
 
-      {/* Suspense boundaries for smooth loading */}
-      <Suspense fallback={<LoadingSection />}>
-        <Services />
-      </Suspense>
+        <Suspense fallback={<LoadingSection />}>
+          <ProjectPortfolio />
+        </Suspense>
 
-      <Suspense fallback={<LoadingSection />}>
-        <ProjectPortfolio />
-      </Suspense>
+        <Suspense fallback={<LoadingSection />}>
+          <Testimonials />
+        </Suspense>
 
-      <Suspense fallback={<LoadingSection />}>
-        <Testimonials />
-      </Suspense>
+        <Suspense fallback={<LoadingSection />}>
+          <Contact />
+        </Suspense>
 
-      <Suspense fallback={<LoadingSection />}>
-        <Contact />
-      </Suspense>
+      </main>
     </>
   );
 }

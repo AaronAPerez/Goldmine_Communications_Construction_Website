@@ -1,11 +1,56 @@
 'use client';
 
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+interface VideoClip {
+  src: string;
+  webmSrc?: string; // Optional WebM source for better browser support
+  poster: string;
+}
+
+const videoClips: VideoClip[] = [
+  {
+    src: '/videos/communications-work.mp4',
+    webmSrc: '/videos/communications-work.webm',
+    poster: '/images/video-poster-1.jpg'
+  },
+  {
+    src: '/videos/construction-work.mp4',
+    webmSrc: '/videos/construction-work.webm',
+    poster: '/images/video-poster-2.jpg'
+  },
+];
 
 const HeroDynamic = () => {
-  // Animation states for text fade-in
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Handle video transitions
+  const transitionToNextVideo = () => {
+    if (overlayRef.current) {
+      // Fade out current video
+      overlayRef.current.style.opacity = '1';
+      
+      setTimeout(() => {
+        setCurrentVideoIndex((prev) => 
+          prev === videoClips.length - 1 ? 0 : prev + 1
+        );
+        
+        // Fade in new video
+        if (overlayRef.current) {
+          overlayRef.current.style.opacity = '0';
+        }
+      }, 1000); // Match this with CSS transition duration
+    }
+  };
+
+  // Auto-advance videos
+  useEffect(() => {
+    const interval = setInterval(transitionToNextVideo, 8000); // Change video every 8 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -13,64 +58,47 @@ const HeroDynamic = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-
-      <Image
-        src="/images/hero-poster.jpg"
-        alt="Hero Poster"
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        loading="lazy"
-        className="object-cover"
-        quality={75}
-      />
       {/* Video Background */}
-      {/* <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full">
         <video
+          ref={videoRef}
           autoPlay
-          loop
           muted
+          loop
           playsInline
           className="object-cover w-full h-full"
-          poster="/images/hero-poster.jpg" // Fallback image while video loads
+          poster={videoClips[currentVideoIndex].poster}
+          onCanPlay={() => {
+            if (videoRef.current) {
+              videoRef.current.play().catch(console.error);
+            }
+          }}
         >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          <source 
+            src={videoClips[currentVideoIndex].src} 
+            type="video/mp4" 
+          />
+          {videoClips[currentVideoIndex].webmSrc && (
+            <source 
+              src={videoClips[currentVideoIndex].webmSrc} 
+              type="video/webm" 
+            />
+          )}
           Your browser does not support the video tag.
         </video>
+
+        {/* Transition Overlay */}
+        <div
+          ref={overlayRef}
+          className="absolute inset-0 bg-black opacity-0 transition-opacity duration-1000"
+          aria-hidden="true"
+        />
         
-        {/* Overlay gradient 
+        {/* Gradient Overlay */}
         <div 
           className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"
           aria-hidden="true"
         />
-      </div> */}
-
-      {/* Animated Particles/Lines Background (optional) */}
-      <div
-        className="absolute inset-0 z-10"
-        style={{
-          background: 'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4))',
-          opacity: 0.8
-        }}
-      >
-        {/* Add animated lines or particles*/}
-        <div className="lines">
-          {[...Array(10)].map((_, i) => (
-            <div
-              key={i}
-              className={`
-                absolute h-px bg-gold-400/20
-                animate-[lineMove_3s_infinite]
-                opacity-0
-              `}
-              style={{
-                left: `${Math.random() * 100}%`,
-                width: `${Math.random() * 200 + 100}px`,
-                animationDelay: `${Math.random() * 2}s`,
-                transform: `rotate(${Math.random() * 180}deg)`
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Content */}
@@ -82,7 +110,7 @@ const HeroDynamic = () => {
         `}
       >
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-          Building Tomorrow's
+          Building Tomorrow&apos;s
           <span className="text-gold-400 block mt-2">
             Infrastructure Today
           </span>
@@ -119,8 +147,24 @@ const HeroDynamic = () => {
             View Projects
           </button>
         </div>
+
+        {/* Video Controls (Optional) */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {videoClips.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentVideoIndex(index)}
+              className={`
+                w-2 h-2 rounded-full transition-all duration-300
+                ${currentVideoIndex === index ? 'bg-gold-400 w-4' : 'bg-white/50'}
+              `}
+              aria-label={`Switch to video ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
+
 export default HeroDynamic;

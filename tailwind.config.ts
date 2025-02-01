@@ -3,14 +3,15 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 
 const config: Config = {
-  content: [
+    darkMode: ['class'],
+    content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      colors: {
+  	extend: {
+  		colors: {
         // Primary brand colors
         primary: {
           50: '#F7F7F7',
@@ -44,35 +45,56 @@ const config: Config = {
           error: '#EF4444',   // Red
           info: '#3B82F6',    // Blue
         } as const,
-      },
-      backgroundColor: {
-        dark: '#1A1A1A',
-        light: '#FAFAFA',
-      },
-      fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        heading: ['Inter', ...defaultTheme.fontFamily.sans],
-      },
-      boxShadow: {
-        'gold': '0 4px 14px 0 rgba(212, 175, 55, 0.25)',
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'fade-up': 'fadeUp 0.5s ease-in-out',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-      },
-    },
+  		},
+  		backgroundColor: {
+  			dark: '#1A1A1A',
+  			light: '#FAFAFA'
+  		},
+  		fontFamily: {
+  			sans: [
+  				'Inter',
+                    ...defaultTheme.fontFamily.sans
+                ],
+  			heading: [
+  				'Inter',
+                    ...defaultTheme.fontFamily.sans
+                ]
+  		},
+  		boxShadow: {
+  			gold: '0 4px 14px 0 rgba(212, 175, 55, 0.25)'
+  		},
+  		animation: {
+  			'fade-in': 'fadeIn 0.5s ease-in-out',
+  			'fade-up': 'fadeUp 0.5s ease-in-out'
+  		},
+  		keyframes: {
+  			fadeIn: {
+  				'0%': {
+  					opacity: '0'
+  				},
+  				'100%': {
+  					opacity: '1'
+  				}
+  			},
+  			fadeUp: {
+  				'0%': {
+  					opacity: '0',
+  					transform: 'translateY(20px)'
+  				},
+  				'100%': {
+  					opacity: '1',
+  					transform: 'translateY(0)'
+  				}
+  			}
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		}
+  	}
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config
 
 export default config
