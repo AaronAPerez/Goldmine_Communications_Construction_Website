@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import Header from "./Header";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 
 // Initialize font
 const inter = Inter({
@@ -53,7 +53,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
       </body>
-      <Footer />
+      {/* <Footer /> */}
     </html>
   );
 }

@@ -97,6 +97,8 @@ const HeroShowcase = () => {
           <div className="absolute bottom-2 right-2 bg-black/30 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2 z-20">
             <Image
               src="/icons/OrangeSafetyVest-Icon.png"
+              width={50}
+              height={50}
               className="safety-logo"
               alt="Safety First Orange Vest Icon"
             />
