@@ -9,6 +9,7 @@ import TestimonialsCarousel from "@/components/Testimonials/TestimonialsCarousel
 import InformationSection from "@/components/InformationSection";
 
 
+
 // Dynamic imports for better performance
 // const Services = dynamic(() => import("@/components/Services/Services"), {
 //   loading: () => <LoadingSection />
@@ -42,8 +43,9 @@ export default function Home() {
         {/* Hero Section - Load immediately as it's above the fold */}
         <section id="Hero">
           <HeroShowcase />
+       
         </section>
-
+     
         <section id="About">
           <AboutSection />
         </section>
