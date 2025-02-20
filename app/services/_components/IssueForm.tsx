@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Service } from '@/types/service';
-import ServiceCard from '../ServiceCard';
+import ServiceCard from '../../../components/Services/ServiceCard';
 
 
 

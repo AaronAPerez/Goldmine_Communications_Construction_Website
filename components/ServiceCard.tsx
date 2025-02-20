@@ -1,8 +1,11 @@
+'use client';
+
 import { useState } from 'react';
 import { Service } from '@/types/service';
-import { ChevronRight, X } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import AnimatedCard from './AnimatedCard';
-import { ServiceIcon } from '@/app/services/ServiceIcon';
+import { ServiceIcon } from './Services/ServiceIcon';
+
 
 interface ServiceCardProps {
   service: Service;
@@ -10,7 +13,6 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ service, index }: ServiceCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
 
   // Calculate staggered animation delay

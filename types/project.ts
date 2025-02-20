@@ -19,15 +19,15 @@ export interface Project {
 // Mock data for projects
 export const projects: Project[] = [
   {
-    id: 'fiber-network-2024',
-    title: 'City-Wide Fiber Network Implementation',
-    description: 'Complete fiber optic network installation covering metropolitan area with high-speed internet infrastructure.',
+    id: 'AV Charging Stations-2024',
+    title: 'Orgean AV Charging Implementation',
+    description: 'Complete AV Charging Station installation in gas parking area.',
     category: 'communications',
-    imageUrl: '/projects/fiber-network.jpg',
-    completionDate: '2024-01',
+    imageUrl: '/images/WorkOreganPics/image16.jpeg',
+    completionDate: '2024-10',
     client: 'Metro City Council',
     location: 'Metropolitan Area',
-    tags: ['Fiber Optics', 'Network Infrastructure', 'Urban Development'],
+    tags: ['AV Charging Station', 'Urban Development'],
     highlights: [
       'Installed 200+ miles of fiber optic cable',
       'Connected 50,000+ households',

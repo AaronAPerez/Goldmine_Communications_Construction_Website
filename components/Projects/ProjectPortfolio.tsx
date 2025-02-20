@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { useState, useMemo } from 'react';
-import { ProjectCard } from '../../app/projects/ProjectCard';
-import { ProjectModal } from '../../app/projects/ProjectModal';
+import { ProjectCard } from './ProjectCard';
+import { ProjectModal } from './ProjectModal';
 import { Project, projectCategories, ProjectCategory, projects } from '@/types/project';
 
 
@@ -33,7 +33,7 @@ const ProjectPortfolio = () => {
   }, [selectedCategory, sortBy]);
 
   return (
-    <section className="py-16">
+    <section className="py-16 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -52,7 +52,7 @@ const ProjectPortfolio = () => {
             {projectCategories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id as ProjectCategory)}
+                onClick={() => setSelectedCategory(category.id as any)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                   selectedCategory === category.id
                     ? 'bg-gold-400 text-white'

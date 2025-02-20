@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -125,7 +125,7 @@ const Footer = () => {
                 >
                   <Mail className="text-gold-400 mr-2" size={20} />
                   info@goldminecomm.net
-                </a>
+                  </a>
               </li>
             </ul>
           </div>

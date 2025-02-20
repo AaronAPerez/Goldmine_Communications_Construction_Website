@@ -1,76 +1,190 @@
-import AboutSection from "@/components/AboutSection";
+'use client';
 
-import Contact from "@/pages/Contact";
 import { Suspense } from 'react';
-import Servicespage from "./services/page";
-import ProjectPortfolio from "./projects/ProjectPortfolio";
-import HeroShowcase from "./HeroShowcase";
-import TestimonialsCarousel from "@/components/Testimonials/TestimonialsCarousel";
-import InformationSection from "@/components/InformationSection";
+import dynamic from 'next/dynamic';
+import AnimatedHero from '@/components/Hero/AnimatedHero';
+import LoadingSpinner from '@/components/UI/LoadingSpinner';
 
+// Dynamically import heavy components
+const AnimatedServicesGrid = dynamic(
+  () => import('@/components/Services/AnimatedServicesGrid'),
+  { 
+    loading: () => <LoadingSection title="Our Services" />,
+    ssr: false // Disable SSR for components with mouse interactions
+  }
+);
 
+const ProjectShowcase = dynamic(
+  () => import('@/components/Projects/ProjectShowcase'),
+  { loading: () => <LoadingSection title="Our Projects" /> }
+);
 
-// Dynamic imports for better performance
-// const Services = dynamic(() => import("@/components/Services/Services"), {
-//   loading: () => <LoadingSection />
-// });
+const AnimatedTestimonials = dynamic(
+  () => import('@/components/Testimonials/AnimatedTestimonials'),
+  { loading: () => <LoadingSection title="Testimonials" /> }
+);
 
-// const ProjectPortfolio = dynamic(() => import("@/components/Projects/ProjectPortfolio"), {
-//   loading: () => <LoadingSection />
-// });
-
-// const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"), {
-//   loading: () => <LoadingSection />
-// });
-
-// const Contact = dynamic(() => import("@/components/Contact/Contact"), {
-//   loading: () => <LoadingSection />
-// });
+const ContactSection = dynamic(
+  () => import('@/components/Contact/ContactSection'),
+  { loading: () => <LoadingSection title="Contact Us" /> }
+);
 
 // Loading placeholder component
-function LoadingSection() {
+function LoadingSection({ title }: { title: string }) {
   return (
-    <div className="w-full h-96 bg-gray-50 animate-pulse flex items-center justify-center">
-      <div className="w-16 h-16 border-4 border-gold-400 border-t-transparent rounded-full animate-spin" />
-    </div>
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">{title}</h2>
+          <LoadingSpinner size="lg" />
+        </div>
+      </div>
+    </section>
   );
 }
 
-export default function Home() {
+// Mock data
+const services = [
+  {
+    id: 'communications',
+    title: 'Communications Infrastructure',
+    description: 'Complete communications solutions for modern connectivity needs',
+    icon: 'network-tower',
+    features: [
+      'Fiber Optic Installation',
+      'Network Infrastructure',
+      'Wireless Solutions',
+      'Data Center Construction',
+      'Telecommunications Equipment'
+    ]
+  },
+  {
+    id: 'construction',
+    title: 'Construction Services',
+    description: 'Professional construction services for commercial and industrial projects',
+    icon: 'building',
+    features: [
+      'Commercial Construction',
+      'Site Development',
+      'Infrastructure Development',
+      'Project Management',
+      'Equipment Installation'
+    ]
+  },
+  {
+    id: 'maintenance',
+    title: 'Maintenance & Support',
+    description: '24/7 maintenance and support services for all installations',
+    icon: 'tools',
+    features: [
+      'Preventive Maintenance',
+      'Emergency Repairs',
+      'System Upgrades',
+      'Performance Monitoring',
+      'Technical Support'
+    ]
+  },
+  {
+    id: 'consulting',
+    title: 'Consulting & Design',
+    description: 'Expert consultation and design services for your projects',
+    icon: 'blueprint',
+    features: [
+      'Project Planning',
+      'Technical Design',
+      'Feasibility Studies',
+      'Cost Analysis',
+      'Regulatory Compliance'
+    ]
+  }
+];
+
+const projects = [
+  {
+    id: 'AV Charging Stations-2024',
+    title: 'Orgean AV Charging Implementation',
+    description: 'Complete AV Charging Station installation in gas parking area.',
+    category: 'communications',
+    imageUrl: '/images/WorkOreganPics/image21.jpeg',
+    completionDate: '2024-10',
+    client: 'Metro City Council',
+    location: 'Metropolitan Area',
+    tags: ['AV Charging Station', 'Urban Development'],
+    highlights: [
+      'Installed 200+ miles of fiber optic cable',
+      'Connected 50,000+ households',
+      'Achieved 99.99% network reliability'
+    ],
+    specifications: {
+      'Network Speed': '10Gbps',
+      'Coverage Area': '150 sq miles',
+      'Completion Time': '18 months'
+    }
+  },
+  // ... more projects
+];
+
+export const projectCategories = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'communications', label: 'Communications' },
+  { id: 'construction', label: 'Construction' },
+  { id: 'infrastructure', label: 'Infrastructure' },
+  { id: 'maintenance', label: 'Maintenance' }
+];
+
+const testimonials = [
+  {
+    id: '1',
+    author: 'John Smith',
+    role: 'Chief Technology Officer',
+    company: 'TechCorp Industries',
+    content: 'The team at Goldmine delivered exceptional results. Their expertise in both communications and construction made them the perfect partner for our complex infrastructure project.',
+    image: '/images/testimonials/john-smith.jpg'
+  },
+  {
+    id: '1',
+    author: 'John Smith',
+    role: 'Chief Technology Officer',
+    company: 'TechCorp Industries',
+    content: 'The team at Goldmine delivered exceptional results. Their expertise in both communications and construction made them the perfect partner for our complex infrastructure project.',
+    image: '/images/testimonials/john-smith.jpg'
+  },
+  {
+    id: '1',
+    author: 'John Smith',
+    role: 'Chief Technology Officer',
+    company: 'TechCorp Industries',
+    content: 'The team at Goldmine delivered exceptional results. Their expertise in both communications and construction made them the perfect partner for our complex infrastructure project.',
+    image: '/images/testimonials/john-smith.jpg'
+  },
+  // ... more testimonials
+];
+
+export default function HomePage() {
   return (
     <>
-      <main>
-        {/* Hero Section - Load immediately as it's above the fold */}
-        <section id="Hero">
-          <HeroShowcase />
-       
-        </section>
-     
-        <section id="About">
-          <AboutSection />
-        </section>
-        <section id="Information">
-         <InformationSection/>
-        </section>
+      {/* Hero Section */}
+      <AnimatedHero />
 
-        {/* Suspense boundaries for smooth loading */}
-        <Suspense fallback={<LoadingSection />}>
-          <Servicespage/>
-        </Suspense>
+      {/* Services Section */}
+      <Suspense fallback={<LoadingSection title="Our Services" />}>
+        <AnimatedServicesGrid services={services} />
+      </Suspense>
 
-        <Suspense fallback={<LoadingSection />}>
-          <ProjectPortfolio />
-        </Suspense>
+      {/* Project Showcase */}
+      <Suspense fallback={<LoadingSection title="Our Projects" />}>
+        <ProjectShowcase projects={projects} />
+      </Suspense>
 
-        <Suspense fallback={<LoadingSection />}>
-          <TestimonialsCarousel />
-        </Suspense>
+      {/* Testimonials */}
+      <Suspense fallback={<LoadingSection title="Testimonials" />}>
+        <AnimatedTestimonials testimonials={testimonials} />
+      </Suspense>
 
-        <Suspense fallback={<LoadingSection />}>
-          <Contact />
-        </Suspense>
-
-      </main>
+      {/* Contact Section */}
+      <Suspense fallback={<LoadingSection title="Contact Us" />}>
+        <ContactSection />
+      </Suspense>
     </>
   );
 }

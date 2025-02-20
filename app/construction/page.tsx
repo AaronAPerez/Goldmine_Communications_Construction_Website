@@ -12,8 +12,7 @@ interface ServiceFeature {
   description: string;
 }
 
-
-const ConstructionPage = () => {
+export default function ConstructionPage() {
   const { ref: servicesRef, isVisible: isServicesVisible } = useIntersectionObserver();
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -172,10 +171,10 @@ const ConstructionPage = () => {
               </div>
               <div className="md:w-1/2">
                 <Image
-                  src="/images/construction-site-1.jpg"
+                  src="/images/safety-first.jpg"
                   alt="Construction Safety"
-                  width={850}
-                  height={350}
+                  width={500}
+                  height={300}
                   className="rounded-lg"
                 />
               </div>
@@ -201,5 +200,3 @@ const ConstructionPage = () => {
     </main>
   );
 }
-
-export default ConstructionPage;

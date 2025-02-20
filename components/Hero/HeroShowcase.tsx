@@ -39,6 +39,7 @@ const HeroShowcase = () => {
           <Image
             src={src}
             alt="Construction site showcase"
+            width={'100'}
             fill
             className="object-cover"
             priority={index === 0}

@@ -1,33 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../styles/globals.css";
-import Header from "./Header";
-// import Footer from "./Footer";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import '../components/styles/globals.css';
+import FloatingNavigation from '@/components/Navigation/FloatingNavigation';
+import Footer from '@/components/Footer/Footer';
 
-// Initialize font
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
-// Define metadata for SEO
+const inter = Inter({ subsets: ['latin'] });
+
 export const metadata: Metadata = {
-  title: {
-    template: '%s | Goldmine Communications',
-    default: 'Goldmine Communications - Building Tomorrow\'s Infrastructure Today',
-  },
-  description: "Leading provider of communications and construction services, delivering innovative solutions for modern connectivity needs.",
-  keywords: [
-    "communications infrastructure",
-    "construction services",
-    "network solutions",
-    "fiber optics",
-    "telecommunications"
-  ],
-  authors: [{ name: "Goldmine Communications" }],
-  viewport: "width=device-width, initial-scale=1",
-  robots: "index, follow",
+  title: 'Goldmine Communications & Construction',
+  description: 'Leading provider of communications and construction solutions',
 };
 
 export default function RootLayout({
@@ -36,24 +18,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} font-sans`}
-    >
-      <body className="min-h-screen bg-gray-50">
-        {/* Skip to main content link for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
-                   bg-gold-400 text-white px-4 py-2 rounded-md z-50"
-        >
-          Skip to main content
-        </a>
-        <Header />
-        <main>{children}</main>
+    <html lang="en" className="scroll-smooth">
+      <body className={inter.className}>
+        {/* Fixed Background Gradient */}
+        <div className="fixed inset-0 bg-gradient-to-br from-primary-900 to-primary-800 -z-10" />
+        
+        {/* Navigation */}
+        <FloatingNavigation />
+
+        {/* Main Content */}
+        <main className="min-h-screen">
+          {children}
+        </main>
+
+        {/* Footer */}
+        <Footer />
       </body>
-      {/* <Footer /> */}
     </html>
   );
 }

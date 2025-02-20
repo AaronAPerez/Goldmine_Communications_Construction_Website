@@ -1,6 +1,9 @@
+'use client';
+
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useAceternityAnimation } from '@/hooks/useAceternityAnimation';
+import Image from 'next/image';
 
 interface GridItem {
   id: string;
@@ -83,7 +86,7 @@ export default function AnimatedGrid({
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
