@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
@@ -25,20 +25,29 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const autoPlayRef = useRef<NodeJS.Timeout>();
 
-  const startAutoPlay = () => {
-    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  // Memoize startAutoPlay function with useCallback
+  const startAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+    
     autoPlayRef.current = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
-  };
+  }, [testimonials.length]);
 
   useEffect(() => {
-    if (isAutoPlaying) startAutoPlay();
+    if (isAutoPlaying) {
+      startAutoPlay();
+    }
+    
     return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
     };
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, startAutoPlay]);
 
   const handlePrevious = () => {
     setIsAutoPlaying(false);
@@ -137,8 +146,8 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <div className="font-semibold text-lg text-gray-900">
-                    {testimonials[currentIndex].author}
+                <div className="font-semibold text-lg text-gray-900">
+                  {testimonials[currentIndex].author}
                   </div>
                   <div className="text-gold-400">
                     {testimonials[currentIndex].role}
@@ -151,7 +160,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Buttons */}
+          {/* Navigation Controls */}
           <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between">
             <button
               onClick={handlePrevious}

@@ -1,16 +1,21 @@
 'use client';
 
-import React from 'react'
 import { useState, useMemo } from 'react';
 import { ProjectCard } from './ProjectCard';
 import { ProjectModal } from './ProjectModal';
-import { Project, projectCategories, ProjectCategory, projects } from '@/types/project';
+import { Project, projectCategories, ProjectCategory } from '@/types/project';
 
+// Create a union type for all possible category values including 'all'
+type CategoryFilter = 'all' | ProjectCategory;
 
-const ProjectPortfolio = () => {
-  const [selectedCategory, setSelectedCategory] = useState<'all' | ProjectCategory>('all');
+interface ProjectPortfolioProps {
+  projects: Project[];
+}
+
+const ProjectPortfolio = ({ projects }: ProjectPortfolioProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [sortBy, setSortBy] = useState<'date' | 'name'>('date');
+  const [sortBy] = useState<'date' | 'name'>('date');
 
   // Filter and sort projects
   const filteredProjects = useMemo(() => {
@@ -30,51 +35,27 @@ const ProjectPortfolio = () => {
     });
 
     return filtered;
-  }, [selectedCategory, sortBy]);
+  }, [selectedCategory, sortBy, projects]);
 
   return (
     <section className="py-16 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Our Projects
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore our portfolio of successful communications and construction projects
-          </p>
-        </div>
-
-        {/* Filters and Sort */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-2">
-            {projectCategories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id as any)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-                  selectedCategory === category.id
-                    ? 'bg-gold-400 text-white'
-                    : 'bg-white text-gray-600 hover:bg-gray-100'
-                }`}
-                aria-pressed={selectedCategory === category.id}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Sort Options */}
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as 'date' | 'name')}
-            className="bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm"
-            aria-label="Sort projects by"
-          >
-            <option value="date">Latest First</option>
-            <option value="name">Name (A-Z)</option>
-          </select>
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-2">
+          {projectCategories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id as CategoryFilter)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                selectedCategory === category.id
+                  ? 'bg-gold-400 text-white'
+                  : 'bg-white text-gray-600 hover:bg-gray-100'
+              }`}
+              aria-pressed={selectedCategory === category.id}
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
 
         {/* Project Grid */}
@@ -99,6 +80,6 @@ const ProjectPortfolio = () => {
       </div>
     </section>
   );
-}
+};
 
 export default ProjectPortfolio;

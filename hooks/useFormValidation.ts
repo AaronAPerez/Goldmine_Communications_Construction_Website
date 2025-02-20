@@ -90,22 +90,27 @@ export function useFormValidation<T extends Record<string, any>>({
       const { name, value } = e.target;
       setValues((prev) => ({ ...prev, [name]: value }));
 
-      const error = validateField(name as keyof T, value);
-      setErrors((prev) => ({ ...prev, [name]: error }));
+      if (touched[name as keyof T]) {
+        const error = validateField(name as keyof T, value);
+        setErrors((prev) => ({ ...prev, [name]: error }));
+      }
     },
-    [validateField]
+    [validateField, touched]
   );
 
   // Handle field blur
   const handleBlur = useCallback((name: keyof T) => {
     setTouched((prev) => ({ ...prev, [name]: true }));
-  }, []);
+    const error = validateField(name, values[name]);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  }, [validateField, values]);
 
   // Handle form submission
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
       
+      // Mark all fields as touched
       setTouched(
         Object.keys(values).reduce(
           (acc, key) => ({ ...acc, [key]: true }),
@@ -120,9 +125,9 @@ export function useFormValidation<T extends Record<string, any>>({
         await onSubmit(values);
         setValues(initialValues);
         setTouched({});
-        setErrors({});
       } catch (error) {
         // Handle error if needed
+        console.error('Form submission error:', error);
       } finally {
         setIsSubmitting(false);
       }

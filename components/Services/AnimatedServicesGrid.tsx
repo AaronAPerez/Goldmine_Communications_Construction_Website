@@ -4,11 +4,10 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ServiceIcon } from './ServiceIcon';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { Service } from '@/types/service';
 
-interface ServiceFeature {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
+interface AnimatedServicesGridProps {
+  services: Service[];
 }
 
 export default function AnimatedServicesGrid({ services }: AnimatedServicesGridProps) {

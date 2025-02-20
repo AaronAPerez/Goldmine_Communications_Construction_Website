@@ -8,7 +8,7 @@ import { Network, Building2, Wrench, Shield } from 'lucide-react';
 const backgroundImages = [
   '/images/communications.jpg',
   '/images/PouringConcrete.jpg',
-  '/images/construction-site-2.jpg',
+  '/images/WorkOreganPics/image9.jpeg',
   '/images/construction-site-3.jpg',
   '/images/TractorConcrete.jpg',
   '/products/maintenance.jpg'
@@ -16,30 +16,54 @@ const backgroundImages = [
 
 const features = [
   {
-    icon: <Network className="w-6 h-6 sm:w-8 sm:h-8 text-gold-400" />,
+    icon: <Network className="w-8 h-8 text-gold-400" />,
     title: 'Communications',
     description: 'Network infrastructure solutions',
+    details: [
+      'Fiber optic installations',
+      'Network design and planning',
+      'Wireless infrastructure',
+      'Data center connectivity'
+    ]
   },
   {
-    icon: <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-gold-400" />,
+    icon: <Building2 className="w-8 h-8 text-gold-400" />,
     title: 'Construction',
     description: 'Professional construction services',
+    details: [
+      'Commercial construction',
+      'Infrastructure development',
+      'Project management',
+      'Site development'
+    ]
   },
   {
-    icon: <Wrench className="w-6 h-6 sm:w-8 sm:h-8 text-gold-400" />,
+    icon: <Wrench className="w-8 h-8 text-gold-400" />,
     title: 'Maintenance',
     description: '24/7 support and maintenance',
+    details: [
+      'Preventive maintenance',
+      'Emergency repairs',
+      'System upgrades',
+      'Regular inspections'
+    ]
   },
   {
-    icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-gold-400" />,
+    icon: <Shield className="w-8 h-8 text-gold-400" />,
     title: 'Security',
     description: 'Comprehensive security solutions',
-  },
+    details: [
+      'Access control systems',
+      'Surveillance solutions',
+      'Network security',
+      'Security audits'
+    ]
+  }
 ];
 
 export default function AnimatedHero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [, setIsLoaded ] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -105,15 +129,15 @@ export default function AnimatedHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="max-w-3xl mb-8 md:mb-12"
-          >
+        >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
-              Building Tomorrow's
-              <span className="text-gold-400"> Infrastructure</span>
-            </h1>
+              Building Tomorrow&apos;s
+            <span className="text-gold-400"> Infrastructure</span>
+          </h1>
             <p className="text-lg sm:text-xl text-gray-300">
-              Leading provider of communications and construction solutions,
-              delivering excellence through innovation and expertise.
-            </p>
+            Leading provider of communications and construction solutions,
+            delivering excellence through innovation and expertise.
+          </p>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -154,19 +178,19 @@ export default function AnimatedHero() {
                 className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10"
               >
                 <div className="flex items-center gap-3 sm:gap-4">
-                  {feature.icon}
+                    {feature.icon}
                   <div className="text-left">
                     <h3 className="text-base sm:text-lg font-semibold text-white">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-gray-300">
-                      {feature.description}
-                    </p>
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-gray-300">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
               </motion.div>
-            ))}
-          </div>
+                    ))}
+            </div>
         </div>
       </div>
 

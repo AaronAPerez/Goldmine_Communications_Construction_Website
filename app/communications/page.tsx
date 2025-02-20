@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Network, Server, Wifi, Cable, Radio, Clock, Shield, PenToolIcon, Wrench, TowerControl } from 'lucide-react';
+import { Network, Server, Wifi, Cable, Radio, Clock, Shield, Wrench, TowerControl } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 interface ServiceFeature {
@@ -66,7 +66,7 @@ export default function CommunicationsPage() {
                 Advanced Communication Solutions
               </h1>
               <p className="text-xl text-white/90">
-                Building tomorrow's communication infrastructure with cutting-edge technology and expertise.
+                Building tomorrow&apos;s communication infrastructure with cutting-edge technology and expertise.
               </p>
             </div>
           </div>

@@ -165,6 +165,7 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <AnimatedHero />
+  
 
       {/* Services Section */}
       <Suspense fallback={<LoadingSection title="Our Services" />}>

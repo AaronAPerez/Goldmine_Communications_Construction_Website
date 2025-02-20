@@ -111,7 +111,7 @@ export default function FloatingNavigation() {
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md shadow-lg">
         <div className="px-4 py-3 flex items-center justify-between">
           <Link href="/" className="flex-shrink-0">
-            <div className="relative w-40 h-10">
+            <div className="relative w-40 h-20">
               <Image
                 src="/images/logo-banner.png"
                 alt="Goldmine Communications and Construction"

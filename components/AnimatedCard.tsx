@@ -13,7 +13,7 @@ export default function AnimatedCard({
   className = '',
   delayMs = 0
 }: AnimatedCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
 
   return (
     <div
