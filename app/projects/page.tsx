@@ -103,7 +103,7 @@ export default function CommunicationsPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] overflow-hidden">
         <Image
-          src="/images/communications-hero.jpg"
+          src="/images/communications.jpg"
           alt="Communications Infrastructure"
           fill
           className="object-cover"

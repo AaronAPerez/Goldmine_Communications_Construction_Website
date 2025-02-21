@@ -4,7 +4,7 @@ import React from 'react';
 import { X } from 'lucide-react';
 import Image from 'next/image';
 import { Dialog, DialogContent, DialogTitle } from '@radix-ui/react-dialog';
-import { DialogHeader } from '../UI/dialog';
+import { DialogHeader } from '../ui/dialog';
 
 
 interface ProjectModalProps {

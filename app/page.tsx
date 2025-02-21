@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import AnimatedHero from '@/components/Hero/AnimatedHero';
-import LoadingSpinner from '@/components/UI/LoadingSpinner';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import { services, projects, testimonials } from '@/data/siteData';
 
 // Loading placeholder component

@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import {QueryClient, QueryClientProvider as ReactQueryClientProvider} from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
 
