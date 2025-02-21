@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useCallback } from 'react';
-import { useState, useRef, useEffect } from 'react';
+import React,{ useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import Image from 'next/image';
@@ -23,7 +22,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const autoPlayRef = useRef<NodeJS.Timeout>();
+  const autoPlayRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   // Memoize startAutoPlay function with useCallback
   const startAutoPlay = useCallback(() => {
@@ -63,6 +62,12 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
     setCurrentIndex((prev) => 
       (prev + 1) % testimonials.length
     );
+  };
+
+  const handleTestimonialSelect = (index: number) => {
+    setIsAutoPlaying(false);
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
   };
 
   const slideVariants = {
@@ -142,12 +147,12 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
 
                 {/* Author Info */}
                 <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                <div className="font-semibold text-lg text-gray-900">
-                  {testimonials[currentIndex].author}
+                  <div className="font-semibold text-lg text-gray-900">
+                    {testimonials[currentIndex].author}
                   </div>
                   <div className="text-gold-400">
                     {testimonials[currentIndex].role}
@@ -183,11 +188,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  setIsAutoPlaying(false);
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
+                onClick={() => handleTestimonialSelect(index)}
                 className={`
                   w-2 h-2 rounded-full transition-all duration-300
                   ${currentIndex === index 

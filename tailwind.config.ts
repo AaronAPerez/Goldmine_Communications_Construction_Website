@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import type { PluginAPI } from 'tailwindcss/types/config';
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -177,7 +178,7 @@ const config = {
     require('@tailwindcss/forms')({
       strategy: 'class',
     }),
-    function({ addUtilities }) {
+    function({ addUtilities }: PluginAPI) {
       const newUtilities = {
         '.text-shadow-sm': {
           textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
@@ -192,7 +193,11 @@ const config = {
           textShadow: 'none',
         },
       }
-      addUtilities(newUtilities, ['hover', 'focus'])
+      addUtilities(newUtilities, {
+        respectPrefix: true,
+        respectImportant: true,
+      //  variants: ['hover', 'focus']
+      });
     },
   ],
 } satisfies Config;
