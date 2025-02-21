@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import '../components/styles/globals.css';
 import FloatingNavigation from '@/components/Navigation/FloatingNavigation';
 import Footer from '@/components/Footer/Footer';
+import { Analytics } from "@vercel/analytics/react"
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -29,6 +30,7 @@ export default function RootLayout({
         {/* Main Content */}
         <main className="min-h-screen">
           {children}
+          <Analytics/>
         </main>
 
         {/* Footer */}
