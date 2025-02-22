@@ -1,186 +1,214 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Project } from '@/types/project';
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface ProjectShowcaseProps {
-  projects: Project[];
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  images: string[];
+  location: string;
+  category: string;
 }
 
-export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+// Sample project data incorporating the Oregon work
+const projects: Project[] = [
+  {
+    id: 'oregon-av-charging',
+    title: 'Oregon AV Charging Station Installation',
+    description: 'Complete AV charging station installation with infrastructure upgrades and safety implementations.',
+    images: [
+      '/images/WorkOregonPics/AvStation.jpg',
+      '/images/WorkOregonPics/image3.jpeg',
+      '/images/WorkOregonPics/image21.jpeg',
+    ],
+    location: 'Chemult, Oregon',
+    category: 'Infrastructure'
+  },
+  {
+    id: 'hospital-renovation',
+    title: 'Hospital Construction & Renovation',
+    description: 'Comprehensive hospital construction with over 15 years of experience, including ADA compliance and specialized medical facility requirements.',
+    images: [
+      '/images/communications.jpg',
+      '/images/WorkOreganPics/image1.jpeg',
+      '/images/WorkOreganPics/image2.jpeg'
+    ],
+    location: 'San Jose, CA',
+    category: 'Healthcare'
+  }
+];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const { ref: sectionRef, isVisible } = useIntersectionObserver({
-    threshold: 0.2
-  });
+const ProjectShowcase = () => {
+  const [currentProject, setCurrentProject] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
 
-  // Parallax effects
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
+  const nextProject = () => {
+    setCurrentProject((prev) => (prev + 1) % projects.length);
+    setCurrentImage(0);
+  };
 
-  // Handle project selection
-  const handleProjectClick = (index: number) => {
-    setActiveIndex(index);
+  const prevProject = () => {
+    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentImage(0);
+  };
+
+  const nextImage = () => {
+    setCurrentImage((prev) => 
+      (prev + 1) % projects[currentProject].images.length
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) => 
+      (prev - 1 + projects[currentProject].images.length) % projects[currentProject].images.length
+    );
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen py-20 overflow-hidden bg-gray-900"
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 to-gray-900" />
-        <motion.div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
-            backgroundSize: '24px 24px',
-            y
-          }}
-        />
-      </div>
-
-      <div 
-        ref={containerRef}
-        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-      >
+    <section className="py-20 bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-white mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Explore our portfolio of successful communications and construction projects
+          <p className="text-xl text-gray-400">
+            Explore our portfolio of successful construction and infrastructure projects
           </p>
-        </motion.div>
+        </div>
 
         {/* Project Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Project Preview */}
-          <motion.div
-            style={{ opacity }}
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden"
-          >
-            <Image
-              src={projects[activeIndex].imageUrl}
-              alt={projects[activeIndex].title}
-              fill
-              // className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-            
-            {/* Project Info Overlay */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Image Showcase */}
+          <div className="relative aspect-video rounded-xl overflow-hidden">
             <motion.div
+              key={`${currentProject}-${currentImage}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={projects[currentProject].images[currentImage]}
+                alt={projects[currentProject].title}
+                fill
+                className="object-cover"
+              />
+              
+              {/* Image Navigation */}
+              <div className="absolute inset-0 flex items-center justify-between p-4">
+                <button
+                  onClick={prevImage}
+                  className="p-2 rounded-full bg-black/50 text-white hover:bg-black/75 transition-colors"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="p-2 rounded-full bg-black/50 text-white hover:bg-black/75 transition-colors"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Image Counter */}
+              <div className="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                {currentImage + 1} / {projects[currentProject].images.length}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Project Info */}
+          <div className="flex flex-col justify-center">
+            <motion.div
+              key={currentProject}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="absolute bottom-0 left-0 right-0 p-8"
+              transition={{ duration: 0.5 }}
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {projects[activeIndex].title}
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {projects[currentProject].title}
                 </h3>
-                <p className="text-gray-200 mb-4">
-                  {projects[activeIndex].description}
+                <p className="text-gray-300 mb-6">
+                  {projects[currentProject].description}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {projects[activeIndex].tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full text-sm bg-white/20 text-white"
-                    >
-                      {tag}
-                    </span>
+                
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="px-3 py-1 rounded-full bg-gold-400/20 text-gold-400 text-sm">
+                    {projects[currentProject].category}
+                  </span>
+                  <span className="text-gray-400">
+                    {projects[currentProject].location}
+                  </span>
+                </div>
+
+                {/* Thumbnail Navigation */}
+                <div className="flex gap-2 mb-6">
+                  {projects[currentProject].images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImage(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        currentImage === index ? 'bg-gold-400 w-8' : 'bg-gray-600'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
                   ))}
+                </div>
+
+                {/* Project Navigation */}
+                <div className="flex justify-between">
+                  <button
+                    onClick={prevProject}
+                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Previous Project
+                  </button>
+                  <button
+                    onClick={nextProject}
+                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                  >
+                    Next Project
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             </motion.div>
-          </motion.div>
-
-          {/* Project List */}
-          <div className="space-y-4">
-            {projects.map((project, index) => (
-              <motion.button
-                key={project.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ 
-                  opacity: isVisible ? 1 : 0, 
-                  x: isVisible ? 0 : 20 
-                }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => handleProjectClick(index)}
-                className={`
-                  w-full text-left p-6 rounded-xl transition-all duration-300
-                  ${activeIndex === index
-                    ? 'bg-gold-400 text-white'
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
-                  }
-                `}
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-lg font-semibold mb-1">
-                      {project.title}
-                    </h4>
-                    <p className="text-sm opacity-80">
-                      {project.client} • {project.location}
-                    </p>
-                  </div>
-                  <div className={`
-                    w-3 h-3 rounded-full transition-colors
-                    ${activeIndex === index
-                      ? 'bg-white'
-                      : 'bg-gray-600'
-                    }
-                  `} />
-                </div>
-              </motion.button>
-            ))}
           </div>
         </div>
 
-        {/* Project Stats */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { label: 'Projects Completed', value: '100+' },
-            { label: 'Cities Served', value: '25+' },
-            { label: 'Client Satisfaction', value: '98%' },
-            { label: 'Team Members', value: '50+' }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: isVisible ? 1 : 0, 
-                y: isVisible ? 0 : 20 
-              }}
-              transition={{ delay: 0.6 + index * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl font-bold text-gold-400 mb-2">
-                {stat.value}
-              </div>
-              <div className="text-gray-400">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+        {/* Company Info */}
+        <div className="mt-16 text-center">
+          <div className="inline-block bg-white/10 backdrop-blur-sm rounded-xl p-8">
+            <h3 className="text-xl font-bold text-white mb-4">
+              Goldmine Communications and Construction Inc.
+            </h3>
+            <p className="text-gray-300 mb-4">
+              Lic# 1099543 | Bonded & Insured
+            </p>
+            <div className="text-gold-400">
+              <p>946 Lincoln Ave, San Jose, CA 95125</p>
+              <p>Call Victor Valles: (510) 695-3177</p>
+              <a 
+                href="http://www.goldminecomm.net" 
+                className="hover:text-gold-300 transition-colors"
+              >
+                www.goldminecomm.net
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default ProjectShowcase;

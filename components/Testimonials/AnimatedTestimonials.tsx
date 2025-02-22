@@ -121,7 +121,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
               <div className="text-center">
                 {/* Testimonial Image */}
                 <motion.div 
-                  className="relative mx-auto w-24 h-24 mb-8"
+                  className="relative mx-auto w-28 h-28 mb-6"
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.2 }}
@@ -140,7 +140,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="text-xl text-gray-900 font-medium italic mb-8"
+                  className="text-xl text-gray-900 font-medium italic mb-6"
                 >
                   {testimonials[currentIndex].content}
                 </motion.blockquote>
@@ -151,7 +151,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <div className="font-semibold text-lg text-gray-900">
+                  <div className="font-semibold text-xl text-gray-900">
                     {testimonials[currentIndex].author}
                   </div>
                   <div className="text-gold-400">
@@ -184,7 +184,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
           </div>
 
           {/* Progress Indicators */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute pt-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {testimonials.map((_, index) => (
               <button
                 key={index}

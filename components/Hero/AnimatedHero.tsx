@@ -104,14 +104,15 @@ export default function AnimatedHero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 pt-24 md:pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="relative z-10 pt-20 md:pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center">
           {/* Circular Logo */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="w-40 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 mb-8 md:mb-12"
+            className="w-56 mb-4 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-72 lg:h-72"
+            // className="w-40 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 mb-8 md:mb-12"
           >
             <Image
               src="/images/logo-circular.png"
@@ -190,7 +191,7 @@ export default function AnimatedHero() {
                   </div>
               </motion.div>
                     ))}
-            </div>
+            </div> 
         </div>
       </div>
 

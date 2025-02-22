@@ -1,8 +1,11 @@
+'use client';
+
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import AnimatedHero from '@/components/Hero/AnimatedHero';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
-import { services, projects, testimonials } from '@/data/siteData';
+import ServicesShowcase from '@/components/Services/ServicesShowcase';
+import TestimonialsSection from '@/components/Testimonials/TestimonialsSection';
+import HeroWithLogo from '@/components/Hero/HeroWithLogo';
 
 // Loading placeholder component
 function LoadingSection({ title }: { title: string }) {
@@ -19,22 +22,22 @@ function LoadingSection({ title }: { title: string }) {
 }
 
 // Dynamically import heavy components
-const AnimatedServicesGrid = dynamic(
-  () => import('@/components/Services/AnimatedServicesGrid'),
-  { 
-    loading: () => <LoadingSection title="Our Services" />,
-  }
-);
+// const AnimatedServicesGrid = dynamic(
+//   () => import('@/components/Services/AnimatedServicesGrid'),
+//   { 
+//     loading: () => <LoadingSection title="Our Services" />,
+//   }
+// );
 
 const ProjectShowcase = dynamic(
   () => import('@/components/Projects/ProjectShowcase'),
   { loading: () => <LoadingSection title="Our Projects" /> }
 );
 
-const AnimatedTestimonials = dynamic(
-  () => import('@/components/Testimonials/AnimatedTestimonials'),
-  { loading: () => <LoadingSection title="Testimonials" /> }
-);
+// const AnimatedTestimonials = dynamic(
+//   () => import('@/components/Testimonials/AnimatedTestimonials'),
+//   { loading: () => <LoadingSection title="Testimonials" /> }
+// );
 
 const ContactSection = dynamic(
   () => import('@/components/Contact/ContactSection'),
@@ -45,21 +48,21 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <AnimatedHero />
+      <HeroWithLogo />
 
       {/* Services Section */}
       <Suspense fallback={<LoadingSection title="Our Services" />}>
-        <AnimatedServicesGrid services={services} />
+        <ServicesShowcase />
       </Suspense>
 
       {/* Project Showcase */}
       <Suspense fallback={<LoadingSection title="Our Projects" />}>
-        <ProjectShowcase projects={projects} />
+        <ProjectShowcase />
       </Suspense>
 
       {/* Testimonials */}
       <Suspense fallback={<LoadingSection title="Testimonials" />}>
-        <AnimatedTestimonials testimonials={testimonials} />
+        <TestimonialsSection />
       </Suspense>
 
       {/* Contact Section */}

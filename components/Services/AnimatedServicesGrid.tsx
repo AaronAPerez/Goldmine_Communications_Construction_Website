@@ -2,51 +2,97 @@
 
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ServiceIcon } from './ServiceIcon';
+import { Building2, Shield, Construction, PaintBucket } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { Service } from '@/types/service';
 
-interface AnimatedServicesGridProps {
-  services: Service[];
+interface Service {
+  id: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  features: string[];
 }
 
-export default function AnimatedServicesGrid({ services }: AnimatedServicesGridProps) {
+// Updated services data based on the provided image
+const services: Service[] = [
+  {
+    id: 'general-construction',
+    icon: <Building2 className="w-8 h-8 text-gold-400" />,
+    title: 'General Construction',
+    description: 'Trust in our quality construction services for peace of mind. With unwavering dedication, we deliver excellence from start to finish.',
+    features: [
+      'Commercial Construction',
+      'Industrial Facilities',
+      'Healthcare Facilities',
+      'Over 15 years of hospital construction experience',
+      'Project Management'
+    ]
+  },
+  {
+    id: 'remodeling',
+    icon: <PaintBucket className="w-8 h-8 text-gold-400" />,
+    title: 'Remodeling & Renovation',
+    description: 'Comprehensive remodeling and renovation services with attention to detail and quality craftsmanship.',
+    features: [
+      'Paint & Carpentry',
+      'Drywall Installation',
+      'T-Bar Installation',
+      'Insulation Services',
+      'Flooring Solutions',
+      'Electrical Work'
+    ]
+  },
+  {
+    id: 'ada-compliance',
+    icon: <Shield className="w-8 h-8 text-gold-400" />,
+    title: 'ADA Compliance',
+    description: 'Expert implementation of ADA compliance solutions and accessibility improvements.',
+    features: [
+      'ADA Compliance Assessment',
+      'Accessibility Modifications',
+      'Minor Works & Adjustments',
+      'Compliance Documentation',
+      'Regular Inspections'
+    ]
+  },
+  {
+    id: 'specialty-services',
+    icon: <Construction className="w-8 h-8 text-gold-400" />,
+    title: 'Specialty Services',
+    description: 'Specialized construction and safety services for unique project requirements.',
+    features: [
+      'Ligature Resistant Installation',
+      'Suicide Prevention Material Installation',
+      'Safety System Implementation',
+      'Custom Solutions'
+    ]
+  }
+];
+
+export default function AnimatedServicesGrid() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const { ref: sectionRef, isVisible } = useIntersectionObserver();
 
-  const trackMouseMovement = (e: React.MouseEvent) => {
-    if (!gridRef.current) return;
-
-    const rect = gridRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    // Update CSS variables for gradient effect
-    gridRef.current.style.setProperty('--mouse-x', `${x}px`);
-    gridRef.current.style.setProperty('--mouse-y', `${y}px`);
-  };
-
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 overflow-hidden bg-gray-50"
+      className="relative py-20 bg-gray-50"
+      aria-labelledby="services-heading"
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[200%] h-full">
           <div 
             className="w-full h-full rotate-12 opacity-20"
             style={{
-              background: `
-                repeating-linear-gradient(
-                  45deg,
-                  transparent,
-                  transparent 20px,
-                  rgba(212,175,55,0.1) 20px,
-                  rgba(212,175,55,0.1) 40px
-                )
-              `
+              background: `repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(212,175,55,0.1) 20px,
+                rgba(212,175,55,0.1) 40px
+              )`
             }}
           />
         </div>
@@ -60,19 +106,21 @@ export default function AnimatedServicesGrid({ services }: AnimatedServicesGridP
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 
+            id="services-heading"
+            className="text-4xl font-bold text-gray-900 mb-4"
+          >
             Our Services
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Comprehensive solutions for communications and construction needs
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Comprehensive construction and specialty services with over 15 years of experience
           </p>
         </motion.div>
 
         {/* Services Grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          onMouseMove={trackMouseMovement}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
           onMouseLeave={() => setHoveredId(null)}
         >
           {services.map((service, index) => (
@@ -89,33 +137,13 @@ export default function AnimatedServicesGrid({ services }: AnimatedServicesGridP
             >
               <div className={`
                 relative overflow-hidden rounded-2xl bg-white p-8
-                transition-all duration-300 ease-out transform-style-3d
+                transition-all duration-300 ease-out
                 ${hoveredId === service.id ? 'scale-[1.02] shadow-xl' : 'shadow-lg'}
               `}>
-                {/* Animated border gradient */}
-                <div 
-                  className={`
-                    absolute inset-0 opacity-0 group-hover:opacity-100
-                    transition-opacity duration-300
-                  `}
-                  style={{
-                    background: `
-                      radial-gradient(
-                        600px circle at var(--mouse-x) var(--mouse-y),
-                        rgba(212,175,55,0.1),
-                        transparent 40%
-                      )
-                    `
-                  }}
-                />
-
                 {/* Service Icon */}
                 <div className="relative mb-6">
                   <div className="w-16 h-16 rounded-xl bg-gold-400/10 flex items-center justify-center">
-                    <ServiceIcon 
-                      icon={service.icon} 
-                      className="w-8 h-8 text-gold-400"
-                    />
+                    {service.icon}
                   </div>
                 </div>
 
@@ -159,10 +187,48 @@ export default function AnimatedServicesGrid({ services }: AnimatedServicesGridP
                     ))}
                   </ul>
                 </div>
+
+                {/* Hover Effect Gradient */}
+                <div 
+                  className={`
+                    absolute inset-0 bg-gradient-to-r from-gold-400/5 to-transparent
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                  `}
+                  aria-hidden="true"
+                />
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Contact CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ delay: 0.6 }}
+          className="mt-16 text-center"
+        >
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Lic# 1099543 | Bonded & Insured
+            </p>
+            <div className="space-y-2 text-gray-600">
+              <p>946 Lincoln Ave, San Jose, CA 95125</p>
+              <p>
+                <a 
+                  href="tel:5106953177" 
+                  className="text-gold-400 hover:text-gold-500 transition-colors"
+                >
+                  Call Victor Valles: (510) 695-3177
+                </a>
+              </p>
+              <p className="text-sm">Already have an estimate? Forward it & we&aptos;ll beat it!</p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

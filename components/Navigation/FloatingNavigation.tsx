@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Home, Phone, Briefcase, Building, Menu, X } from 'lucide-react';
-import Image from 'next/image';
 
 interface NavItem {
   label: string;
@@ -13,10 +13,10 @@ interface NavItem {
   icon: React.ReactNode;
 }
 
-// Navigation items array moved outside component to prevent re-creation
 const navItems: NavItem[] = [
   { label: 'Home', href: '/', icon: <Home className="w-5 h-5" /> },
   { label: 'Services', href: '/services', icon: <Briefcase className="w-5 h-5" /> },
+  { label: 'Construction', href: '/construction', icon: <Briefcase className="w-5 h-5" /> },
   { label: 'Projects', href: '/projects', icon: <Building className="w-5 h-5" /> },
   { label: 'Contact', href: '/contact', icon: <Phone className="w-5 h-5" /> },
 ];
@@ -29,20 +29,19 @@ export default function FloatingNavigation() {
   // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 72); // Adjusted for top bar height
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
   return (
-    <header role="banner" className="fixed top-0 left-0 right-0 z-50 w-full">
+    <header 
+      role="banner" 
+      className="fixed left-0 right-0 z-40 transition-all duration-300"
+      style={{ top: '72px' }} // Adjusted for top bar height
+    >
       {/* Desktop Navigation */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
@@ -62,7 +61,7 @@ export default function FloatingNavigation() {
               className="flex-shrink-0 relative group"
               aria-label="Home"
             >
-              <div className="relative w-40 h-10">
+              <div className="relative w-48 h-14">
                 <Image
                   src="/images/logo-banner.png"
                   alt="Goldmine Communications and Construction"
