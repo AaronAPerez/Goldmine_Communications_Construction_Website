@@ -63,7 +63,7 @@ export default function AnimatedServicesGrid({ services }: AnimatedServicesGridP
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Our Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Comprehensive solutions for communications and construction needs
           </p>
         </motion.div>

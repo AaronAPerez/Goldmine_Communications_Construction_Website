@@ -27,29 +27,29 @@ const Footer = () => {
               Excellence in communications and construction services since 2022
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-400 hover:text-gold-400 transition-colors"
                 aria-label="Follow us on Facebook"
               >
                 <Facebook size={20} />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-400 hover:text-gold-400 transition-colors"
                 aria-label="Follow us on Twitter"
               >
                 <Twitter size={20} />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-400 hover:text-gold-400 transition-colors"
                 aria-label="Follow us on LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-400 hover:text-gold-400 transition-colors"
                 aria-label="Follow us on Instagram"
               >
@@ -64,7 +64,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {['About', 'Services', 'Projects', 'Careers', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link 
+                  <Link
                     href={`/${item.toLowerCase()}`}
                     className="text-gray-300 hover:text-gold-400 transition-colors"
                   >
@@ -87,7 +87,7 @@ const Footer = () => {
                 'Maintenance',
               ].map((service) => (
                 <li key={service}>
-                  <Link 
+                  <Link
                     href="/services"
                     className="text-gray-300 hover:text-gold-400 transition-colors"
                   >
@@ -105,27 +105,27 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="text-gold-400 mr-2 flex-shrink-0 mt-1" size={20} />
                 <span className="text-gray-300">
-                  123 Business Avenue,<br />
-                  City, State 12345
+                  946 Lincoln Avenue,<br />
+                  San Jose, California 95125
                 </span>
               </li>
               <li>
-                <a 
-                  href="tel:+1234567890" 
+                <a
+                  href="tel:+tel:+925-305-5980"
                   className="flex items-center text-gray-300 hover:text-gold-400 transition-colors"
                 >
                   <Phone className="text-gold-400 mr-2" size={20} />
-                  (123) 456-7890
+                  (925) 305-5980
                 </a>
               </li>
               <li>
-                <a 
-                  href="mailto:info@goldminecomm.net" 
+                <a
+                  href="mailto:info@goldminecomm.net"
                   className="flex items-center text-gray-300 hover:text-gold-400 transition-colors"
                 >
                   <Mail className="text-gold-400 mr-2" size={20} />
                   info@goldminecomm.net
-                  </a>
+                </a>
               </li>
             </ul>
           </div>
@@ -140,13 +140,13 @@ const Footer = () => {
               © {currentYear} Goldmine Communications and Construction. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link 
+              <Link
                 href="/privacy-policy"
                 className="text-gray-400 hover:text-gold-400 text-sm transition-colors"
               >
                 Privacy Policy
               </Link>
-              <Link 
+              <Link
                 href="/terms"
                 className="text-gray-400 hover:text-gold-400 text-sm transition-colors"
               >

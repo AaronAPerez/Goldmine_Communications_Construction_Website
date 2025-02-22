@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         {/* Fixed Background Gradient */}
-        <div className="fixed inset-0 bg-gradient-to-br from-primary-900 to-primary-800 -z-10" />
+        {/* <div className="fixed inset-0 bg-gradient-to-br from-primary-900 to-primary-800 -z-10" /> */}
         
         {/* Navigation */}
         <FloatingNavigation />

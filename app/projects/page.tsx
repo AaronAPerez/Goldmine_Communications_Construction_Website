@@ -99,7 +99,7 @@ export default function CommunicationsPage() {
   ];
 
   return (
-    <main className="pt-20">
+    <main className="py-20 bg-gray-900" aria-labelledby="projects-heading">
       {/* Hero Section */}
       <section className="relative h-[60vh] overflow-hidden">
         <Image

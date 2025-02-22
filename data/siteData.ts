@@ -119,7 +119,7 @@ export const testimonials: Testimonial[] = [
     role: 'Chief Technology Officer',
     company: 'TechCorp Industries',
     content: 'The team at Goldmine delivered exceptional results. Their expertise in both communications and construction made them the perfect partner for our complex infrastructure project.',
-    image: '/testimonials/john-smith.jpg'
+    image: '/images/testimonials/john-smith.jpg'
   },
   {
     id: '1',

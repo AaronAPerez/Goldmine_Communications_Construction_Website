@@ -54,11 +54,11 @@ const contactInfo = [
 
 export default function ContactSection() {
   return (
-    <section className="py-16 lg:py-24 bg-gray-50">
+    <section className="py-20 bg-gray-900" aria-labelledby="contacts-heading">
 
       {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[200%] h-full">
+      {/* <div className="absolute inset-0"> */}
+        {/* <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[200%] h-full"> */}
           <div 
             className="w-full h-full rotate-12 opacity-20"
             style={{
@@ -73,8 +73,8 @@ export default function ContactSection() {
               `
             }}
           />
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -85,10 +85,10 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 lg:mb-16"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-50 mb-4">
             Get In Touch
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Have a project in mind? We&apos;d love to hear from you. Send us a message
             and we&apos;ll respond as soon as possible.
           </p>
@@ -103,7 +103,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-1"
           >
-            <div className="bg-white rounded-2xl shadow-lg p-6 lg:p-8">
+            <div className="bg-gray-50 rounded-2xl shadow-lg p-6 lg:p-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">
                 Contact Information
               </h2>
