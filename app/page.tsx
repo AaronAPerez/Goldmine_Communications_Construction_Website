@@ -40,8 +40,8 @@ const ProjectShowcase = dynamic(
 //   { loading: () => <LoadingSection title="Testimonials" /> }
 // );
 
-const ContactSection = dynamic(
-  () => import('@/components/Contact/ContactSection'),
+const ContactForm = dynamic(
+  () => import('@/components/Contact/ContactForm'),
   { loading: () => <LoadingSection title="Contact Us" /> }
 );
 
@@ -68,7 +68,7 @@ export default function HomePage() {
 
       {/* Contact Section */}
       <Suspense fallback={<LoadingSection title="Contact Us" />}>
-        <ContactSection />
+        <ContactForm />
       </Suspense>
     </>
   );

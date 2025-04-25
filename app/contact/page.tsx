@@ -1,10 +1,10 @@
-import ContactSection from '@/components/Contact/ContactSection'
+import ContactForm from '@/components/Contact/ContactForm'
 import React from 'react'
 
 const page = () => {
   return (
     <>
-     <ContactSection />
+     <ContactForm />
     </>
     
   )

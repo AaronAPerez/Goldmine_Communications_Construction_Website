@@ -8,6 +8,8 @@ interface ContactFormData {
   phone?: string;
   service?: string;
   message: string;
+  to: string;
+  subject: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -33,17 +35,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Configure nodemailer transporter
-    // For production, you'll want to use an actual SMTP provider
     const transporter = nodemailer.createTransport({
-      // For development/testing, use a service like Mailtrap or Ethereal
-      // host: process.env.EMAIL_SERVER || 'smtp.mailtrap.io',
-      // port: parseInt(process.env.EMAIL_PORT || '2525'),
-      // auth: {
-      //   user: process.env.EMAIL_USER,
-      //   pass: process.env.EMAIL_PASSWORD,
-      // },
-      // For production with a real service like Gmail:
-      service: 'gmail',
+      host: process.env.EMAIL_SERVER,
+      port: Number(process.env.EMAIL_PORT) || 587,
+      secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
@@ -52,11 +47,13 @@ export async function POST(request: NextRequest) {
 
     // Set up email content
     const mailOptions = {
-      from: `"Website Contact Form" <${process.env.EMAIL_FROM || 'noreply@goldminecomm.net'}>`,
-      to: process.env.EMAIL_TO || 'info@goldminecomm.net',
-      replyTo: data.email,
-      subject: `New Contact Form Submission - ${data.service || 'General Inquiry'}`,
+      from: `"Goldmine Communications Website" <${process.env.EMAIL_FROM || 'noreply@goldminecomm.net'}>`,
+      to: data.to || 'info@goldminecomm.net', // This will be forwarded by GoDaddy
+      replyTo: data.email, // So you can reply directly to the sender
+      subject: data.subject || 'New Website Contact Form Submission',
       text: `
+        New Contact Form Submission
+        
         Name: ${data.name}
         Email: ${data.email}
         Phone: ${data.phone || 'Not provided'}
@@ -66,7 +63,7 @@ export async function POST(request: NextRequest) {
         ${data.message}
       `,
       html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px;">
           <h2 style="color: #D4AF37; border-bottom: 1px solid #eee; padding-bottom: 10px;">New Website Contact Form Submission</h2>
           
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
