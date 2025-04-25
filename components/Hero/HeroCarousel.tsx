@@ -115,7 +115,7 @@ const HeroCarousel = () => {
                     <Image
                       src={product.imageUrl}
                       alt={product.title}
-                      width={80}
+                   
                       fill
                       className="object-cover transition-transform duration-300 hover:scale-105"
                     />

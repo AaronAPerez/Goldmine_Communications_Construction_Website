@@ -3,9 +3,10 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
-import ServicesShowcase from '@/components/Services/ServicesShowcase';
 import TestimonialsSection from '@/components/Testimonials/TestimonialsSection';
 import HeroWithLogo from '@/components/Hero/HeroWithLogo';
+import ServicesSection from '@/components/Services/ServicesSection';
+
 
 // Loading placeholder component
 function LoadingSection({ title }: { title: string }) {
@@ -48,11 +49,11 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <HeroWithLogo />
+ <HeroWithLogo/>
 
       {/* Services Section */}
       <Suspense fallback={<LoadingSection title="Our Services" />}>
-        <ServicesShowcase />
+        <ServicesSection />
       </Suspense>
 
       {/* Project Showcase */}

@@ -40,7 +40,7 @@ const HeroShowcase = () => {
             src={src}
             alt="Construction site showcase"
             width={'100'}
-            fill
+            height={'100'}
             className="object-cover"
             priority={index === 0}
           />

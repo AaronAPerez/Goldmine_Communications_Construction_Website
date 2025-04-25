@@ -1,10 +1,8 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Network, Building2, Shield, Wrench } from 'lucide-react';
 
 interface HeroImage {
     src: string;
@@ -26,28 +24,6 @@ const heroImages: HeroImage[] = [
     }
 ];
 
-const features = [
-    {
-        icon: <Building2 className="w-8 h-8" />,
-        title: 'Construction',
-        description: 'Professional construction services'
-    },
-    {
-        icon: <Network className="w-8 h-8" />,
-        title: 'Communications',
-        description: 'Advanced infrastructure solutions'
-    },
-    {
-        icon: <Shield className="w-8 h-8" />,
-        title: 'Security',
-        description: 'Comprehensive security systems'
-    },
-    {
-        icon: <Wrench className="w-8 h-8" />,
-        title: 'Maintenance',
-        description: '24/7 support and maintenance'
-    }
-];
 
 export default function HeroWithLogo() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -70,10 +46,7 @@ export default function HeroWithLogo() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className={`
-            absolute inset-0 transition-opacity duration-1000
-            ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}
-          `}
+                            className="absolute inset-0 transition-opacity duration-1000"
                         >
                             <Image
                                 src={image.src}
@@ -83,7 +56,7 @@ export default function HeroWithLogo() {
                                 priority={index === 0}
                                 sizes="100vw"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
                         </motion.div>
                     )
                 ))}
@@ -98,24 +71,26 @@ export default function HeroWithLogo() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
+                            className="text-center lg:text-left"
                         >
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                            <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                                 Building Tomorrow&apos;s
-                                <span className="text-gold-400"> Infrastructure</span>
+                                <span className="text-gold-400 block sm:inline"> Infrastructure</span>
+                                <span className="text-gold-400"> Today.</span>
                             </h1>
-                            <p className="text-xl text-white/90 mb-8">
+                            <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
                                 Excellence in construction and communications infrastructure,
                                 delivering innovative solutions with unmatched expertise.
                             </p>
 
                             {/* CTA Buttons */}
-                            <div className="flex flex-wrap gap-4 mb-12">
+                            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8 sm:mb-12">
                                 <motion.a
                                     href="/contact"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-8 py-3 bg-gold-400 text-white rounded-lg font-medium 
-                           hover:bg-gold-500 transition-colors"
+                                    className="px-6 sm:px-8 py-3 bg-gold-400 text-white rounded-lg font-medium 
+                                   hover:bg-gold-500 transition-colors"
                                 >
                                     Get Started
                                 </motion.a>
@@ -123,8 +98,8 @@ export default function HeroWithLogo() {
                                     href="/services"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-8 py-3 border-2 border-white text-white rounded-lg 
-                           font-medium hover:bg-white/10 transition-colors"
+                                    className="px-6 sm:px-8 py-3 border-2 border-white text-white rounded-lg 
+                                   font-medium hover:bg-white/10 transition-colors"
                                 >
                                     Our Services
                                 </motion.a>
@@ -136,9 +111,9 @@ export default function HeroWithLogo() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.7, type: "spring", stiffness: 100 }}
-                            className="flex justify-center lg:justify-end"
+                            className="flex justify-center"
                         >
-                            <div className="relative w-72 h-72 md:w-96 md:h-96">
+                            <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
                                 <Image
                                     src="/images/logo-circular.png"
                                     alt="Goldmine Communications and Construction"
@@ -150,31 +125,6 @@ export default function HeroWithLogo() {
                             </div>
                         </motion.div>
                     </div>
-
-                    {/* Features Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={feature.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.8 + index * 0.1 }}
-                                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20"
-                            >
-                                <div className="flex items-center gap-4">
-                                    <div className="text-gold-400">{feature.icon}</div>
-                                    <div>
-                                        <h2 className="text-lg font-semibold text-white">
-                                            {feature.title}
-                                        </h2>
-                                        <p className="text-white/80 text-sm">
-                                            {feature.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
                 </div>
             </div>
 
@@ -185,11 +135,11 @@ export default function HeroWithLogo() {
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
                         className={`
-              w-2 h-2 rounded-full transition-all duration-300
-              ${currentImageIndex === index
+                          w-2 h-2 rounded-full transition-all duration-300
+                          ${currentImageIndex === index
                                 ? 'w-8 bg-gold-400'
                                 : 'bg-white/50 hover:bg-white/75'}
-            `}
+                        `}
                         aria-label={`Go to slide ${index + 1}`}
                         aria-current={currentImageIndex === index}
                     />
