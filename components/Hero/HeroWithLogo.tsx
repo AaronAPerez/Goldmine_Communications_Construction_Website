@@ -11,15 +11,15 @@ interface HeroImage {
 
 const heroImages: HeroImage[] = [
     {
-        src: '/images/communications.jpg',
+        src: '/images/WorkOregonPics/AvStations.jpg',
         alt: 'Communications infrastructure installation'
     },
     {
-        src: '/images/PouringConcrete.jpg',
+        src: '/images/WorkOregonPics/Image21.jpeg',
         alt: 'Construction site with concrete pouring'
     },
     {
-        src: '/images/WorkOregonPics/AvStation.jpg',
+        src: '/images/TractorConcrete.jpg',
         alt: 'Active construction project'
     }
 ];

@@ -46,7 +46,7 @@ export default function RootLayout({
         <FloatingNavigation /> 
 
         {/* Main Content - Added padding for fixed header */}
-        <main className="min-h-screen pt-16 sm:pt-30 md:pt-36 lg:py-16">
+        <main className="min-h-screen pt-16">
           {children}
           <Analytics />
         </main>
