@@ -29,12 +29,19 @@ interface HeroSlide {
 // Carousel slides with project showcase images
 const heroSlides: HeroSlide[] = [
   {
+    id: 'charging-stations',
+    image: '/images/WorkOregonPics/AvStations.jpeg',
+    title: 'EV Charging Solutions',
+    subtitle: 'Clean Energy Technology',
+    description: 'Future-ready electric vehicle charging infrastructure and IoT solutions.',
+    priority: true // First image loads with priority
+  },
+  {
     id: 'communications',
-    image: '/images/WorkOregonPics/image14.jpeg',
+    image: '/images/communications.jpg',
     title: 'Advanced Communications',
     subtitle: 'Network Infrastructure Solutions',
     description: 'Cutting-edge telecommunications and fiber optic systems for the connected world.',
-    priority: true // First image loads with priority
   },
   {
     id: 'construction',
@@ -43,20 +50,13 @@ const heroSlides: HeroSlide[] = [
     subtitle: 'Healthcare & Commercial Projects',
     description: 'Expert construction services with 15+ years of specialized healthcare experience.',
   },
-  {
-    id: 'av-systems',
-    image: '/images/WorkOregonPics/image15.jpeg',
-    title: 'Audio Visual Systems',
-    subtitle: 'Smart Building Integration',
-    description: 'Professional AV solutions for corporate boardrooms and mission-critical environments.',
-  },
-  {
-    id: 'charging-stations',
-    image: '/images/WorkOregonPics/image16.jpeg',
-    title: 'EV Charging Solutions',
-    subtitle: 'Clean Energy Technology',
-    description: 'Future-ready electric vehicle charging infrastructure and IoT solutions.',
-  }
+  // {
+  //   id: 'av-systems',
+  //   image: '/images/WorkOregonPics/image15.jpeg',
+  //   title: 'Audio Visual Systems',
+  //   subtitle: 'Smart Building Integration',
+  //   description: 'Professional AV solutions for corporate boardrooms and mission-critical environments.',
+  // },
 ];
 
 /**
@@ -308,7 +308,7 @@ const HeroCarousel = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.6 }}
-                  className="space-y-4"
+                  className="space-y-4 mb-8"
                 >
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gold-400 text-shadow">
                     {currentSlideData.title}
