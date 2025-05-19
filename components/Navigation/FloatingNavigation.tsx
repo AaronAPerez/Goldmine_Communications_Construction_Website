@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Phone, Briefcase, Building, Menu, X } from 'lucide-react';
+import { Home, Phone, Briefcase, Menu, X, NetworkIcon } from 'lucide-react';
 import Image from 'next/image';
 
 interface NavItem {
@@ -16,10 +16,12 @@ interface NavItem {
 // Navigation items array moved outside component to prevent re-creation
 const navItems: NavItem[] = [
   { label: 'Home', href: '/', icon: <Home className="w-5 h-5" /> },
-  { label: 'Services', href: '/services', icon: <Briefcase className="w-5 h-5" /> },
-  { label: 'Projects', href: '/projects', icon: <Building className="w-5 h-5" /> },
+  { label: 'Communications', href: '/communications', icon: <NetworkIcon className="w-5 h-5" /> },
+  { label: 'Construction', href: '/construction', icon: <Briefcase className="w-5 h-5" /> },
+  // { label: 'Projects', href: '/projects', icon: <Building className="w-5 h-5" /> },
   { label: 'Contact', href: '/contact', icon: <Phone className="w-5 h-5" /> },
 ];
+
 
 export default function FloatingNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,8 +90,8 @@ export default function FloatingNavigation() {
                         group flex items-center gap-2
                         text-shadow hover:text-shadow-lg
                         ${isActive 
-                          ? 'text-gold-400 font-semibold' 
-                          : 'text-white hover:text-gold-400'
+                          ? 'text-[#B3995D] font-semibold' 
+                          : 'text-white hover:text-[#B3995D]'
                         }
                       `}
                       aria-current={isActive ? 'page' : undefined}
@@ -130,7 +132,7 @@ export default function FloatingNavigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-white hover:text-gold-400 transition-colors"
+              className="p-2 rounded-lg text-white hover:text-[#B3995D] transition-colors"
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -158,8 +160,8 @@ export default function FloatingNavigation() {
                       flex items-center gap-3 px-4 py-3
                       transition-colors duration-200
                       ${pathname === item.href
-                        ? 'bg-gold-400/20 text-gold-400'
-                        : 'text-white hover:bg-white/10 hover:text-gold-400'
+                        ? 'bg-[#B3995D]/20 text-[#B3995D]'
+                        : 'text-white hover:bg-white/10 hover:text-[#B3995D]'
                       }
                     `}
                     aria-current={pathname === item.href ? 'page' : undefined}
@@ -264,8 +266,8 @@ export default function FloatingNavigation() {
 //                       group flex items-center gap-2
 //                       text-shadow hover:text-shadow-lg
 //                       ${isActive 
-//                         ? 'text-gold-400 font-semibold' 
-//                         : 'text-white hover:text-gold-400'
+//                         ? 'text-[#B3995D] font-semibold' 
+//                         : 'text-white hover:text-[#B3995D]'
 //                       }
 //                     `}
 //                     aria-current={isActive ? 'page' : undefined}
@@ -306,7 +308,7 @@ export default function FloatingNavigation() {
 //           {/* Mobile Menu Button */}
 //           <button
 //             onClick={() => setIsOpen(!isOpen)}
-//             className="p-2 rounded-lg text-white hover:text-gold-400 transition-colors"
+//             className="p-2 rounded-lg text-white hover:text-[#B3995D] transition-colors"
 //             aria-expanded={isOpen}
 //             aria-controls="mobile-menu"
 //             aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -334,8 +336,8 @@ export default function FloatingNavigation() {
 //                     flex items-center gap-3 px-4 py-3
 //                     transition-colors duration-200
 //                     ${pathname === item.href
-//                       ? 'bg-gold-400/20 text-gold-400'
-//                       : 'text-white hover:bg-white/10 hover:text-gold-400'
+//                       ? 'bg-[#B3995D]/20 text-[#B3995D]'
+//                       : 'text-white hover:bg-white/10 hover:text-[#B3995D]'
 //                     }
 //                   `}
 //                   aria-current={pathname === item.href ? 'page' : undefined}

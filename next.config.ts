@@ -1,9 +1,33 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ['goldminecomm.net', 'www.goldminecomm.net'],
+    // Disable optimization in development for faster builds
+    unoptimized: isDev,
+    formats: ['image/webp', 'image/avif'],
+    // Domains for external images (use remotePatterns for Next.js 13+)
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'goldminecomm.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.goldminecomm.net',
+      },
+    ],
+    // Device sizes for responsive images
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    // Image sizes for different breakpoints
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Minimize automatic static optimization impact
+    minimumCacheTTL: 31536000, // 1 year
+    // Enable SVG support
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   async headers() {
     return [
@@ -20,7 +44,36 @@ const nextConfig: NextConfig = {
           }
         ],
       },
-    ]
+      // Specific headers for images
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ],
+      },
+      // Headers for optimized images
+      {
+        source: '/_next/image',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ],
+      },
+    ];
+  },
+    devIndicators: false, // Disable development indicators
+    
+  // Enable React strict mode for development
+  // Valid experimental features for current Next.js versions
+  experimental: {
+    // Enable experimental features as needed
+    // turbo: {}, // Turbopack (experimental)
+    // serverComponentsExternalPackages: [], // For external packages
   },
 };
 

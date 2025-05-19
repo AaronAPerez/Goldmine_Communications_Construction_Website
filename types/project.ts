@@ -16,6 +16,18 @@ export interface Project {
   };
 }
 
+// Add to types file or component
+export interface NextImageProps {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  quality?: number; // 1-100
+  priority?: boolean;
+  placeholder?: 'blur' | 'empty';
+  // ... other props
+}
+
 // Mock data for projects
 export const projects: Project[] = [
   {

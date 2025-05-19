@@ -216,30 +216,6 @@ export default function ServicesSection() {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <div className="bg-white p-8 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Need a Custom Solution?
-            </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Our team of experts can design and implement tailored solutions to meet your specific requirements.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center bg-gold-400 text-white px-6 py-3 rounded-lg 
-                      font-medium hover:bg-gold-500 transition-colors shadow-lg hover:shadow-xl"
-            >
-              Contact Us Today
-            </Link>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

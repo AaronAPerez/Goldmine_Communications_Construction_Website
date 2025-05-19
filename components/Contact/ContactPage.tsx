@@ -1,0 +1,494 @@
+'use client';
+
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock, 
+  Globe,
+  Shield,
+  Award,
+  Zap
+} from 'lucide-react';
+import ContactForm from '@/components/Contact/ContactForm';
+import OptimizedImage from '@/components/common/OptimizedImage';
+
+/**
+ * Contact Page Component
+ * 
+ * Comprehensive contact page that integrates seamlessly with existing design:
+ * - Enhanced accessibility features
+ * - Professional presentation matching site style
+ * - Interactive elements and animations
+ * - SEO optimized
+ */
+
+// Contact information data
+const contactMethods = [
+  {
+    id: 'address',
+    icon: <MapPin className="w-6 h-6" />,
+    title: 'Office Location',
+    primary: '946 Lincoln Avenue',
+    secondary: 'San Jose, California 95125',
+    description: 'Main Office & Headquarters',
+    action: {
+      label: 'Get Directions',
+      href: 'https://maps.google.com/?q=946+Lincoln+Avenue,+San+Jose,+CA+95125',
+      external: true
+    }
+  },
+  {
+    id: 'phone',
+    icon: <Phone className="w-6 h-6" />,
+    title: 'Phone Numbers',
+    primary: '(925) 305-5980',
+    secondary: '(510) 695-3177',
+    description: 'Main Line & Support',
+    action: {
+      label: 'Call Now',
+      href: 'tel:+19253055980',
+      external: false
+    }
+  },
+  {
+    id: 'email',
+    icon: <Mail className="w-6 h-6" />,
+    title: 'Email Address',
+    primary: 'info@goldminecomm.net',
+    secondary: 'Fast Response Guaranteed',
+    description: 'General Inquiries & Support',
+    action: {
+      label: 'Send Email',
+      href: 'mailto:info@goldminecomm.net',
+      external: false
+    }
+  },
+  {
+    id: 'service-area',
+    icon: <Globe className="w-6 h-6" />,
+    title: 'Service Areas',
+    primary: 'San Francisco Bay Area',
+    secondary: 'Sacramento & Central Valley',
+    description: 'Northern California Coverage',
+    action: {
+      label: 'Coverage Map',
+      href: '/service-areas',
+      external: false
+    }
+  }
+];
+
+// Business hours data
+const businessHours = [
+  { day: 'Monday - Friday', hours: '9:00 AM - 6:00 PM' },
+  { day: 'Saturday', hours: '10:00 AM - 2:00 PM' },
+  { day: 'Sunday', hours: 'Closed' },
+  { day: 'Emergency Services', hours: '24/7 Available' }
+];
+
+// Key features/differentiators
+const keyFeatures = [
+  {
+    icon: <Shield className="w-8 h-8" />,
+    title: 'Licensed & Insured',
+    description: 'Lic# 1099543 | Fully Bonded',
+    color: 'text-blue-500'
+  },
+  {
+    icon: <Award className="w-8 h-8" />,
+    title: '15+ Years Experience',
+    description: 'Healthcare & Communications Specialist',
+    color: 'text-green-500'
+  },
+  {
+    icon: <Zap className="w-8 h-8" />,
+    title: 'We Beat Estimates',
+    description: 'Competitive Pricing Guarantee',
+    color: 'text-gold-500'
+  }
+];
+
+/**
+ * Contact Method Card Component
+ * Displays individual contact information in an interactive card format
+ */
+interface ContactCardProps {
+  method: typeof contactMethods[0];
+  index: number;
+}
+
+const ContactCard = ({ method, index }: ContactCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true });
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 
+                 hover:-translate-y-1 border border-gray-100 overflow-hidden group"
+    >
+      <div className="p-6">
+        {/* Card Header */}
+        <div className="flex items-center gap-4 mb-4">
+          <div className="p-3 bg-gold-50 rounded-lg text-gold-500 group-hover:bg-gold-500 
+                        group-hover:text-white transition-colors duration-300">
+            {method.icon}
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900">{method.title}</h3>
+            <p className="text-sm text-gray-500">{method.description}</p>
+          </div>
+        </div>
+
+        {/* Contact Details */}
+        <div className="space-y-2 mb-4">
+          <p className="text-gray-900 font-medium">{method.primary}</p>
+          <p className="text-gray-600 text-sm">{method.secondary}</p>
+        </div>
+
+        {/* Action Button */}
+        <motion.a
+          href={method.action.href}
+          target={method.action.external ? '_blank' : undefined}
+          rel={method.action.external ? 'noopener noreferrer' : undefined}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gold-500 
+                   text-gray-700 hover:text-white rounded-lg transition-colors duration-200 
+                   text-sm font-medium group-hover:bg-gold-500 group-hover:text-white"
+          aria-label={`${method.action.label} - ${method.title}`}
+        >
+          {method.action.label}
+        </motion.a>
+      </div>
+    </motion.div>
+  );
+};
+
+/**
+ * Business Hours Component
+ * Displays operating hours in a clean, accessible format
+ */
+const BusinessHours = () => {
+  const hoursRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(hoursRef, { once: true });
+
+  return (
+    <motion.div
+      ref={hoursRef}
+      initial={{ opacity: 0, x: -30 }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="bg-white rounded-xl shadow-lg p-6 border border-gray-100"
+    >
+      <div className="flex items-center gap-3 mb-6">
+        <Clock className="w-6 h-6 text-gold-500" />
+        <h3 className="text-xl font-semibold text-gray-900">Business Hours</h3>
+      </div>
+      
+      <div className="space-y-3">
+        {businessHours.map((schedule, index) => (
+          <motion.div
+            key={schedule.day}
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ delay: 0.3 + (index * 0.1) }}
+            className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
+          >
+            <span className="text-gray-700 font-medium">{schedule.day}</span>
+            <span className={`text-sm font-semibold ${
+              schedule.day === 'Emergency Services' 
+                ? 'text-red-600' 
+                : schedule.hours === 'Closed' 
+                  ? 'text-gray-400' 
+                  : 'text-gray-900'
+            }`}>
+              {schedule.hours}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+      
+      <div className="mt-6 p-4 bg-gold-50 rounded-lg">
+        <p className="text-sm text-gold-700">
+          <strong>Emergency Services:</strong> Available 24/7 for urgent infrastructure needs.
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+/**
+ * Key Features Section
+ * Highlights business differentiators and credentials
+ */
+const KeyFeatures = () => {
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(featuresRef, { once: true });
+
+  return (
+    <motion.div
+      ref={featuresRef}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-8 shadow-lg border border-gray-100"
+    >
+      <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
+        Why Choose Goldmine Communications?
+      </h3>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {keyFeatures.map((feature, index) => (
+          <motion.div
+            key={feature.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 0.5 + (index * 0.1) }}
+            className="text-center group cursor-default"
+          >
+            <div className={`inline-flex p-4 rounded-full bg-gray-100 group-hover:bg-gold-50 
+                          transition-colors duration-300 mb-4 ${feature.color}`}>
+              {feature.icon}
+            </div>
+            <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
+            <p className="text-gray-600 text-sm">{feature.description}</p>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+/**
+ * Main Contact Page Component
+ */
+const ContactPage = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isHeroInView = useInView(heroRef, { once: true });
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Skip to content link for accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
+                   bg-gold-400 text-white px-4 py-2 rounded-lg z-50"
+      >
+        Skip to main content
+      </a>
+
+      {/* Hero Section */}
+      <section 
+        ref={heroRef}
+        className="relative py-24 bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden"
+        aria-labelledby="contact-hero-heading"
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-white"
+          >
+            <h1 
+              id="contact-hero-heading"
+              className="text-4xl md:text-6xl font-bold mb-6"
+            >
+              Get In
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
+                {' '}Touch
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+              Ready to start your next project? Let&apos;s discuss how we can bring your 
+              vision to life with expert communications and construction services.
+            </p>
+            
+            {/* Hero CTA buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <motion.a
+                href="tel:+19253055980"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-8 py-3 bg-gold-400 hover:bg-gold-500 
+                         text-white font-medium rounded-lg transition-colors shadow-lg"
+                aria-label="Call us at (925) 305-5980"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call (925) 305-5980
+              </motion.a>
+              <motion.a
+                href="#contact-form"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-8 py-3 border-2 border-white
+                         text-white hover:bg-white hover:text-gray-900 font-medium 
+                         rounded-lg transition-colors"
+              >
+                Send Message
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <main id="main-content" className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Contact Methods Grid */}
+          <section 
+            className="mb-24"
+            aria-labelledby="contact-methods-heading"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 
+                id="contact-methods-heading"
+                className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              >
+                Multiple Ways to Reach Us
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Choose the most convenient way to get in touch. We&apos;re here to help 
+                with all your communications and construction needs.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {contactMethods.map((method, index) => (
+                <ContactCard
+                  key={method.id}
+                  method={method}
+                  index={index}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            {/* Contact Form Section */}
+            <section 
+              className="lg:col-span-2"
+              aria-labelledby="contact-form-heading"
+            >
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 
+                  id="contact-form-heading"
+                  className="text-2xl font-bold text-gray-900 mb-6"
+                >
+                  Send Us a Message
+                </h2>
+                <ContactForm />
+              </motion.div>
+            </section>
+
+            {/* Sidebar Content */}
+            <aside className="lg:col-span-1 space-y-8">
+              
+              {/* Business Hours */}
+              <BusinessHours />
+
+              {/* Company Logo */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100"
+              >
+                <div className="relative w-32 h-32 mx-auto mb-4">
+                  <OptimizedImage
+                    src="/images/logo-circular.png"
+                    alt="Goldmine Communications and Construction Logo"
+                    fill
+                    className="object-contain"
+                    sizes="128px"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Goldmine Communications & Construction
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Excellence in communications and construction services throughout 
+                  Northern California.
+                </p>
+              </motion.div>
+
+            </aside>
+          </div>
+
+          {/* Key Features Section */}
+          <section className="mt-24">
+            <KeyFeatures />
+          </section>
+
+          {/* Final CTA Section */}
+          <section className="mt-24 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-gold-400 to-gold-600 rounded-2xl p-12 text-white"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Start Your Next Project?
+              </h2>
+              <p className="text-xl text-gold-100 max-w-2xl mx-auto mb-8">
+                Get a free consultation and discover how we can help bring your 
+                communications and construction vision to life.
+              </p>
+              <motion.a
+                href="tel:+19253055980"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-8 py-3 bg-white text-gold-600 
+                         hover:bg-gray-50 font-medium rounded-lg transition-colors shadow-lg"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call Now for Free Consultation
+              </motion.a>
+            </motion.div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default ContactPage;
