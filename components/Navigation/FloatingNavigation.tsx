@@ -46,7 +46,7 @@ export default function FloatingNavigation() {
   return (
     <header role="banner" className="fixed left-0 right-0 z-40 w-full flex flex-col">
       {/* Position the navigation directly below the top bar */}
-      <div className="mt-8 sm:mt-14">
+      <div className="mt-8">
         {/* Desktop Navigation */}
         <motion.nav
           initial={{ opacity: 0, y: -20 }}

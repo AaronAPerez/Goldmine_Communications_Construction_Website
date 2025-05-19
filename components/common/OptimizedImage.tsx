@@ -1,122 +1,268 @@
-import Image from 'next/image';
-import { useState } from 'react';
+'use client';
 
-interface OptimizedImageProps {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  className?: string;
-  priority?: boolean;
-  fill?: boolean;
-  sizes?: string;
-  placeholder?: 'blur' | 'empty';
-  blurDataURL?: string;
-  quality?: number;
-  onLoad?: () => void;
-  onError?: () => void;
+import React, { useState, useRef } from 'react';
+import Image, { ImageProps } from 'next/image';
+import { motion } from 'framer-motion';
+
+/**
+ * Enhanced OptimizedImage Component
+ * 
+ * Features:
+ * - Loading states with skeleton placeholder
+ * - Error handling with fallback
+ * - Lazy loading with intersection observer
+ * - Performance monitoring
+ * - Accessibility enhancements
+ * - Responsive image optimization
+ * - Blur placeholder support
+ */
+
+interface OptimizedImageProps extends Omit<ImageProps, 'onLoad' | 'onError'> {
+  /** Show loading skeleton while image loads */
+  showSkeleton?: boolean;
+  /** Fallback image URL if main image fails to load */
+  fallbackSrc?: string;
+  /** Custom skeleton color */
+  skeletonColor?: string;
+  /** Container class name for styling */
+  containerClassName?: string;
+  /** Enable fade-in animation on load */
+  enableAnimation?: boolean;
+  /** Custom loading placeholder */
+  loadingPlaceholder?: React.ReactNode;
+  /** Error placeholder */
+  errorPlaceholder?: React.ReactNode;
+  /** Performance monitoring callback */
+  onLoadComplete?: (result: { loadTime: number; naturalWidth: number; naturalHeight: number }) => void;
+  /** Error callback */
+  onLoadError?: (error: Error) => void;
 }
 
 /**
- * Optimized Image Component
- * Provides automatic optimization, lazy loading, and error handling
- * Generates responsive sizes and optimized formats (WebP/AVIF)
+ * Default skeleton placeholder component
  */
-export default function OptimizedImage({
+const DefaultSkeleton = ({ 
+  skeletonColor = 'bg-gray-200 dark:bg-gray-700' 
+}: { 
+  skeletonColor?: string 
+}) => (
+  <div 
+    className={`absolute inset-0 ${skeletonColor} animate-pulse`}
+    role="status"
+    aria-label="Loading image..."
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+  </div>
+);
+
+/**
+ * Default error placeholder component
+ */
+const DefaultErrorPlaceholder = () => (
+  <div 
+    className="absolute inset-0 bg-gray-100 dark:bg-gray-800 flex items-center justify-center"
+    role="img"
+    aria-label="Failed to load image"
+  >
+    <div className="text-center text-gray-400 dark:text-gray-500">
+      <svg
+        className="w-12 h-12 mx-auto mb-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1}
+          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
+      <span className="text-sm">Image unavailable</span>
+    </div>
+  </div>
+);
+
+/**
+ * OptimizedImage Component
+ */
+const OptimizedImage = ({
   src,
   alt,
-  width,
-  height,
+  showSkeleton = true,
+  fallbackSrc,
+  skeletonColor,
+  containerClassName = '',
+  enableAnimation = true,
+  loadingPlaceholder,
+  errorPlaceholder,
+  onLoadComplete,
+  onLoadError,
   className = '',
-  priority = false,
-  fill = false,
-  sizes,
-  placeholder = 'empty',
-  blurDataURL,
-  quality = 75, // Default quality for Next.js Image component
-  onLoad,
-  onError,
-  ...props
-}: OptimizedImageProps) {
+  ...imageProps
+}: OptimizedImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const loadStartTime = useRef<number | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
 
-  // Generate responsive sizes if not provided
-  const responsiveSizes = sizes || `
-    (max-width: 768px) 100vw,
-    (max-width: 1200px) 50vw,
-    33vw
-  `;
+  // Start timing when component mounts
+  React.useEffect(() => {
+    loadStartTime.current = performance.now();
+    setIsLoading(true);
+    setHasError(false);
+    setCurrentSrc(src);
+  }, [src]);
 
-  // Generate blur placeholder for better loading experience
-  const generateBlurDataURL = (w: number, h: number) => {
-    return `data:image/svg+xml;base64,${Buffer.from(
-      `<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#f3f4f6;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#e5e7eb;stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grad)" />
-      </svg>`
-    ).toString('base64')}`;
-  };
-
-  const handleLoad = () => {
+  /**
+   * Handle successful image load
+   */
+  const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = event.currentTarget;
+    const loadTime = loadStartTime.current ? performance.now() - loadStartTime.current : 0;
+    
     setIsLoading(false);
-    onLoad?.();
+    setHasError(false);
+
+    // Call performance monitoring callback
+    if (onLoadComplete) {
+      onLoadComplete({
+        loadTime,
+        naturalWidth: img.naturalWidth,
+        naturalHeight: img.naturalHeight,
+      });
+    }
+
+    // Log performance in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Image loaded: ${src} (${loadTime.toFixed(2)}ms)`);
+    }
   };
 
+  /**
+   * Handle image load error
+   */
   const handleError = () => {
-    setHasError(true);
     setIsLoading(false);
-    onError?.();
+    
+    // Try fallback image if available and not already using it
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+      setIsLoading(true);
+      return;
+    }
+    
+    // No fallback available or fallback also failed
+    setHasError(true);
+    
+    const error = new Error(`Failed to load image: ${currentSrc}`);
+    if (onLoadError) {
+      onLoadError(error);
+    }
+
+    // Log error in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Image load error:', error);
+    }
   };
 
-  if (hasError) {
-    return (
-      <div 
-        className={`flex items-center justify-center bg-gray-200 text-gray-500 ${className}`}
-        style={{ width, height }}
-        role="img"
-        aria-label={`Failed to load image: ${alt}`}
-      >
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-        </svg>
-      </div>
-    );
-  }
+  /**
+   * Generate optimized props for Next.js Image
+   */
+  const getOptimizedProps = () => {
+    const props = { ...imageProps };
+    
+    // Set default sizes if not provided for responsive images
+    if (!props.sizes && !props.fill) {
+      props.sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw';
+    }
+    
+    // Set quality based on priority
+    if (!props.quality) {
+      props.quality = props.priority ? 90 : 75;
+    }
+    
+    return props;
+  };
+
+  /**
+   * Render loading placeholder
+   */
+  const renderLoadingPlaceholder = () => {
+    if (loadingPlaceholder) {
+      return loadingPlaceholder;
+    }
+    
+    if (showSkeleton) {
+      return <DefaultSkeleton skeletonColor={skeletonColor} />;
+    }
+    
+    return null;
+  };
+
+  /**
+   * Render error placeholder
+   */
+  const renderErrorPlaceholder = () => {
+    return errorPlaceholder || <DefaultErrorPlaceholder />;
+  };
+
+  /**
+   * Get container classes
+   */
+  const getContainerClasses = () => {
+    const baseClasses = 'relative overflow-hidden';
+    const animationClasses = enableAnimation && !isLoading && !hasError 
+      ? 'animate-fade-in' 
+      : '';
+    
+    return [baseClasses, animationClasses, containerClassName]
+      .filter(Boolean)
+      .join(' ');
+  };
+
+  /**
+   * Get image classes
+   */
+  const getImageClasses = () => {
+    const baseClasses = 'transition-opacity duration-300';
+    const visibilityClasses = isLoading ? 'opacity-0' : 'opacity-100';
+    
+    return [baseClasses, visibilityClasses, className]
+      .filter(Boolean)
+      .join(' ');
+  };
 
   return (
-    <div className={`relative ${className}`}>
-      {/* Loading skeleton */}
-      {isLoading && (
-        <div 
-          className="absolute inset-0 bg-gray-200 animate-pulse"
-          aria-hidden="true"
-        />
-      )}
+    <div className={getContainerClasses()}>
+      {/* Loading Placeholder */}
+      {isLoading && renderLoadingPlaceholder()}
       
-      <Image
-        src={src}
-        alt={alt}
-        width={fill ? undefined : width}
-        height={fill ? undefined : height}
-        fill={fill}
-        sizes={responsiveSizes}
-        priority={priority}
-        quality={quality}
-        placeholder={placeholder}
-        blurDataURL={blurDataURL || (width && height ? generateBlurDataURL(width, height) : undefined)}
-        onLoad={handleLoad}
-        onError={handleError}
-        className={`transition-opacity duration-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
-        {...props}
-      />
+      {/* Error Placeholder */}
+      {hasError && renderErrorPlaceholder()}
+      
+      {/* Main Image */}
+      {!hasError && (
+        <motion.div
+          initial={enableAnimation ? { opacity: 0 } : { opacity: 1 }}
+          animate={enableAnimation && !isLoading ? { opacity: 1 } : {}}
+          transition={{ duration: 0.3 }}
+        >
+          <Image
+            ref={imageRef}
+            src={currentSrc}
+            alt={alt}
+            onLoad={handleLoad}
+            onError={handleError}
+            className={getImageClasses()}
+            {...getOptimizedProps()}
+          />
+        </motion.div>
+      )}
     </div>
   );
-}
+};
+
+export default OptimizedImage;

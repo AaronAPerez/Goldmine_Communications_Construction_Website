@@ -71,10 +71,10 @@ export default function TopContactBar() {
       </div>
 
       {/* Black bar - Only visible on sm screens and up */}
-      <div className="fixed top-8 left-0 right-0 z-50 hidden sm:block bg-primary-900">
+      {/* <div className="fixed top-8 left-0 right-0 z-50 hidden sm:block bg-primary-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-6 text-xs text-white/80">
-            {/* License info only on sm+ screens */}
+            {/* License info only on sm+ screens 
             <div className="block">
               Lic# 1099543 | Bonded & Insured
             </div>
@@ -83,7 +83,7 @@ export default function TopContactBar() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
