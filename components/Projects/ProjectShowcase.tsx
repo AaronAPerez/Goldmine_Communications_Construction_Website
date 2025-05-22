@@ -41,7 +41,7 @@ const projects: Project[] = [
     category: 'Infrastructure',
     location: 'Chemult, Oregon',
     completionDate: '2024',
-    thumbnailUrl: '/images/WorkOregonPics/AvStaion.jpg',
+    thumbnailUrl: '/images/WorkOregonPics/AvStation.jpg',
     galleryImages: [
       '/images/WorkOregonPics/image16.jpeg',
       '/images/WorkOregonPics/image2.jpeg',

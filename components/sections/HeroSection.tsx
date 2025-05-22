@@ -440,7 +440,7 @@ const HeroSection = () => {
                   <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl 
                                 border-4 border-gold-400/60 bg-white/10 backdrop-blur-sm">
                     <Image
-                      src="/images/logo-circular.png"
+                      src="/images/logo-circular.jpg"
                       alt="Goldmine Communications and Construction"
                       fill
                       className="object-contain p-8"
