@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 
 // Contact form validation types
 type FormField = {
@@ -30,53 +30,53 @@ const serviceOptions = [
 ];
 
 // Contact info for display
-const contactInfo = [
-  {
-    icon: <MapPin className="text-gold-400" size={24} />,
-    title: 'Address',
-    content: (
-      <p>
-        946 Lincoln Avenue,<br />
-        San Jose, California 95125
-      </p>
-    ),
-  },
-  {
-    icon: <Phone className="text-gold-400" size={24} />,
-    title: 'Phone',
-    content: (
-      <a
-        href="tel:+19253055980"
-        className="hover:text-gold-400 transition-colors"
-      >
-        (925) 305-5980
-      </a>
-    ),
-  },
-  {
-    icon: <Mail className="text-gold-400" size={24} />,
-    title: 'Email',
-    content: (
-      <a
-        href="mailto:info@goldminecomm.net"
-        className="hover:text-gold-400 transition-colors"
-      >
-        info@goldminecomm.net
-      </a>
-    ),
-  },
-  {
-    icon: <Clock className="text-gold-400" size={24} />,
-    title: 'Business Hours',
-    content: (
-      <>
-        Monday - Friday: 9:00 AM - 6:00 PM<br />
-        Saturday: 10:00 AM - 2:00 PM<br />
-        Sunday: Closed
-      </>
-    ),
-  },
-];
+// const contactInfo = [
+//   {
+//     icon: <MapPin className="text-gold-400" size={24} />,
+//     title: 'Address',
+//     content: (
+//       <p>
+//         946 Lincoln Avenue,<br />
+//         San Jose, California 95125
+//       </p>
+//     ),
+//   },
+//   {
+//     icon: <Phone className="text-gold-400" size={24} />,
+//     title: 'Phone',
+//     content: (
+//       <a
+//         href="tel:+19253055980"
+//         className="hover:text-gold-400 transition-colors"
+//       >
+//         (925) 305-5980
+//       </a>
+//     ),
+//   },
+//   {
+//     icon: <Mail className="text-gold-400" size={24} />,
+//     title: 'Email',
+//     content: (
+//       <a
+//         href="mailto:info@goldminecomm.net"
+//         className="hover:text-gold-400 transition-colors"
+//       >
+//         info@goldminecomm.net
+//       </a>
+//     ),
+//   },
+//   {
+//     icon: <Clock className="text-gold-400" size={24} />,
+//     title: 'Business Hours',
+//     content: (
+//       <>
+//         Monday - Friday: 9:00 AM - 6:00 PM<br />
+//         Saturday: 10:00 AM - 2:00 PM<br />
+//         Sunday: Closed
+//       </>
+//     ),
+//   },
+// ];
 
 export default function ContactForm() {
   // Form state management
@@ -249,9 +249,9 @@ export default function ContactForm() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12" ref={formRef}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12" ref={formRef}>
           {/* Contact Information */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -282,7 +282,7 @@ export default function ContactForm() {
                 ))}
               </div>
 
-              {/* Business License Info */}
+              {/* Business License Info 
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <h4 className="font-medium text-gray-900 mb-2">
                   Business Information
@@ -292,13 +292,13 @@ export default function ContactForm() {
                 </p>
               </div>
 
-              {/* Social Media Links */}
+              {/* Social Media Links 
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <h4 className="font-medium text-gray-900 mb-4">
                   Follow Us
                 </h4>
                 <div className="flex space-x-4">
-                  {/* Add your social media links here */}
+                  {/* Add your social media links here
                   <a
                     href="#"
                     className="p-2 rounded-lg bg-gray-50 hover:bg-gold-50 transition-colors duration-300"
@@ -312,11 +312,11 @@ export default function ContactForm() {
                       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
                   </a>
-                  {/* Add more social media buttons*/}
+                  {/* Add more social media buttons
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </div> */}
+          {/* </motion.div> */}
 
           {/* Contact Form */}
           <motion.div
@@ -345,7 +345,7 @@ export default function ContactForm() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6">
                   {/* Name Field */}
                   <div>
                     <label 

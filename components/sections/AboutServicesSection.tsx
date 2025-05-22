@@ -12,10 +12,10 @@ import {
   ArrowRight, 
   CheckCircle,
   Star,
-  Clock,
-  Target,
   TrendingUp,
-  Phone
+  Phone,
+  NetworkIcon,
+  ConstructionIcon
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -106,7 +106,7 @@ const serviceCategories: ServiceCategory[] = [
     id: 'communications',
     title: 'Communications & Technology',
     description: 'Advanced telecommunications infrastructure and smart technology solutions for the connected world.',
-    icon: <Target className="w-8 h-8" />,
+    icon: <NetworkIcon className="w-8 h-8" />,
     services: [
       'Fiber Optic Installation & Splicing',
       '5G & RF Network Infrastructure',
@@ -115,14 +115,14 @@ const serviceCategories: ServiceCategory[] = [
       'Data Center Construction',
       'Wireless Communication Systems'
     ],
-    image: '/images/communications.jpg',
+    image: '/images/communications-tower.png',
     color: 'from-blue-500 to-blue-600'
   },
   {
     id: 'construction',
     title: 'Construction & Infrastructure',
     description: 'Professional construction services delivering durable infrastructure with uncompromising safety standards.',
-    icon: <Target className="w-8 h-8" />,
+    icon: <ConstructionIcon className="w-8 h-8" />,
     services: [
       'Site Development & Grading',
       'Structural & Site Concrete',
@@ -134,22 +134,22 @@ const serviceCategories: ServiceCategory[] = [
     image: '/images/concrete/grading.png',
     color: 'from-orange-500 to-orange-600'
   },
-  {
-    id: 'support',
-    title: 'Support & Maintenance',
-    description: 'Comprehensive support services ensuring optimal performance and reliability of all installations.',
-    icon: <Clock className="w-8 h-8" />,
-    services: [
-      '24/7 Emergency Response',
-      'Preventive Maintenance',
-      'System Testing & Certification',
-      'Performance Monitoring',
-      'Training & Consultation',
-      'Asset Management'
-    ],
-    image: '/images/concrete/site-concrete.png',
-    color: 'from-green-500 to-green-600'
-  }
+  // {
+  //   id: 'support',
+  //   title: 'Support & Maintenance',
+  //   description: 'Comprehensive support services ensuring optimal performance and reliability of all installations.',
+  //   icon: <Clock className="w-8 h-8" />,
+  //   services: [
+  //     '24/7 Emergency Response',
+  //     'Preventive Maintenance',
+  //     'System Testing & Certification',
+  //     'Performance Monitoring',
+  //     'Training & Consultation',
+  //     'Asset Management'
+  //   ],
+  //   image: '/images/concrete/site-concrete.png',
+  //   color: 'from-green-500 to-green-600'
+  // }
 ];
 
 /**
@@ -197,17 +197,25 @@ const ValueCard = ({ value, index, isInView }: ValueCardProps) => {
                      group-hover:opacity-5 transition-opacity duration-500`} />
       
       {/* Icon */}
-      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${value.color} 
+      <div className='flex justify-start items-center mb-4'>
+        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${value.color} 
+                     flex items-center justify-center
+                     group-hover:scale-110 transition-transform duration-300 mr-4`}>
+          {value.icon}
+        </div>
+        <h4 className="text-xl font-semibold text-gray-900">{value.title}</h4>
+      </div>
+      {/* <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${value.color} 
                      flex items-center justify-center mb-6
                      group-hover:scale-110 transition-transform duration-300`}>
         {value.icon}
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative">
-        <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800">
+        {/* <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800">
           {value.title}
-        </h4>
+        </h4> */}
         <p className="text-gray-600 mb-4 leading-relaxed">
           {value.description}
         </p>
@@ -351,7 +359,7 @@ export default function AboutServicesSection() {
           <span className="inline-flex items-center px-4 py-2 bg-gold-100 text-gold-800 
                          rounded-full text-sm font-semibold border border-gold-200">
             <Star className="w-4 h-4 mr-2" />
-            Excellence Since 2008
+            Excellence Since 2022
           </span>
         </motion.div>
 
@@ -452,7 +460,7 @@ export default function AboutServicesSection() {
           </motion.div>
         </motion.div>
 
-        {/* Improved Image Grid Layout */}
+        {/* Image Grid Layout */}
         <motion.div
           variants={fadeInUpVariants}
           initial="hidden"
@@ -511,7 +519,7 @@ export default function AboutServicesSection() {
             className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100"
           >
             <div className="text-center">
-              <div className="text-3xl font-bold text-gold-600 mb-1">500+</div>
+              <div className="text-3xl font-bold text-gold-600 mb-1">100+</div>
               <div className="text-sm text-gray-600">Projects Completed</div>
             </div>
           </motion.div>
@@ -540,7 +548,7 @@ export default function AboutServicesSection() {
       >
         <div className="text-center mb-16">
           <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-            Comprehensive Service
+            Our Services
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
               {' '}Portfolio
             </span>
@@ -551,7 +559,7 @@ export default function AboutServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {serviceCategories.map((category, index) => (
             <ServiceCategoryCard
               key={category.id}

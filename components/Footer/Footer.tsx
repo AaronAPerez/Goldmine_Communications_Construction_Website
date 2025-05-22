@@ -11,7 +11,6 @@ import {
   Twitter, 
   Linkedin, 
   Instagram,
-  ArrowUpRight,
   Clock,
   Shield,
   Award,
@@ -160,7 +159,7 @@ export default function Footer() {
               <div className="flex items-center space-x-4">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm border-2 border-gold-400/30">
                   <Image
-                    src="/images/logo-circular.png"
+                    src="/images/logo-circular.jpg"
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain p-1"
@@ -277,7 +276,7 @@ export default function Footer() {
             </div>
 
             {/* Emergency Contact */}
-            <div className="bg-gradient-to-r from-gold-400/10 to-gold-600/10 rounded-xl p-6 border border-gold-400/20">
+            {/* <div className="bg-gradient-to-r from-gold-400/10 to-gold-600/10 rounded-xl p-6 border border-gold-400/20">
               <h4 className="font-semibold text-gold-400 mb-2">24/7 Emergency Services</h4>
               <p className="text-gray-300 text-sm mb-3">
                 Available for urgent infrastructure needs and emergency repairs.
@@ -290,7 +289,7 @@ export default function Footer() {
                 <Phone className="w-4 h-4 mr-2" />
                 Emergency Hotline
               </a>
-            </div>
+            </div> */}
           </motion.div>
         </div>
 
@@ -328,7 +327,7 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Subscription */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -366,7 +365,7 @@ export default function Footer() {
               </form>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* Bottom Bar */}

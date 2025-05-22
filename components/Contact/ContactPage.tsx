@@ -86,7 +86,7 @@ const businessHours = [
   { day: 'Monday - Friday', hours: '9:00 AM - 6:00 PM' },
   { day: 'Saturday', hours: '10:00 AM - 2:00 PM' },
   { day: 'Sunday', hours: 'Closed' },
-  { day: 'Emergency Services', hours: '24/7 Available' }
+  // { day: 'Emergency Services', hours: '24/7 Available' }
 ];
 
 // Key features/differentiators
@@ -215,11 +215,11 @@ const BusinessHours = () => {
         ))}
       </div>
       
-      <div className="mt-6 p-4 bg-gold-50 rounded-lg">
+      {/* <div className="mt-6 p-4 bg-gold-50 rounded-lg">
         <p className="text-sm text-gold-700">
           <strong>Emergency Services:</strong> Available 24/7 for urgent infrastructure needs.
         </p>
-      </div>
+      </div> */}
     </motion.div>
   );
 };

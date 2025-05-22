@@ -16,6 +16,7 @@ import {
   Telescope,
   Wrench
 } from 'lucide-react';
+import Image from 'next/image';
 
 /**
  * Communications Page Component
@@ -279,7 +280,13 @@ const CommunicationsPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center text-white"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+             <Image
+                        src="/images/communications-tower2.png"
+                        alt="Construction Hero Image"
+                        fill
+                        className="absolute inset-0 object-cover opacity-30 z-0"
+                        />
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 z-30">
               Advanced
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
                 {' '}Communications

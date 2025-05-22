@@ -16,6 +16,7 @@ import {
   Target
 } from 'lucide-react';
 import { GiBulldozer } from "react-icons/gi";
+import Image from 'next/image';
 
 
 /**
@@ -311,6 +312,12 @@ const ConstructionPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center text-white"
           >
+            <Image
+            src="/images/concrete/site-concrete.png"
+            alt="Construction Hero Image"
+            fill
+            className="absolute inset-0 object-cover opacity-30"
+            />
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Professional
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">

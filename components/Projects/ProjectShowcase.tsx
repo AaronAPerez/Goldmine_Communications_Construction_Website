@@ -105,34 +105,34 @@ const projects: Project[] = [
       'Uptime Guarantee': '99.99%'
     }
   },
-  {
-    id: 'network-infrastructure',
-    title: 'Network Infrastructure Deployment',
-    description: 'Comprehensive network infrastructure installation featuring advanced telecommunications equipment and cutting-edge connectivity solutions.',
-    category: 'Communications',
-    location: 'Bay Area, CA',
-    completionDate: '2024',
-    thumbnailUrl: '/images/WorkOregonPics/image14.jpeg',
-    galleryImages: [
-      '/images/WorkOregonPics/image14.jpeg',
-      '/images/WorkOregonPics/image15.jpeg',
-      '/images/WorkOregonPics/image13.jpeg'
-    ],
-    features: [
-      'Fiber optic installation',
-      'Network equipment integration',
-      'Cable management systems',
-      'Testing and certification',
-      '5G infrastructure preparation',
-      'Redundant power systems'
-    ],
-    specifications: {
-      'Fiber Type': 'Single & Multi-mode',
-      'Data Rate': 'Up to 100Gbps',
-      'Installation Method': 'Underground & Aerial',
-      'Testing Standard': 'OTDR Certified'
-    }
-  }
+  // {
+  //   id: 'network-infrastructure',
+  //   title: 'Network Infrastructure Deployment',
+  //   description: 'Comprehensive network infrastructure installation featuring advanced telecommunications equipment and cutting-edge connectivity solutions.',
+  //   category: 'Communications',
+  //   location: 'Bay Area, CA',
+  //   completionDate: '2024',
+  //   thumbnailUrl: '/images/WorkOregonPics/image14.jpeg',
+  //   galleryImages: [
+  //     '/images/WorkOregonPics/image14.jpeg',
+  //     '/images/WorkOregonPics/image15.jpeg',
+  //     '/images/WorkOregonPics/image13.jpeg'
+  //   ],
+  //   features: [
+  //     'Fiber optic installation',
+  //     'Network equipment integration',
+  //     'Cable management systems',
+  //     'Testing and certification',
+  //     '5G infrastructure preparation',
+  //     'Redundant power systems'
+  //   ],
+  //   specifications: {
+  //     'Fiber Type': 'Single & Multi-mode',
+  //     'Data Rate': 'Up to 100Gbps',
+  //     'Installation Method': 'Underground & Aerial',
+  //     'Testing Standard': 'OTDR Certified'
+  //   }
+  // }
 ];
 
 /**
@@ -323,7 +323,7 @@ export default function ProjectShowcase() {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <AnimatePresence mode="wait">
               {filteredProjects.map((project, index) => (
                 <motion.div
