@@ -1,17 +1,22 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '../components/styles/globals.css';
-import TopContactBar from '@/components/Contact/TopContactBar';
-import FloatingNavigation from '@/components/Navigation/FloatingNavigation';
-import Footer from '@/components/Footer/Footer';
+import '../styles/globals.css';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import TopContactBar from '../components/Contact/TopContactBar';
+import FloatingNavigation from '../components/Navigation/FloatingNavigation';
+import Footer from '../components/Footer/Footer';
 import { Analytics } from "@vercel/analytics/react";
-import ScrollToTop from '@/components/Navigation/ScrollToTop';
+import { ScrollToTop } from '../components/Navigation/ScrollToTop';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+});
 
 export const metadata: Metadata = {
   title: 'Goldmine Communications & Construction',
-  description: 'Leading provider of communications and construction solutions',
+  description: 'Leading provider of communications and construction solutions in Northern California',
   keywords: 'communications, construction, fiber optics, network infrastructure, commercial construction',
   openGraph: {
     title: 'Goldmine Communications & Construction',
@@ -29,6 +34,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
 };
 
 export default function RootLayout({
@@ -37,26 +44,54 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth bg-gray-100">
+    <html lang="en" className="{inter.variable}, scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#D4AF37" />
+      </head>      
+        <link
+          rel="preload"
+          href="/images/optimized/webp/AvStation.webp"
+          as="image"
+          type="image/webp"
+        />
       <body className={inter.className}>
-        {/* Fixed Top Contact Bar */}
-        <TopContactBar />
-        
-        {/* Navigation */}
-        <FloatingNavigation /> 
+        {/* Skip link for accessibility */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 
+                     bg-gold-400 text-white px-4 py-2 rounded-lg z-[60]"
+        >
+          Skip to main content
+        </a>
 
-        {/* Main Content - Added padding for fixed header */}
-        <main className="min-h-screen">
-          {children}
+        {/* Layout structure */}
+        <div className="min-h-screen flex flex-col">
+          {/* Top contact bar - always at top */}
+          <TopContactBar />
+          
+          {/* Floating navigation - below contact bar */}
+          <FloatingNavigation />
+          
+          {/* Main content */}
+          <main id="main-content" className="flex-grow">
+            {children}
           <Analytics />
-        </main>
-              {/* Scroll To Top Button */}
-      <div className="fixed bottom-4 right-4 z-50">
-            <ScrollToTop />
-          </div>
-
-        {/* Footer */}
-        <Footer />
+          <SpeedInsights/>
+          </main>
+          
+          {/* Footer */}
+          <Footer />
+          
+          {/* Scroll to top button */}
+          <ScrollToTop />
+        </div>
       </body>
     </html>
   );

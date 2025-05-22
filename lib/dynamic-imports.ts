@@ -29,15 +29,6 @@ export const ErrorFallback = ({ }: { name: string }) => (`{
   </div>
 }`);
 
-// Dynamic component exports with optimized loading
-export const ProjectShowcase = dynamic(
-  () => import('@/components/Projects/ProjectShowcase'),
-  {
-    loading: () => {return `<ComponentLoader name="Project Showcase" />`},
-    ssr: false, // Disable SSR for this component to improve initial load
-  }
-);
-
 export const ContactForm = dynamic(
   () => import('@/components/Contact/ContactForm'),
   {
@@ -46,13 +37,6 @@ export const ContactForm = dynamic(
   }
 );
 
-export const HeroVideo = dynamic(
-  () => import('@/components/Hero/HeroVideo'),
-  {
-    loading: () => {return `<ComponentLoader name="Hero Video" />`},
-    ssr: false, // Video component doesn't need SSR
-  }
-);
 
 export const ServicesSection = dynamic(
   () => import('@/components/Services/ServicesSection'),

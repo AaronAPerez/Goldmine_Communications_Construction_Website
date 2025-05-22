@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import Image from 'next/image';
+import OptimizedImage from '@/components/common/OptimizedImage';
 
 interface Testimonial {
   id: number;
@@ -106,7 +106,7 @@ const TestimonialsCarousel = () => {
             <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 {testimonials[currentIndex].image ? (
-                  <Image
+                  <OptimizedImage
                     src={testimonials[currentIndex].image}
                     alt={testimonials[currentIndex].name}
                     className="w-16 h-16 rounded-full object-cover"

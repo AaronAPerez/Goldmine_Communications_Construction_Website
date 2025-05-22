@@ -3,7 +3,7 @@
 import React,{ useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import Image from 'next/image';
+import OptimizedImage from '@/components/common/OptimizedImage';
 
 interface Testimonial {
   id: string;
@@ -126,7 +126,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <Image
+                  <OptimizedImage
                     src={testimonials[currentIndex].image}
                     alt={testimonials[currentIndex].author}
                     fill

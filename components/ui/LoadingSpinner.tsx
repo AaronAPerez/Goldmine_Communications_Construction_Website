@@ -1,40 +1,51 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 interface LoadingSpinnerProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: number;
+  color?: string;
   className?: string;
 }
 
-/**
- * Loading Spinner Component
- * Provides consistent loading indicators across the application
- */
-export default function LoadingSpinner({ 
-  size = 'md', 
-  className = '' 
-}: LoadingSpinnerProps) {
-  const sizeClasses = {
-    sm: 'w-6 h-6',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12'
-  };
-
+const LoadingSpinner = ({
+  size = 24,
+  color = 'currentColor',
+  className = '',
+}: LoadingSpinnerProps) => {
   return (
-    <div className={`relative ${className}`}>
-      <div 
-        className={`
-          ${sizeClasses[size]}
-          border-4 border-gold-400/30 rounded-full
-          animate-spin
-        `}
+    <div className={`flex justify-center items-center ${className}`}>
+      <motion.svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 1,
+          repeat: Infinity,
+          ease: "linear",
+        }}
       >
-        <div 
-          className="
-            absolute top-0 left-0 right-0 bottom-0
-            border-4 border-gold-400 rounded-full
-            border-t-transparent
-          "
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+          stroke={color}
+          strokeWidth="4"
+          strokeLinecap="round"
+          opacity="0.25"
         />
-      </div>
-      <span className="sr-only">Loading...</span>
+        <motion.path
+          d="M12 2C6.47715 2 2 6.47715 2 12"
+          stroke={color}
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+      </motion.svg>
     </div>
   );
-}
+};
+
+export default LoadingSpinner;

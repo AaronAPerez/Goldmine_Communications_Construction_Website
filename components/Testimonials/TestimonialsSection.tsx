@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import OptimizedImage from '@/components/common/OptimizedImage';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 
@@ -153,7 +153,7 @@ export default function TestimonialsSection() {
                 {/* Author Info */}
                 <div className="flex items-center gap-4">
                   <div className="relative w-20 h-20 rounded-full overflow-hidden">
-                    <Image
+                    <OptimizedImage
                       src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].author}
                       fill

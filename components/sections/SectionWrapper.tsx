@@ -25,7 +25,7 @@ const SectionWrapper = ({ id, className = '', children }: SectionWrapperProps) =
     <motion.section
       ref={ref}
       id={id}
-      className={className}
+      className={`${className} transform-gpu`} // Added transform-gpu for performance
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ 
@@ -40,5 +40,6 @@ const SectionWrapper = ({ id, className = '', children }: SectionWrapperProps) =
     </motion.section>
   );
 };
+
 
 export default SectionWrapper;

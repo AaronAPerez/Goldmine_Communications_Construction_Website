@@ -6,8 +6,6 @@ import {
   Phone, 
   Mail, 
   ArrowRight, 
-  CheckCircle, 
-  Clock,
   Shield,
   Award
 } from 'lucide-react';
@@ -64,11 +62,11 @@ const trustIndicators = [
     text: '15+ Years Experience',
     detail: 'Proven Track Record'
   },
-  {
-    icon: <Clock className="w-5 h-5" />,
-    text: '24/7 Support',
-    detail: 'Always Available'
-  }
+  // {
+  //   icon: <Clock className="w-5 h-5" />,
+  //   text: '24/7 Support',
+  //   detail: 'Always Available'
+  // }
 ];
 
 /**
@@ -225,7 +223,7 @@ const CTASection = () => {
         </motion.div>
 
         {/* Urgency/Incentive Message */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -241,7 +239,7 @@ const CTASection = () => {
             started this quarter. Get your estimate today and see why we beat 
             competitor quotes by an average of 15%.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Contact Information */}
         <motion.div

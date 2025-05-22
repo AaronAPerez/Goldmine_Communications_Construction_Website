@@ -8,7 +8,6 @@ import {
   Shield,
   ArrowRight,
   CheckCircle,
-  AlertTriangle,
   Clock,
   TractorIcon
 } from 'lucide-react';
@@ -45,19 +44,19 @@ const constructionServices: ConstructionService[] = [
     ],
     color: 'from-blue-500 to-blue-600'
   },
-  {
-    id: 'emergency-services',
-    title: 'Emergency Services',
-    description: '24/7 rapid response and expert solutions for urgent infrastructure needs.',
-    icon: <AlertTriangle className="w-8 h-8" />,
-    features: [
-      'Rapid Response Team',
-      'Emergency Infrastructure Repair',
-      'Safety-Critical Solutions',
-      'Efficient Problem Resolution'
-    ],
-    color: 'from-red-500 to-red-600'
-  },
+  // {
+  //   id: 'emergency-services',
+  //   title: 'Emergency Services',
+  //   description: '24/7 rapid response and expert solutions for urgent infrastructure needs.',
+  //   icon: <AlertTriangle className="w-8 h-8" />,
+  //   features: [
+  //     'Rapid Response Team',
+  //     'Emergency Infrastructure Repair',
+  //     'Safety-Critical Solutions',
+  //     'Efficient Problem Resolution'
+  //   ],
+  //   color: 'from-red-500 to-red-600'
+  // },
   {
     id: 'specialized-services',
     title: 'Specialized Services',
@@ -152,7 +151,7 @@ const ConstructionSection = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="py-24 bg-gradient-to-b from-gray-50 to-white"
+      className="bg-gradient-to-b from-gray-50 to-white"
       aria-labelledby="construction-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -180,7 +179,7 @@ const ConstructionSection = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {constructionServices.map((service, index) => (
             <ServiceCard
               key={service.id}

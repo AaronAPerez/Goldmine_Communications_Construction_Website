@@ -1,0 +1,643 @@
+'use client';
+
+import React, { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { 
+  CheckCircle2, 
+  Award, 
+  Heart,
+  Shield,
+  Lightbulb,
+  Users,
+  ArrowRight, 
+  CheckCircle,
+  Star,
+  Clock,
+  Target,
+  TrendingUp,
+  Phone
+} from 'lucide-react';
+import Image from 'next/image';
+
+/**
+ * Core Values interface with improved structure
+ */
+interface CoreValue {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+  highlights: string[];
+}
+
+/**
+ * Service Category interface for better organization
+ */
+interface ServiceCategory {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  services: string[];
+  image: string;
+  color: string;
+}
+
+/**
+ * Enhanced core values with more detail
+ */
+const coreValues: CoreValue[] = [
+  {
+    id: 'excellence',
+    title: 'Excellence',
+    description: 'Uncompromising quality standards in every project we undertake.',
+    icon: <Award className="w-6 h-6" />,
+    color: 'from-gold-400 to-gold-600',
+    highlights: ['Industry-leading standards', 'Quality assurance protocols', 'Continuous improvement']
+  },
+  {
+    id: 'innovation',
+    title: 'Innovation',
+    description: 'Pioneering solutions that set the pace for the industry.',
+    icon: <Lightbulb className="w-6 h-6" />,
+    color: 'from-blue-500 to-blue-600',
+    highlights: ['Cutting-edge technology', 'Forward-thinking approach', 'R&D investment']
+  },
+  {
+    id: 'integrity',
+    title: 'Integrity',
+    description: 'Honest, transparent practices that build lasting trust.',
+    icon: <Shield className="w-6 h-6" />,
+    color: 'from-green-500 to-green-600',
+    highlights: ['Ethical business practices', 'Transparent communication', 'Reliable partnerships']
+  },
+  {
+    id: 'teamwork',
+    title: 'Teamwork',
+    description: 'Collaborative efforts that amplify our collective strength.',
+    icon: <Users className="w-6 h-6" />,
+    color: 'from-purple-500 to-purple-600',
+    highlights: ['Cross-functional collaboration', 'Shared expertise', 'Unified goals']
+  },
+  {
+    id: 'dedication',
+    title: 'Dedication',
+    description: 'Relentless commitment to customer satisfaction and success.',
+    icon: <Heart className="w-6 h-6" />,
+    color: 'from-red-500 to-red-600',
+    highlights: ['Customer-first approach', '24/7 support', 'Long-term relationships']
+  },
+  {
+    id: 'productivity',
+    title: 'Productivity',
+    description: 'Efficient solutions that maximize value and minimize waste.',
+    icon: <TrendingUp className="w-6 h-6" />,
+    color: 'from-orange-500 to-orange-600',
+    highlights: ['Streamlined processes', 'Cost optimization', 'Time efficiency']
+  }
+];
+
+/**
+ * Service categories with improved organization
+ */
+const serviceCategories: ServiceCategory[] = [
+  {
+    id: 'communications',
+    title: 'Communications & Technology',
+    description: 'Advanced telecommunications infrastructure and smart technology solutions for the connected world.',
+    icon: <Target className="w-8 h-8" />,
+    services: [
+      'Fiber Optic Installation & Splicing',
+      '5G & RF Network Infrastructure',
+      'Smart Building Integration',
+      'IoT & EV Charging Solutions',
+      'Data Center Construction',
+      'Wireless Communication Systems'
+    ],
+    image: '/images/WorkOregonPics/image16.jpeg',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    id: 'construction',
+    title: 'Construction & Infrastructure',
+    description: 'Professional construction services delivering durable infrastructure with uncompromising safety standards.',
+    icon: <Target className="w-8 h-8" />,
+    services: [
+      'Site Development & Grading',
+      'Structural & Site Concrete',
+      'Public Works Projects',
+      'Specialized Cutting & Drilling',
+      'Demolition Services',
+      'Project Management'
+    ],
+    image: '/images/WorkOregonPics/image18.jpeg',
+    color: 'from-orange-500 to-orange-600'
+  },
+  {
+    id: 'support',
+    title: 'Support & Maintenance',
+    description: 'Comprehensive support services ensuring optimal performance and reliability of all installations.',
+    icon: <Clock className="w-8 h-8" />,
+    services: [
+      '24/7 Emergency Response',
+      'Preventive Maintenance',
+      'System Testing & Certification',
+      'Performance Monitoring',
+      'Training & Consultation',
+      'Asset Management'
+    ],
+    image: '/images/WorkOregonPics/image21.jpeg',
+    color: 'from-green-500 to-green-600'
+  }
+];
+
+/**
+ * Animation variants for consistent animations
+ */
+const fadeInUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (delay = 0) => ({
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: delay * 0.1,
+      ease: [0.21, 1.11, 0.81, 0.99]
+    }
+  })
+};
+
+/**
+ * Enhanced Value Card Component
+ */
+interface ValueCardProps {
+  value: CoreValue;
+  index: number;
+  isInView: boolean;
+}
+
+const ValueCard = ({ value, index, isInView }: ValueCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={fadeInUpVariants}
+      custom={index}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl 
+               transition-all duration-500 hover:-translate-y-2 border border-gray-100
+               hover:border-gold-200 relative overflow-hidden"
+    >
+      {/* Background gradient on hover */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 
+                     group-hover:opacity-5 transition-opacity duration-500`} />
+      
+      {/* Icon */}
+      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${value.color} 
+                     flex items-center justify-center mb-6
+                     group-hover:scale-110 transition-transform duration-300`}>
+        {value.icon}
+      </div>
+
+      {/* Content */}
+      <div className="relative">
+        <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800">
+          {value.title}
+        </h4>
+        <p className="text-gray-600 mb-4 leading-relaxed">
+          {value.description}
+        </p>
+
+        {/* Highlights - shown on hover */}
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ 
+            opacity: isHovered ? 1 : 0, 
+            height: isHovered ? 'auto' : 0 
+          }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <ul className="space-y-2">
+            {value.highlights.map((highlight, idx) => (
+              <li key={idx} className="flex items-center text-sm text-gray-600">
+                <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${value.color} mr-3`} />
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+
+      {/* Decorative corner */}
+      <div className="absolute top-0 right-0 w-20 h-20 opacity-10">
+        <div className={`w-full h-full bg-gradient-to-br ${value.color} 
+                       transform rotate-45 translate-x-10 -translate-y-10`} />
+      </div>
+    </motion.div>
+  );
+};
+
+/**
+ * Service Category Card Component
+ */
+interface ServiceCardProps {
+  category: ServiceCategory;
+  index: number;
+  isInView: boolean;
+}
+
+const ServiceCategoryCard = ({ category, index, isInView }: ServiceCardProps) => {
+  return (
+    <motion.div
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={fadeInUpVariants}
+      custom={index}
+      className="group bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100
+               hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
+    >
+      {/* Image Header */}
+      <div className="relative h-48 overflow-hidden">
+        <Image
+          src={category.image}
+          alt={category.title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        
+        {/* Icon overlay */}
+        <div className="absolute top-4 right-4">
+          <div className={`p-3 bg-gradient-to-r ${category.color} rounded-xl text-white
+                         group-hover:scale-110 transition-transform duration-300`}>
+            {category.icon}
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800">
+          {category.title}
+        </h3>
+        <p className="text-gray-600 mb-6 leading-relaxed">
+          {category.description}
+        </p>
+
+        {/* Services List */}
+        <ul className="space-y-3 mb-6">
+          {category.services.map((service, idx) => (
+            <motion.li
+              key={idx}
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{ delay: 0.5 + (idx * 0.1) }}
+              className="flex items-start text-sm text-gray-600"
+            >
+              <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+              <span>{service}</span>
+            </motion.li>
+          ))}
+        </ul>
+
+        {/* CTA Button */}
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className={`w-full py-3 px-6 bg-gradient-to-r ${category.color} text-white 
+                     font-semibold rounded-lg hover:shadow-lg transition-all duration-300`}
+        >
+          Learn More
+        </motion.button>
+      </div>
+    </motion.div>
+  );
+};
+
+/**
+ * Main About Services Section Component
+ */
+export default function AboutServicesSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { 
+    once: true, 
+    amount: 0.1
+  });
+
+  return (
+    <section 
+      ref={sectionRef} 
+      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      aria-labelledby="about-services-heading"
+    >
+      {/* Hero Section with Improved Title */}
+      <motion.div
+        variants={fadeInUpVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        custom={0}
+        className="text-center mb-20"
+      >
+        <motion.div
+          className="inline-block mb-6"
+          whileHover={{ scale: 1.05 }}
+        >
+          <span className="inline-flex items-center px-4 py-2 bg-gold-100 text-gold-800 
+                         rounded-full text-sm font-semibold border border-gold-200">
+            <Star className="w-4 h-4 mr-2" />
+            Excellence Since 2008
+          </span>
+        </motion.div>
+
+        <h2 
+          id="about-services-heading"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight"
+        >
+          Where Legacy Meets{' '}
+          <span className="relative">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
+              Innovation
+            </span>
+            {/* Decorative underline */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full"
+              style={{ transformOrigin: "left" }}
+            />
+          </span>
+        </h2>
+
+        <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          Welcome to Goldmine Communications, where our rich legacy of excellence and 
+          pioneering innovation has positioned us as leaders in the industry.
+        </p>
+      </motion.div>
+
+      {/* Company Story Section with Improved Image Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+        {/* Content */}
+        <motion.div
+          variants={fadeInUpVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={1}
+          className="space-y-8"
+        >
+          <div>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              Excellence Through Expert Management & 
+              <span className="text-gold-600"> Seamless Services</span>
+            </h3>
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              With expert management and seamless services, we uphold the highest standards 
+              of integrity and dedication to our diverse customer base. We pride ourselves 
+              on our extensive expertise and versatility in production, making us the best in class.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Our steadfast commitment and highly productive team are driven by passion and 
+              relentless dedication to problem-solving, maintaining uncompromising quality 
+              standards tailored to each customer.
+            </p>
+          </div>
+
+          {/* Key Commitments */}
+          <div className="space-y-4">
+            {[
+              'Meeting deadlines with precision',
+              'Reducing costs through efficiency',
+              'Fostering collaborative efforts',
+              'Exceeding industry standards'
+            ].map((commitment, index) => (
+              <motion.div
+                key={commitment}
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                transition={{ delay: 0.6 + (index * 0.1) }}
+                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm 
+                         border border-gray-100 hover:shadow-md transition-shadow"
+              >
+                <div className="w-10 h-10 bg-gradient-to-r from-gold-400 to-gold-600 
+                              rounded-lg flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-gray-700 font-medium">{commitment}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 1.0 }}
+          >
+            <a
+              href="/contact"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gold-400 to-gold-600 
+                       text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300
+                       hover:-translate-y-1"
+            >
+              <Phone className="w-5 h-5 mr-3" />
+              Get Free Consultation
+              <ArrowRight className="w-5 h-5 ml-3" />
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Improved Image Grid Layout */}
+        <motion.div
+          variants={fadeInUpVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={2}
+          className="relative"
+        >
+          <div className="grid grid-cols-2 gap-4 h-[600px]">
+            {/* Large image - spans full height on left */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/WorkOregonPics/image16.jpg"
+                alt="Goldmine team working on infrastructure project"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <span className="bg-gold-400/90 px-3 py-1 rounded-full text-sm font-semibold">
+                  Professional Excellence
+                </span>
+              </div>
+            </div>
+
+            {/* Two smaller images stacked on right */}
+            <div className="flex flex-col gap-4">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl flex-1">
+                <Image
+                  src="/images/WorkOregonPics/image3.jpeg"
+                  alt="Advanced technology implementation"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl flex-1">
+                <Image
+                  src="/images/WorkOregonPics/image2.jpeg"
+                  alt="EV charging infrastructure"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+            </div>
+          </div>
+
+          {/* Achievement Cards */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ delay: 0.8 }}
+            className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100"
+          >
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gold-600 mb-1">500+</div>
+              <div className="text-sm text-gray-600">Projects Completed</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ delay: 1.0 }}
+            className="absolute -top-6 -right-6 bg-gold-400 rounded-2xl shadow-2xl p-6"
+          >
+            <div className="text-center text-white">
+              <div className="text-2xl font-bold mb-1">Lic# 1099543</div>
+              <div className="text-sm">Licensed & Insured</div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Service Categories Section */}
+      <motion.div
+        variants={fadeInUpVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        custom={3}
+        className="mb-20"
+      >
+        <div className="text-center mb-16">
+          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+            Comprehensive Service
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
+              {' '}Portfolio
+            </span>
+          </h3>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            From cutting-edge communications to precision construction, we deliver 
+            integrated solutions that exceed expectations.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {serviceCategories.map((category, index) => (
+            <ServiceCategoryCard
+              key={category.id}
+              category={category}
+              index={index}
+              isInView={isInView}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Core Values Section */}
+      <motion.div
+        variants={fadeInUpVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        custom={4}
+        className="mb-20"
+      >
+        <div className="text-center mb-16">
+          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Our Foundation Principles
+          </h3>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            These core values guide every decision we make and every project we undertake.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {coreValues.map((value, index) => (
+            <ValueCard
+              key={value.id}
+              value={value}
+              index={index}
+              isInView={isInView}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Mission Statement */}
+      <motion.div
+        variants={fadeInUpVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        custom={5}
+        className="text-center"
+      >
+        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 md:p-16 text-white relative overflow-hidden">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div 
+              className="w-full h-full"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundSize: '60px 60px'
+              }}
+            />
+          </div>
+
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-4xl font-bold mb-8">
+              Setting the Pace for Tomorrow
+            </h3>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+              At Goldmine Communications, we don&apos;t just keep pace with the latest industry 
+              demands; we set the pace. Founded on principles of optimism, teamwork, creativity, 
+              resourcefulness, exacting standards, unwavering productivity, safety, integrity, 
+              dedication, and customer satisfaction.
+            </p>
+            
+            <div className="bg-gold-400/10 backdrop-blur-sm rounded-2xl p-8 border border-gold-400/20 max-w-4xl mx-auto">
+              <blockquote className="text-2xl md:text-3xl font-semibold text-gold-400 mb-6 italic">
+                &quot;Join us on this journey towards a future where business is not just efficient but transformative.&quot;
+              </blockquote>
+              <p className="text-gray-300 text-lg">
+                Thank you for choosing Goldmine Communications, where elevating and delivering is our commitment.
+              </p>
+            </div>
+          </div>
+
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-40 h-40 bg-gold-400/5 rounded-full -translate-y-20 translate-x-20" />
+          <div className="absolute bottom-0 left-0 w-60 h-60 bg-gold-400/5 rounded-full translate-y-30 -translate-x-30" />
+        </div>
+      </motion.div>
+    </section>
+  );
+}

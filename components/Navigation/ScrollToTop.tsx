@@ -46,5 +46,3 @@ export const ScrollToTop = () => {
     </AnimatePresence>
   );
 };
-
-export default ScrollToTop;
