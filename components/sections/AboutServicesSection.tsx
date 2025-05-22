@@ -115,7 +115,7 @@ const serviceCategories: ServiceCategory[] = [
       'Data Center Construction',
       'Wireless Communication Systems'
     ],
-    image: '/images/WorkOregonPics/image16.jpeg',
+    image: '/images/communications.jpg',
     color: 'from-blue-500 to-blue-600'
   },
   {
@@ -131,7 +131,7 @@ const serviceCategories: ServiceCategory[] = [
       'Demolition Services',
       'Project Management'
     ],
-    image: '/images/WorkOregonPics/image18.jpeg',
+    image: '/images/concrete/grading.png',
     color: 'from-orange-500 to-orange-600'
   },
   {
@@ -147,7 +147,7 @@ const serviceCategories: ServiceCategory[] = [
       'Training & Consultation',
       'Asset Management'
     ],
-    image: '/images/WorkOregonPics/image21.jpeg',
+    image: '/images/concrete/site-concrete.png',
     color: 'from-green-500 to-green-600'
   }
 ];
