@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import { Network, HardHat, Wrench, Calculator, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/Button';
 
+
 const services = [
   {
     id: 'communications',
