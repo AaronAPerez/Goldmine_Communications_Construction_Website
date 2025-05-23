@@ -130,7 +130,7 @@ const CarouselDots = ({ slides, currentIndex, onDotClick }: CarouselDotsProps) =
       />
     ))}
   </div>
-);
+); 
 
 /**
  * Main Hero Section Component
