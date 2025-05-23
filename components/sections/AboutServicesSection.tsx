@@ -188,7 +188,7 @@ const ValueCard = ({ value, index, isInView }: ValueCardProps) => {
       custom={index}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl 
+      className="group rounded-2xl p-8 shadow-lg hover:shadow-2xl 
                transition-all duration-500 hover:-translate-y-2 border border-gray-100
                hover:border-gold-200 relative overflow-hidden"
     >
@@ -266,7 +266,7 @@ const ServiceCategoryCard = ({ category, index, isInView }: ServiceCardProps) =>
       animate={isInView ? "visible" : "hidden"}
       variants={fadeInUpVariants}
       custom={index}
-      className="group bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100
+      className="group rounded-2xl shadow-xl overflow-hidden border border-gray-100
                hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
     >
       {/* Image Header */}
@@ -516,7 +516,7 @@ export default function AboutServicesSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ delay: 0.8 }}
-            className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100"
+            className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 border border-gold-400"
           >
             <div className="text-center">
               <div className="text-3xl font-bold text-gold-600 mb-1">100+</div>

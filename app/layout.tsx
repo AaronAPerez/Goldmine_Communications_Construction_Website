@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../styles/globals.css';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import TopContactBar from '../components/Contact/TopContactBar';
 import FloatingNavigation from '../components/Navigation/FloatingNavigation';
 import Footer from '../components/Footer/Footer';
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-  viewport: 'width=device-width, initial-scale=1',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
   robots: 'index, follow',
 };
 
@@ -44,8 +44,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="{inter.variable}, scroll-smooth">
+    <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.ico" />
@@ -54,14 +55,14 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#D4AF37" />
-      </head>      
         <link
           rel="preload"
-          href="/images/optimized/webp/AvStation.webp"
+          href="/images/WorkOregonPics/image16.jpeg"
           as="image"
-          type="image/webp"
+          type="image/jpeg"
         />
-      <body className={inter.className}>
+      </head>      
+      <body className={`${inter.className} overflow-x-hidden`}>
         {/* Skip link for accessibility */}
         <a 
           href="#main-content" 
@@ -71,23 +72,34 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        {/* Layout structure */}
-        <div className="min-h-screen flex flex-col">
-          {/* Top contact bar - always at top */}
-          <TopContactBar />
+        {/* Layout structure with overflow fixes */}
+        <div className="min-h-screen flex flex-col overflow-x-hidden w-full max-w-full">
+          {/* Top contact bar - fixed width */}
+          <div className="w-full overflow-x-hidden">
+            <TopContactBar />
+          </div>
           
-          {/* Floating navigation - below contact bar */}
-          <FloatingNavigation />
+          {/* Floating navigation - fixed width */}
+          <div className="w-full overflow-x-hidden">
+            <FloatingNavigation />
+          </div>
           
-          {/* Main content */}
-          <main id="main-content" className="flex-grow">
-            {children}
-          <Analytics />
-          <SpeedInsights/>
+          {/* Main content with proper constraints */}
+          <main 
+            id="main-content" 
+            className="flex-grow w-full max-w-full overflow-x-hidden md:mt-4"
+          >
+            <div className="w-full max-w-full">
+              {children}
+            </div>
+            <Analytics />
+            <SpeedInsights/>
           </main>
           
-          {/* Footer */}
-          <Footer />
+          {/* Footer with width constraints */}
+          <div className="w-full overflow-x-hidden">
+            <Footer />
+          </div>
           
           {/* Scroll to top button */}
           <ScrollToTop />

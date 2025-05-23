@@ -28,12 +28,12 @@ export default function HomePage() {
       </section>
 
       {/* About & Services Section - White background with top padding */}
-      <section className="bg-white py-24 relative">
+      <section className="py-24 relative">
         <AboutServicesSection />
       </section>
 
       {/* Communications Section - Dark background */}
-      <section className="bg-gray-900 py-16 relative">
+      <section className="bg-gray-900 py-24 relative">
         <CommunicationsSection />
       </section>
 

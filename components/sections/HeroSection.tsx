@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -18,6 +17,7 @@ import {
   Zap
 } from 'lucide-react';
 import Image from 'next/image';
+import FloatingParticles from '../Hero/FloatingParticles';
 
 /**
  * Enhanced Hero Section with Background Image Carousel
@@ -205,14 +205,14 @@ const HeroSection = () => {
   const currentSlideData = heroSlides[currentSlide];
 
   return (
-    <section
+  <section
       ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden w-full max-w-full"
       aria-labelledby="hero-heading"
       role="banner"
     >
       {/* Background Images with Enhanced Loading */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -220,13 +220,13 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0"
+            className="absolute inset-0 w-full h-full"
           >
             <Image
               src={currentSlideData.image}
               alt={`${currentSlideData.title} - ${currentSlideData.subtitle}`}
               fill
-              className="object-cover object-center"
+              className="object-cover object-center w-full h-full"
               priority={currentSlideData.priority}
               quality={90}
               sizes="100vw"
@@ -236,29 +236,20 @@ const HeroSection = () => {
             {/* Enhanced overlays for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/70" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30" />
-            
-            {/* Subtle pattern overlay for texture */}
-            <div
-              className="absolute inset-0 opacity-5"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                backgroundSize: '60px 60px'
-              }}
-            />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Main Content Container */}
-      <div className="relative z-10 w-full min-h-screen flex items-center pt-20 md:pt-26 md:pb-14 pb-32">
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+       {/* Main Content Container - Fixed width constraints */}
+      <div className="relative z-10 w-full max-w-full min-h-screen flex items-center pt-20 pb-32">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Mobile Company Branding */}
+          {/* Mobile Company Branding - Constrained width */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:hidden text-center mb-8"
+            className="lg:hidden text-center mb-8 w-full max-w-full"
           >
             <div className="relative inline-block">
               {/* Mobile Logo */}
@@ -266,18 +257,19 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-gold-400/30 to-gold-600/30 rounded-full blur-xl" />
                 <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl border-3 border-gold-400/60 bg-white/10 backdrop-blur-sm">
                   <Image
-                    src="/images/logo-circular.jpg"
+                    src="/images/logo-circular.png"
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain p-2"
                     priority
+                    sizes="(max-width: 640px) 128px, 144px"
                   />
                 </div>
               </div>
               
               {/* Mobile Company Name */}
-              <div className="text-center">
-                <h2 className="text-xl sm:text-2xl font-bold text-gold-400 mb-1 text-shadow">
+              <div className="text-center max-w-full">
+                <h2 className="text-xl sm:text-2xl font-bold text-gold-400 mb-1 text-shadow break-words">
                   Goldmine Communications
                 </h2>
                 <div className="text-lg sm:text-xl text-gray-100 text-shadow-sm">
@@ -287,15 +279,15 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Desktop Layout Grid */}
-          <div className="lg:grid lg:grid-cols-12 lg:gap-12 xl:gap-16 lg:items-center">
+          {/* Desktop Layout Grid - Responsive constraints */}
+          <div className="w-full max-w-full lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-12 lg:items-center">
             
-            {/* Content Column - 7 columns */}
+            {/* Content Column - Proper width constraints */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-white text-center lg:text-left lg:col-span-7"
+              className="text-white text-center lg:text-left lg:col-span-7 w-full max-w-full"
             >
               {/* Slide Content */}
               <AnimatePresence mode="wait">
@@ -305,6 +297,7 @@ const HeroSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="w-full max-w-full"
                 >
                   {/* Subtitle Badge */}
                   <motion.div
@@ -312,41 +305,46 @@ const HeroSection = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2 }}
                     className="inline-flex items-center px-4 py-2 bg-gold-400/20 backdrop-blur-sm 
-                             border border-gold-400/30 rounded-full text-sm font-semibold text-gold-300 mb-6"
+                             border border-gold-400/30 rounded-full text-sm font-semibold text-gold-300 mb-6
+                             max-w-full"
                   >
-                    <Star className="w-4 h-4 mr-2" />
-                    {currentSlideData.subtitle}
+                    <Star className="w-4 h-4 mr-2 flex-shrink-0" />
+                    <span className="truncate">{currentSlideData.subtitle}</span>
                   </motion.div>
 
-                  {/* Main Title */}
+                  {/* Main Title - Responsive text sizing */}
                   <h1 
                     id="hero-heading" 
-                    className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight
+                             w-full max-w-full break-words"
                   >
                     <span className="block text-white text-shadow-lg">
                       {currentSlideData.title}
                     </span>
                   </h1>
 
-                  {/* Description */}
-                  <p className="text-lg sm:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 text-shadow-sm">
+                  {/* Description - Responsive and constrained */}
+                  <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 leading-relaxed 
+                              max-w-full lg:max-w-2xl mx-auto lg:mx-0 text-shadow-sm px-2 sm:px-0">
                     {currentSlideData.description}
                   </p>
 
-                  {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+                  {/* CTA Buttons - Mobile-first responsive */}
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8
+                                w-full max-w-full">
                     <motion.a
                       href={currentSlideData.cta.primary.href}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="group inline-flex items-center justify-center px-8 py-4 
+                      className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 
                                bg-gradient-to-r from-gold-400 to-gold-600 text-white
-                               rounded-xl font-semibold text-lg transition-all duration-300
-                               shadow-xl hover:shadow-2xl hover:shadow-gold-400/25"
+                               rounded-xl font-semibold text-base sm:text-lg transition-all duration-300
+                               shadow-xl hover:shadow-2xl hover:shadow-gold-400/25 w-full sm:w-auto
+                               min-w-0 max-w-full"
                     >
-                      {currentSlideData.cta.primary.text}
+                      <span className="truncate">{currentSlideData.cta.primary.text}</span>
                       {currentSlideData.cta.primary.icon && (
-                        <span className="ml-3 transition-transform group-hover:translate-x-1">
+                        <span className="ml-3 transition-transform group-hover:translate-x-1 flex-shrink-0">
                           {currentSlideData.cta.primary.icon}
                         </span>
                       )}
@@ -356,51 +354,55 @@ const HeroSection = () => {
                       href={currentSlideData.cta.secondary.href}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="group inline-flex items-center justify-center px-8 py-4
-                               border-2 border-white/80 text-white rounded-xl font-semibold text-lg
+                      className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4
+                               border-2 border-white/80 text-white rounded-xl font-semibold text-base sm:text-lg
                                hover:bg-white hover:text-gray-900 transition-all duration-300 
-                               backdrop-blur-sm bg-white/10"
+                               backdrop-blur-sm bg-white/10 w-full sm:w-auto min-w-0 max-w-full"
                     >
                       {currentSlideData.cta.secondary.icon && (
-                        <span className="mr-3">
+                        <span className="mr-3 flex-shrink-0">
                           {currentSlideData.cta.secondary.icon}
                         </span>
                       )}
-                      {currentSlideData.cta.secondary.text}
+                      <span className="truncate">{currentSlideData.cta.secondary.text}</span>
                     </motion.a>
                   </div>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Trust Indicators */}
+              {/* Trust Indicators - Mobile responsive */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, delay: 1.5 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-3"
+                className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 w-full max-w-full"
               >
                 {[
-                  { text: 'Licensed & Insured', icon: <Shield className="w-4 h-4 text-gold-400" /> },
-                  { text: '15+ Years Experience', icon: <Clock className="w-4 h-4 text-gold-400" /> },
-                  { text: 'Quality Guarantee', icon: <Award className="w-4 h-4 text-gold-400" /> },
-                  { text: 'We Beat Estimates', icon: <Target className="w-4 h-4 text-gold-400" /> }
-                ].map(({ text, icon }, index) => (
+                  { text: 'Licensed & Insured', short: 'Licensed', icon: <Shield className="w-4 h-4 text-gold-400" /> },
+                  { text: '15+ Years Experience', short: '15+ Years', icon: <Clock className="w-4 h-4 text-gold-400" /> },
+                  { text: 'Quality Guarantee', short: 'Quality', icon: <Award className="w-4 h-4 text-gold-400" /> },
+                  { text: 'We Beat Estimates', short: 'Best Price', icon: <Target className="w-4 h-4 text-gold-400" /> }
+                ].map(({ text, short, icon }, index) => (
                   <motion.div
                     key={text}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.7 + (index * 0.1) }}
                     className="flex items-center bg-black/30 backdrop-blur-sm rounded-full 
-                             px-4 py-2 border border-white/10 hover:bg-black/40 transition-colors"
+                             px-3 py-2 border border-white/10 hover:bg-black/40 transition-colors
+                             min-w-0 max-w-full"
                   >
-                    <span className="mr-2">{icon}</span>
-                    <span className="text-sm font-medium whitespace-nowrap">{text}</span>
+                    <span className="mr-2 flex-shrink-0">{icon}</span>
+                    <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
+                      <span className="hidden sm:inline">{text}</span>
+                      <span className="sm:hidden">{short}</span>
+                    </span>
                   </motion.div>
                 ))}
               </motion.div>
             </motion.div>
 
-            {/* Desktop Logo & Company Info - 5 columns */}
+            {/* Desktop Logo Column - Hidden on mobile to prevent width issues */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
@@ -602,30 +604,7 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Floating Particles Effect */}
-      <div className="absolute inset-0 pointer-events-none z-5">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className={`absolute w-1 h-1 rounded-full ${
-              i % 3 === 0 ? 'bg-gold-400/40' : i % 3 === 1 ? 'bg-white/30' : 'bg-gold-600/20'
-            }`}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 0.8, 0],
-            }}
-            transition={{
-              duration: Math.random() * 4 + 4,
-              repeat: Infinity,
-              delay: Math.random() * 4,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
+      <FloatingParticles/>
 
       {/* Screen reader announcement */}
       <div
