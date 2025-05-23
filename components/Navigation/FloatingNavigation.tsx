@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, NetworkIcon, Phone, X, Menu, HardHatIcon } from 'lucide-react';
+import { Home, NetworkIcon, Phone, X, Menu, HardHatIcon, Building } from 'lucide-react';
 import Image from 'next/image';
 
 
@@ -19,7 +19,7 @@ const navItems: NavItem[] = [
   { label: 'Home', href: '/', icon: <Home className="w-5 h-5" /> },
   { label: 'Communications', href: '/communications', icon: <NetworkIcon className="w-5 h-5" /> },
   { label: 'Construction', href: '/construction', icon: <HardHatIcon className="w-5 h-5" /> },
-  // { label: 'Projects', href: '/projects', icon: <Building className="w-5 h-5" /> },
+  { label: 'Projects', href: '/projects', icon: <Building className="w-5 h-5" /> },
   { label: 'Contact', href: '/contact', icon: <Phone className="w-5 h-5" /> },
 ];
 

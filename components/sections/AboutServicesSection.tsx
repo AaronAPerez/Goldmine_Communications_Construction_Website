@@ -115,7 +115,7 @@ const serviceCategories: ServiceCategory[] = [
       'Data Center Construction',
       'Wireless Communication Systems'
     ],
-    image: '/images/communications-tower.png',
+    image: '/images/communications-tower2.png',
     color: 'from-blue-500 to-blue-600'
   },
   {
@@ -270,7 +270,7 @@ const ServiceCategoryCard = ({ category, index, isInView }: ServiceCardProps) =>
                hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
     >
       {/* Image Header */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-72 overflow-hidden">
         <Image
           src={category.image}
           alt={category.title}
@@ -472,10 +472,10 @@ export default function AboutServicesSection() {
             {/* Large image - spans full height on left */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/WorkOregonPics/image16.jpg"
-                alt="Goldmine team working on infrastructure project"
+                src="/images/projects/tree-tower.jpg"
+                alt="Goldmine team working on telecommunications tree tower"
                 fill
-                className="object-cover"
+                className="object-fill"
                 sizes="(max-width: 768px) 100vw, 400px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -500,7 +500,7 @@ export default function AboutServicesSection() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl flex-1">
                 <Image
-                  src="/images/WorkOregonPics/image2.jpeg"
+                  src="/images/projects/AvStation-parking.jpg"
                   alt="EV charging infrastructure"
                   fill
                   className="object-cover"
@@ -531,8 +531,8 @@ export default function AboutServicesSection() {
             className="absolute -top-6 -right-6 bg-gold-400 rounded-2xl shadow-2xl p-6"
           >
             <div className="text-center text-white">
-              <div className="text-2xl font-bold mb-1">Lic# 1099543</div>
-              <div className="text-sm">Licensed & Insured</div>
+              <div className="text-2xl font-bold mb-1 text-shadow-lg">Lic# 1099543</div>
+              <div className="text-sm text-black">Licensed & Insured</div>
             </div>
           </motion.div>
         </motion.div>

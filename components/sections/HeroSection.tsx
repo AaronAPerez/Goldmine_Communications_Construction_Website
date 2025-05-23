@@ -68,7 +68,7 @@ const heroSlides: HeroSlide[] = [
   },
   {
     id: 'communications',
-    image: '/images/communications.jpg',
+    image: '/images/projects/tree-post-hero.jpg',
     title: 'Advanced Communications',
     subtitle: 'Network Infrastructure Excellence',
     description: 'Cutting-edge telecommunications, fiber optic systems, and 5G infrastructure for the connected world.',

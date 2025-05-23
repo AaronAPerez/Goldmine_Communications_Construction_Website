@@ -38,12 +38,12 @@ export default function HomePage() {
       </section>
 
       {/* Construction Section - Light background */}
-      <section className="bg-gradient-to-b from-gray-50 to-white py-24 relative">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-16 relative">
         <ConstructionSection />
       </section>
 
       {/* Project Showcase - Blueprint background */}
-      <section className="py-24 relative">
+      <section className="relative">
         <ProjectShowcase />
       </section>
 
