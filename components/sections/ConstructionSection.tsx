@@ -9,7 +9,6 @@ import {
   CheckCircle,
   Clock,
   Building,
-  Eye,
   Wrench,
   Target,
   Truck
@@ -163,7 +162,7 @@ interface ServiceCardProps {
   onViewProject: (service: ConstructionService) => void;
 }
 
-const ServiceCard = ({ service, index, onViewProject }: ServiceCardProps) => {
+const ServiceCard = ({ service, index }: ServiceCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true });
 
