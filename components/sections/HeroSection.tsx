@@ -257,7 +257,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-gold-400/30 to-gold-600/30 rounded-full blur-xl" />
                 <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl border-3 border-gold-400/60 bg-white/10 backdrop-blur-sm">
                   <Image
-                    src="/images/logo-circular.png"
+                    src="/images/logo-circular.jpg"
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain p-2"
