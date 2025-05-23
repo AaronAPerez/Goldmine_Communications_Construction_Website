@@ -49,7 +49,7 @@ interface HeroSlide {
 const heroSlides: HeroSlide[] = [
   {
     id: 'ev-charging',
-    image: '/images/WorkOregonPics/AvStation.jpg',
+    image: '/images/WorkOregonPics/AvStations.jpg',
     title: 'Future-Ready EV Infrastructure',
     subtitle: 'Clean Energy Technology',
     description: 'Advanced electric vehicle charging solutions and smart technology integration for sustainable transportation networks.',
