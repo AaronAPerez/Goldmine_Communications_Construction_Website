@@ -1504,3 +1504,24 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+/* CSS aspect ratio for responsive images */
+.image-container {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+/* Prevent font swap layout shift */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/custom-font.woff2') format('woff2');
+  font-display: swap; /* or 'fallback' for less shift */
+}
+
+/* Size-adjust for font fallbacks */
+@font-face {
+  font-family: 'fallback-font';
+  size-adjust: 107%; /* Match x-height of primary font */
+  src: local('Arial');
+}

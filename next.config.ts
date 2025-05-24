@@ -71,10 +71,11 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for development
   // Valid experimental features for current Next.js versions
   experimental: {
-    // Enable experimental features as needed
-    // turbo: {}, // Turbopack (experimental)
-    // serverComponentsExternalPackages: [], // For external packages
+    optimizePackageImports: ['lodash', 'date-fns']
   },
-};
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production'
+  }
+}
 
 export default nextConfig;

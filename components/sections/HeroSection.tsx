@@ -224,12 +224,10 @@ const HeroSection = () => {
           >
             <Image
               src={currentSlideData.image}
-              alt={`${currentSlideData.title} - ${currentSlideData.subtitle}`}
+              alt="Hero image"
               fill
-              className="object-cover object-center w-full h-full"
-              priority={currentSlideData.priority}
-              quality={90}
-              sizes="100vw"
+              priority={true} // Critical for LCP  
+              fetchPriority="high" 
               onLoad={() => handleImageLoad(currentSlide)}
             />
             
