@@ -3,11 +3,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
-  HardHat, 
-  Shield,
   ArrowRight,
   CheckCircle,
-  Clock,
   Building,
   Wrench,
   Target,
@@ -364,81 +361,7 @@ const ConstructionSection = () => {
           ))}
         </div>
 
-        {/* Enhanced Key Differentiators with Statistics */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-16"
-        >
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gold-200/30">
-            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">
-              Why Choose Our Construction Excellence
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="text-center group">
-                <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 
-                               text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <Shield className="w-8 h-8" />
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Safety Excellence</h4>
-                <p className="text-gray-600 text-sm mb-3">
-                  Zero incident safety record with comprehensive protocols
-                </p>
-                <div className="bg-blue-50 rounded-lg p-2">
-                  <div className="text-xl font-bold text-blue-600">Zero</div>
-                  <div className="text-xs text-blue-700">Safety Incidents</div>
-                </div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 
-                               text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <Clock className="w-8 h-8" />
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Timely Delivery</h4>
-                <p className="text-gray-600 text-sm mb-3">
-                  Consistent on-time project completion
-                </p>
-                <div className="bg-green-50 rounded-lg p-2">
-                  <div className="text-xl font-bold text-green-600">98%</div>
-                  <div className="text-xs text-green-700">On-Time Rate</div>
-                </div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 
-                               text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <HardHat className="w-8 h-8" />
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Expert Teams</h4>
-                <p className="text-gray-600 text-sm mb-3">
-                  Decades of combined construction experience
-                </p>
-                <div className="bg-orange-50 rounded-lg p-2">
-                  <div className="text-xl font-bold text-orange-600">15+</div>
-                  <div className="text-xs text-orange-700">Years Experience</div>
-                </div>
-              </div>
-
-              <div className="text-center group">
-                <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 
-                               text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <Target className="w-8 h-8" />
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Quality Results</h4>
-                <p className="text-gray-600 text-sm mb-3">
-                  Exceeding specifications and expectations
-                </p>
-                <div className="bg-purple-50 rounded-lg p-2">
-                  <div className="text-xl font-bold text-purple-600">100%</div>
-                  <div className="text-xs text-purple-700">Client Satisfaction</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+    
 
         {/* Enhanced Call to Action with Multiple Options */}
         <motion.div

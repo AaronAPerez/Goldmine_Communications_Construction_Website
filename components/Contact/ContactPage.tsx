@@ -2,18 +2,17 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
   Globe,
   Shield,
   Award,
   Zap
 } from 'lucide-react';
-import ContactForm from '@/components/Contact/ContactForm';
-import OptimizedImage from '@/components/common/OptimizedImage';
+import Image from 'next/image';
 
 /**
  * Contact Page Component
@@ -191,7 +190,7 @@ const BusinessHours = () => {
         <Clock className="w-6 h-6 text-gold-500" />
         <h3 className="text-xl font-semibold text-gray-900">Business Hours</h3>
       </div>
-      
+
       <div className="space-y-3">
         {businessHours.map((schedule, index) => (
           <motion.div
@@ -202,19 +201,18 @@ const BusinessHours = () => {
             className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
           >
             <span className="text-gray-700 font-medium">{schedule.day}</span>
-            <span className={`text-sm font-semibold ${
-              schedule.day === 'Emergency Services' 
-                ? 'text-red-600' 
-                : schedule.hours === 'Closed' 
-                  ? 'text-gray-400' 
-                  : 'text-gray-900'
-            }`}>
+            <span className={`text-sm font-semibold ${schedule.day === 'Emergency Services'
+              ? 'text-red-600'
+              : schedule.hours === 'Closed'
+                ? 'text-gray-400'
+                : 'text-gray-900'
+              }`}>
               {schedule.hours}
             </span>
           </motion.div>
         ))}
       </div>
-      
+
       {/* <div className="mt-6 p-4 bg-gold-50 rounded-lg">
         <p className="text-sm text-gold-700">
           <strong>Emergency Services:</strong> Available 24/7 for urgent infrastructure needs.
@@ -243,7 +241,7 @@ const KeyFeatures = () => {
       <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
         Why Choose Goldmine Communications?
       </h3>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {keyFeatures.map((feature, index) => (
           <motion.div
@@ -276,132 +274,112 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Skip to content link for accessibility */}
-      <a 
-        href="#main-content" 
+      <a
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
                    bg-gold-400 text-white px-4 py-2 rounded-lg z-50"
       >
         Skip to main content
       </a>
 
-      {/* Hero Section */}
-      <section 
-        ref={heroRef}
-        className="relative py-24 bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden"
-        aria-labelledby="contact-hero-heading"
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div 
-            className="w-full h-full"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '60px 60px'
-            }}
-          />
-        </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="text-center text-white"
-          >
-            <h1 
-              id="contact-hero-heading"
-              className="text-4xl md:text-6xl font-bold mb-6"
-            >
-              Get In
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
-                {' '}Touch
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Ready to start your next project? Let&apos;s discuss how we can bring your 
-              vision to life with expert communications and construction services.
-            </p>
-            
-            {/* Hero CTA buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <motion.a
-                href="tel:+19253055980"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-3 bg-gold-400 hover:bg-gold-500 
-                         text-white font-medium rounded-lg transition-colors shadow-lg"
-                aria-label="Call us at (925) 305-5980"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call (925) 305-5980
-              </motion.a>
-              <motion.a
-                href="#contact-form"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-3 border-2 border-white
-                         text-white hover:bg-white hover:text-gray-900 font-medium 
-                         rounded-lg transition-colors"
-              >
-                Send Message
-              </motion.a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Main Content */}
       <main id="main-content" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Contact Methods Grid */}
-          <section 
-            className="mb-24"
-            aria-labelledby="contact-methods-heading"
+          {/* Hero Section */}
+          <section
+            ref={heroRef}
+            className="relative overflow-hidden"
+            aria-labelledby="contact-hero-heading"
           >
-            <motion.div
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                  backgroundSize: '60px 60px'
+                }}
+              />
+            </div>
+
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 rounded-2xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6 }}
+                className="text-center text-white"
+              >
+                <h1
+                  id="contact-hero-heading"
+                  className="text-4xl md:text-6xl font-bold mb-6 text-black"
+                >
+                  Get In
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
+                    {' '}Touch
+                  </span>
+                </h1>            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 
+              {/* <h2
                 id="contact-methods-heading"
-                className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+                className="text-3xl md:text-4xl font-bold text-gray-300 mb-4"
               >
                 Multiple Ways to Reach Us
-              </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Choose the most convenient way to get in touch. We&apos;re here to help 
+              </h2> */}
+              <p className="text-xl text-gray-800 max-w-2xl mx-auto">
+                Choose the most convenient way to get in touch. We&apos;re here to help
                 with all your communications and construction needs.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {contactMethods.map((method, index) => (
-                <ContactCard
-                  key={method.id}
-                  method={method}
-                  index={index}
-                />
-              ))}
+                {/* <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+                  Ready to start your next project? Let&apos;s discuss how we can bring your
+                  vision to life with expert communications and construction services.
+                </p> */}
+
+
+              </motion.div>
             </div>
           </section>
 
+          {/* Main Content */}
+          {/* <main id="main-content" className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+
+          {/* Contact Methods Grid */}
+        
+
+
+
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
+
             {/* Contact Form Section */}
-            <section 
+            <section
               className="lg:col-span-2"
               aria-labelledby="contact-form-heading"
             >
-              <motion.div
+              {/* Contact Methods Grid */}
+              <section
+                className="mb-24"
+                aria-labelledby="contact-methods-heading"
+              >
+
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {contactMethods.map((method, index) => (
+                    <ContactCard
+                      key={method.id}
+                      method={method}
+                      index={index}
+                    />
+                  ))}
+                </div>
+              </section>
+              {/* <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -413,17 +391,12 @@ const ContactPage = () => {
                 >
                   Send Us a Message
                 </h2>
-                <ContactForm />
-              </motion.div>
+              </motion.div> */}
             </section>
 
             {/* Sidebar Content */}
             <aside className="lg:col-span-1 space-y-8">
-              
-              {/* Business Hours */}
-              <BusinessHours />
-
-              {/* Company Logo */}
+        {/* Company Logo */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -432,7 +405,7 @@ const ContactPage = () => {
                 className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100"
               >
                 <div className="relative w-32 h-32 mx-auto mb-4">
-                  <OptimizedImage
+                  <Image
                     src="/images/logo-circular.png"
                     alt="Goldmine Communications and Construction Logo"
                     fill
@@ -444,10 +417,14 @@ const ContactPage = () => {
                   Goldmine Communications & Construction
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  Excellence in communications and construction services throughout 
+                  Excellence in communications and construction services throughout
                   Northern California.
                 </p>
               </motion.div>
+              {/* Business Hours */}
+              <BusinessHours />
+
+      
 
             </aside>
           </div>
@@ -469,7 +446,7 @@ const ContactPage = () => {
                 Ready to Start Your Next Project?
               </h2>
               <p className="text-xl text-gold-100 max-w-2xl mx-auto mb-8">
-                Get a free consultation and discover how we can help bring your 
+                Get a free consultation and discover how we can help bring your
                 communications and construction vision to life.
               </p>
               <motion.a

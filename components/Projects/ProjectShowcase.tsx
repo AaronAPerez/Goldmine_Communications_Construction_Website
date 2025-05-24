@@ -12,10 +12,7 @@ import {
   Eye,
   ArrowUpRight,
   CheckCircle,
-  ArrowRight,
   Award,
-  Clock,
-  Users,
   Settings
 } from 'lucide-react';
 import Image from 'next/image';
@@ -90,49 +87,49 @@ const projects: Project[] = [
       'Project Duration': '6 months'
     }
   },
-  {
-    id: 'comprehensive-site-development-2024',
-    title: 'Comprehensive Site Development',
-    description: 'Large-scale site development project featuring extensive excavation, grading, access road construction, and complete infrastructure preparation for commercial development.',
-    category: 'Site Development',
-    location: 'Northern California',
-    completionDate: '2024',
-    client: 'Regional Development Authority',
-    duration: '18 months',
-    teamSize: 25,
-    thumbnailUrl: '/images/projects/IMG_20250522_183647 (1).jpg',
-    galleryImages: [
-      '/images/projects/IMG_20250522_183647 (1).jpg',
-      '/images/projects/IMG_20250522_183647 (2).jpg',
-      '/images/projects/IMG_20250522_183647 (3).jpg',
-      '/images/projects/IMG_20250522_183647 (4).jpg',
-      '/images/projects/IMG_20250522_183648 (2).jpg',
-      '/images/projects/IMG_20250522_183648 (3).jpg',
-      '/images/projects/IMG_20250522_183648 (4).jpg',
-      '/images/projects/IMG_20250522_183648 (5).jpg',
-      '/images/projects/IMG_20250522_183648 (6).jpg',
-      '/images/projects/IMG_20250522_183648 (7).jpg'
-    ],
-    features: [
-      'Multi-phase site excavation and grading',
-      'Access road and pathway construction',
-      'Utility corridor preparation',
-      'Environmental compliance and monitoring',
-      'Drainage system implementation',
-      'Site preparation for multiple structures',
-      'Soil stabilization and compaction',
-      'Safety protocol management throughout phases'
-    ],
-    specifications: {
-      'Project Type': 'Large-Scale Site Development',
-      'Site Area': '150+ acres',
-      'Excavation Volume': '500,000+ cubic yards',
-      'Access Roads': '5+ miles constructed',
-      'Project Duration': '18 months',
-      'Environmental Standards': 'Full compliance achieved',
-      'Safety Record': 'Zero incidents across all phases'
-    }
-  },
+  // {
+  //   id: 'comprehensive-site-development-2024',
+  //   title: 'Comprehensive Site Development',
+  //   description: 'Large-scale site development project featuring extensive excavation, grading, access road construction, and complete infrastructure preparation for commercial development.',
+  //   category: 'Site Development',
+  //   location: 'Northern California',
+  //   completionDate: '2024',
+  //   client: 'Regional Development Authority',
+  //   duration: '18 months',
+  //   teamSize: 25,
+  //   thumbnailUrl: '/images/projects/IMG_20250522_183647 (3).jpg',
+  //   galleryImages: [
+  //     '/images/projects/IMG_20250522_183647 (1).jpg',
+  //     '/images/projects/IMG_20250522_183647 (2).jpg',
+  //     '/images/projects/IMG_20250522_183647 (3).jpg',
+  //     '/images/projects/IMG_20250522_183647 (4).jpg',
+  //     '/images/projects/IMG_20250522_183648 (2).jpg',
+  //     '/images/projects/IMG_20250522_183648 (3).jpg',
+  //     '/images/projects/IMG_20250522_183648 (4).jpg',
+  //     '/images/projects/IMG_20250522_183648 (5).jpg',
+  //     '/images/projects/IMG_20250522_183648 (6).jpg',
+  //     '/images/projects/IMG_20250522_183648 (7).jpg'
+  //   ],
+  //   features: [
+  //     'Multi-phase site excavation and grading',
+  //     'Access road and pathway construction',
+  //     'Utility corridor preparation',
+  //     'Environmental compliance and monitoring',
+  //     'Drainage system implementation',
+  //     'Site preparation for multiple structures',
+  //     'Soil stabilization and compaction',
+  //     'Safety protocol management throughout phases'
+  //   ],
+  //   specifications: {
+  //     'Project Type': 'Large-Scale Site Development',
+  //     'Site Area': '150+ acres',
+  //     'Excavation Volume': '500,000+ cubic yards',
+  //     'Access Roads': '5+ miles constructed',
+  //     'Project Duration': '18 months',
+  //     'Environmental Standards': 'Full compliance achieved',
+  //     'Safety Record': 'Zero incidents across all phases'
+  //   }
+  // },
   {
     id: 'infrastructure-systems-installation-2024',
     title: 'Advanced Infrastructure Systems',
@@ -176,93 +173,7 @@ const projects: Project[] = [
       'Completion Time': '12 months',
       'System Reliability': '99.99% uptime guaranteed'
     }
-  },
-  // {
-  //   id: 'concrete-foundations-structures-2024',
-  //   title: 'Concrete Foundations & Structures',
-  //   description: 'Specialized concrete construction featuring complex foundation systems, structural elements, and high-precision concrete placement for critical infrastructure.',
-  //   category: 'Concrete Construction',
-  //   location: 'San Jose Metro Area',
-  //   completionDate: '2024',
-  //   client: 'Industrial Development Partners',
-  //   duration: '8 months',
-  //   teamSize: 15,
-  //   thumbnailUrl: '/images/projects/IMG_20250522_183649 (11).jpg',
-  //   galleryImages: [
-  //     '/images/projects/IMG_20250522_183649 (11).jpg',
-  //     '/images/projects/IMG_20250522_183649 (12).jpg',
-  //     '/images/projects/IMG_20250522_183649 (13).jpg',
-  //     '/images/projects/IMG_20250522_183649 (14).jpg',
-  //     '/images/projects/IMG_20250522_183649 (15).jpg',
-  //     '/images/projects/IMG_20250522_183649 (16).jpg',
-  //     '/images/projects/IMG_20250522_183649 (17).jpg',
-  //     '/images/projects/IMG_20250522_183649 (18).jpg',
-  //     '/images/projects/IMG_20250522_183649 (19).jpg',
-  //     '/images/projects/IMG_20250522_183649 (20).jpg'
-  //   ],
-  //   features: [
-  //     'Deep foundation installation',
-  //     'Structural concrete placement',
-  //     'Reinforcement steel fabrication and installation',
-  //     'High-strength concrete specification',
-  //     'Precision forming and finishing',
-  //     'Quality control testing throughout',
-  //     'Seismic resistance engineering',
-  //     'Load-bearing structural elements'
-  //   ],
-  //   specifications: {
-  //     'Foundation Depth': '15+ feet',
-  //     'Concrete Grade': '5000 PSI high-strength',
-  //     'Reinforcement': 'Grade 80 rebar systems',
-  //     'Load Capacity': '500+ tons per foundation',
-  //     'Surface Finish': 'Architectural grade',
-  //     'Quality Testing': 'Continuous monitoring',
-  //     'Curing Method': 'Controlled environment',
-  //     'Completion Schedule': '8 months'
-  //   }
-  // },
-  // {
-  //   id: 'equipment-installation-transport-2024',
-  //   title: 'Heavy Equipment Installation & Transport',
-  //   description: 'Specialized heavy equipment transportation, rigging, and precision installation for industrial and infrastructure projects requiring expert handling.',
-  //   category: 'Equipment Installation',
-  //   location: 'Bay Area Industrial Zone',
-  //   completionDate: '2024',
-  //   client: 'Industrial Equipment Solutions',
-  //   duration: '6 months',
-  //   teamSize: 12,
-  //   thumbnailUrl: '/images/projects/IMG_20250522_183649 (23).jpg',
-  //   galleryImages: [
-  //     '/images/projects/IMG_20250522_183649 (21).jpg',
-  //     '/images/projects/IMG_20250522_183649 (22).jpg',
-  //     '/images/projects/IMG_20250522_183649 (23).jpg',
-  //     '/images/projects/IMG_20250522_183649 (24).jpg',
-  //     '/images/projects/IMG_20250522_183649 (25).jpg',
-  //     '/images/projects/IMG_20250522_183649 (26).jpg',
-  //     '/images/projects/IMG_20250522_183649 (27).jpg',
-  //     '/images/projects/IMG_20250522_183649.jpg'
-  //   ],
-  //   features: [
-  //     'Heavy machinery transport and rigging',
-  //     'Precision equipment placement',
-  //     'Specialized crane operations',
-  //     'Safety protocol implementation',
-  //     'Equipment commissioning support',
-  //     'Site preparation for installations',
-  //     'Load calculation and engineering',
-  //     'Post-installation testing and verification'
-  //   ],
-  //   specifications: {
-  //     'Maximum Load Capacity': '300+ tons',
-  //     'Crane Capacity': '500-ton mobile cranes',
-  //     'Placement Precision': '±3mm accuracy',
-  //     'Transport Distance': '500+ miles',
-  //     'Equipment Types': '15+ different systems',
-  //     'Safety Certifications': 'All current and valid',
-  //     'Project Timeline': '6 months',
-  //     'Success Rate': '100% successful installations'
-  //   }
-  // }
+  }
 ];
 
 /**
@@ -285,9 +196,11 @@ const ProjectCard = ({ project, index, onViewDetails }: ProjectCardProps) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group bg-white rounded-2xl shadow-lg border-2 border-gold-200/50 
-                 overflow-hidden hover:shadow-xl hover:-translate-y-1 
-                 transition-all duration-300"
+      className="group bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl 
+                 shadow-xl border-2 border-gold-300/60 overflow-hidden 
+                 hover:shadow-2xl hover:-translate-y-2 hover:border-gold-400/80
+                 transition-all duration-300 backdrop-blur-sm
+                 ring-1 ring-white/20"
     >
       {/* Project Image with Enhanced Overlay */}
       <div 
@@ -339,49 +252,31 @@ const ProjectCard = ({ project, index, onViewDetails }: ProjectCardProps) => {
                         rounded-full px-2 py-1 text-white text-xs font-medium">
           {project.galleryImages.length} Photos
         </div>
-
-        {/* Project Stats Overlay */}
-        {/* <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="flex gap-2">
-            {project.duration && (
-              <span className="inline-flex items-center px-2 py-1 bg-white/90 backdrop-blur-sm rounded text-xs font-medium text-gray-700">
-                <Clock className="w-3 h-3 mr-1" />
-                {project.duration}
-              </span>
-            )}
-            {project.teamSize && (
-              <span className="inline-flex items-center px-2 py-1 bg-white/90 backdrop-blur-sm rounded text-xs font-medium text-gray-700">
-                <Users className="w-3 h-3 mr-1" />
-                {project.teamSize} team
-              </span>
-            )}
-          </div>
-        </div> */}
       </div>
 
       {/* Enhanced Project Content */}
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gold-600 transition-colors">
+        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gold-700 transition-colors">
           {project.title}
         </h3>
         
-        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-gray-700 text-sm leading-relaxed mb-4 line-clamp-3">
           {project.description}
         </p>
 
         {/* Enhanced Project Meta */}
         <div className="space-y-2 mb-6">
-          <div className="flex items-center text-sm text-gray-500">
-            <MapPin className="w-4 h-4 mr-2 text-gold-500 flex-shrink-0" />
+          <div className="flex items-center text-sm text-gray-600">
+            <MapPin className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
             <span className="truncate">{project.location}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-500">
-            <Calendar className="w-4 h-4 mr-2 text-gold-500 flex-shrink-0" />
+          <div className="flex items-center text-sm text-gray-600">
+            <Calendar className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
             <span>Completed {project.completionDate}</span>
           </div>
           {project.client && (
-            <div className="flex items-center text-sm text-gray-500">
-              <Award className="w-4 h-4 mr-2 text-gold-500 flex-shrink-0" />
+            <div className="flex items-center text-sm text-gray-600">
+              <Award className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
               <span className="truncate">{project.client}</span>
             </div>
           )}
@@ -391,10 +286,11 @@ const ProjectCard = ({ project, index, onViewDetails }: ProjectCardProps) => {
         <button
           onClick={() => onViewDetails(project)}
           className="w-full inline-flex items-center justify-center px-4 py-3 
-                     bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gold-50 hover:to-gold-100 
-                     border border-gray-200 hover:border-gold-300
-                     text-gray-700 hover:text-gold-700 font-medium rounded-lg
-                     transition-all duration-200 group/btn shadow-sm hover:shadow-md"
+                     bg-gradient-to-r from-white/90 to-amber-50/90 hover:from-gold-100 hover:to-gold-200 
+                     border-2 border-gold-300/50 hover:border-gold-400/70
+                     text-gray-700 hover:text-gold-800 font-medium rounded-lg
+                     transition-all duration-200 group/btn shadow-md hover:shadow-lg
+                     backdrop-blur-sm ring-1 ring-white/30"
           aria-label={`View detailed information about ${project.title}`}
         >
           View Project Details
@@ -535,30 +431,30 @@ export default function ProjectShowcase() {
       {/* Content overlay */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 py-16 px-6">
-          {/* Section Header */}
+          {/* Enhanced Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
-            className="text-center backdrop-blur-sm mb-12 p-8 shadow-xl rounded-2xl border border-white/20 bg-white/80"
+            className="text-center backdrop-blur-sm mb-12 p-8 shadow-xl rounded-2xl border border-gold-300/40 bg-gradient-to-br from-amber-50/95 to-orange-50/95 ring-1 ring-white/30"
           >
             <h2 
               id="projects-heading"
               className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
             >
               Our
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-500 to-gold-700">
                 {' '}Portfolio
               </span>
               {' '}Showcase
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               Explore our comprehensive portfolio of completed projects demonstrating our expertise
               in site development, infrastructure systems, concrete construction, and specialized equipment installation.
             </p>
           </motion.div>
 
-          {/* Category Filters */}
+          {/* Enhanced Category Filters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -576,8 +472,8 @@ export default function ProjectShowcase() {
                 className={`
                   relative px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2
                   ${selectedCategory === category
-                    ? 'bg-gold-400 text-white shadow-lg shadow-gold-400/25'
-                    : 'bg-white/90 text-gray-700 border border-gray-200 hover:border-gold-400 hover:text-gold-600 shadow-sm hover:shadow-md backdrop-blur-sm'}
+                    ? 'bg-gold-400 text-white shadow-lg shadow-gold-400/25 ring-1 ring-white/20'
+                    : 'bg-gradient-to-br from-amber-50/95 to-orange-50/95 text-gray-700 border-2 border-gold-300/50 hover:border-gold-400/70 hover:text-gold-800 shadow-md hover:shadow-lg backdrop-blur-sm ring-1 ring-white/30'}
                 `}
                 role="tab"
                 aria-selected={selectedCategory === category}
@@ -608,18 +504,18 @@ export default function ProjectShowcase() {
             </AnimatePresence>
           </div>
 
-          {/* CTA Section */}
-          <motion.div
+          {/* Enhanced CTA Section */}
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center mt-16"
           >
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-gold-200/30 shadow-xl">
+            <div className="bg-gradient-to-br from-amber-50/95 to-orange-50/95 backdrop-blur-sm rounded-2xl p-8 border border-gold-300/40 shadow-xl ring-1 ring-white/30">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 Ready to Start Your Project?
               </h3>
-              <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+              <p className="text-gray-700 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
                 From site development to complex infrastructure installation, our comprehensive project portfolio 
                 demonstrates our ability to deliver exceptional results across all construction disciplines.
               </p>
@@ -629,7 +525,8 @@ export default function ProjectShowcase() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gold-400 to-gold-500
-                           text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                           text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl
+                           ring-1 ring-gold-200/50"
                 >
                   Request a Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -638,14 +535,15 @@ export default function ProjectShowcase() {
                   href="/services"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center px-8 py-4 bg-white border-2 border-gold-400
-                           text-gold-600 hover:bg-gold-50 font-medium rounded-lg transition-all duration-300"
+                  className="inline-flex items-center px-8 py-4 bg-white/90 border-2 border-gold-400
+                           text-gold-700 hover:bg-gold-50 font-medium rounded-lg transition-all duration-300
+                           shadow-md hover:shadow-lg ring-1 ring-white/30"
                 >
                   View Our Services
                 </motion.a>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 
@@ -677,13 +575,13 @@ export default function ProjectShowcase() {
               </div>
             </div>
             
-            {/* Modal Content */}
+            {/* Enhanced Modal Content */}
             <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center p-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-auto border border-gold-200"
+                className="relative bg-gradient-to-br from-amber-50/98 to-orange-50/98 rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-auto border border-gold-300/60 ring-1 ring-white/20 backdrop-blur-sm"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close Button */}
@@ -710,7 +608,7 @@ export default function ProjectShowcase() {
                         <Tag className="w-3 h-3 mr-1.5" />
                         {selectedProject.category}
                       </span>
-                      {selectedProject.duration && (
+                      {/* {selectedProject.duration && (
                         <span className="inline-flex items-center px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
                           <Clock className="w-3 h-3 mr-1.5" />
                           {selectedProject.duration}
@@ -721,9 +619,9 @@ export default function ProjectShowcase() {
                           <Users className="w-3 h-3 mr-1.5" />
                           {selectedProject.teamSize} team members
                         </span>
-                      )}
+                      )} */}
                     </div>
-                    <p className="text-lg text-gray-600 leading-relaxed">
+                    <p className="text-lg text-gray-700 leading-relaxed">
                       {selectedProject.description}
                     </p>
                   </div>
@@ -903,7 +801,7 @@ export default function ProjectShowcase() {
                       <h4 className="text-lg font-semibold text-gray-900 mb-2">
                         Interested in a Similar Project?
                       </h4>
-                      <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                      <p className="text-gray-700 mb-6 text-sm leading-relaxed">
                         Let&apos;s discuss how our proven expertise can help bring your vision to life with the same 
                         level of precision and excellence demonstrated in this comprehensive project.
                       </p>
@@ -934,5 +832,5 @@ export default function ProjectShowcase() {
         )}
       </AnimatePresence>
     </section>
-  );
+  )
 }
