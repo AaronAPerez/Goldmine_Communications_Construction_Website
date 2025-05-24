@@ -9,10 +9,10 @@ import {
   Shield,
   Lightbulb,
   Users,
-  ArrowRight, 
-  Star,
+  ArrowRight,
   TrendingUp,
   Phone,
+  TrophyIcon,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -212,9 +212,9 @@ export default function AboutServicesSection() {
           className="inline-block mb-6"
           whileHover={{ scale: 1.05 }}
         >
-          <span className="inline-flex items-center px-4 py-2 bg-gold-100 text-gold-800 
+          <span className="inline-flex items-center px-4 py-2 bg-[#B3995D] text-white shadow-2xl 
                          rounded-full text-sm font-semibold border border-gold-200">
-            <Star className="w-4 h-4 mr-2" />
+            <TrophyIcon className="w-4 h-4 mr-2" />
             Excellence Since 2022
           </span>
         </motion.div>
@@ -225,7 +225,7 @@ export default function AboutServicesSection() {
         >
           Where Legacy Meets{' '}
           <span className="relative">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-700">
               Innovation
             </span>
             {/* Decorative underline */}
@@ -285,10 +285,10 @@ export default function AboutServicesSection() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                 transition={{ delay: 0.6 + (index * 0.1) }}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm 
+                className="flex items-center gap-6 shadow-sm 
                          border border-gray-100 hover:shadow-md transition-shadow"
               >
-                <div className="w-10 h-10 bg-gradient-to-r from-gold-400 to-gold-600 
+                <div className="w-10 h-10 bg-gradient-to-r from-gold-400 to-gold-600
                               rounded-lg flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-white" />
                 </div>
@@ -305,7 +305,7 @@ export default function AboutServicesSection() {
           >
             <a
               href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gold-400 to-gold-600 
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gold-400 to-[#B3995D] 
                        text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300
                        hover:-translate-y-1"
             >
@@ -384,11 +384,11 @@ export default function AboutServicesSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ delay: 1.0 }}
-            className="absolute -top-6 -right-6 bg-gold-400 rounded-2xl shadow-2xl p-6"
+            className="absolute -top-6 -right-6  bg-gradient-to-r from-gold-400 to-[#B3995D] rounded-2xl shadow-2xl p-4"
           >
             <div className="text-center text-white">
               <div className="text-2xl font-bold mb-1 text-shadow-lg">Lic# 1099543</div>
-              <div className="text-sm text-black">Licensed & Insured</div>
+              <div className="text-sm text-black font-medium">Licensed & Insured</div>
             </div>
           </motion.div>
         </motion.div>
@@ -435,8 +435,8 @@ export default function AboutServicesSection() {
         custom={4}
         className="mb-20"
       >
-        <div className="text-center mb-16">
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-10">
+          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Foundation Principles
           </h3>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -444,7 +444,7 @@ export default function AboutServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {coreValues.map((value, index) => (
             <ValueCard
               key={value.id}
@@ -464,7 +464,7 @@ export default function AboutServicesSection() {
         custom={5}
         className="text-center"
       >
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 md:p-16 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-10 md:p-14 text-white relative overflow-hidden">
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-10">
             <div 
@@ -480,15 +480,15 @@ export default function AboutServicesSection() {
             <h3 className="text-3xl md:text-4xl font-bold mb-8">
               Setting the Pace for Tomorrow
             </h3>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto mb-6 leading-relaxed">
               At Goldmine Communications, we don&apos;t just keep pace with the latest industry 
               demands; we set the pace. Founded on principles of optimism, teamwork, creativity, 
               resourcefulness, exacting standards, unwavering productivity, safety, integrity, 
               dedication, and customer satisfaction.
             </p>
             
-            <div className="bg-gold-400/10 backdrop-blur-sm rounded-2xl p-8 border border-gold-400/20 max-w-4xl mx-auto">
-              <blockquote className="text-2xl md:text-3xl font-semibold text-gold-400 mb-6 italic">
+            <div className="bg-gold-400/10 backdrop-blur-sm rounded-2xl p-4 border border-gold-400/20 max-w-4xl mx-auto">
+              <blockquote className="text-xl md:text-2xl font-semibold text-gold-400 mb-4 italic">
                 &quot;Join us on this journey towards a future where business is not just efficient but transformative.&quot;
               </blockquote>
               <p className="text-gray-300 text-lg">

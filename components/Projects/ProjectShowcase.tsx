@@ -53,7 +53,7 @@ const projects: Project[] = [
     completionDate: '2024',
     thumbnailUrl: '/images/projects/AvStation-card.jpg',
     galleryImages: [
-      '/images/WorkOregonPics/image16.jpeg',
+      '/images/WorkOregonPics/image16.jpg',
       '/images/WorkOregonPics/image2.jpeg',
       '/images/WorkOregonPics/image3.jpeg',
       '/images/WorkOregonPics/image4.jpeg',
@@ -249,7 +249,9 @@ const ProjectCard = ({ project, index, onViewDetails }: ProjectCardProps) => {
 
         {/* Gallery Count Badge */}
         <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm 
-                        rounded-full px-2 py-1 text-white text-xs font-medium">
+                        rounded-full px-2 py-1 text-white text-xs font-medium
+                        xs:pt-12
+                        ">
           {project.galleryImages.length} Photos
         </div>
       </div>

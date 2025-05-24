@@ -25,6 +25,7 @@
     "imagemin-webp": "^8.0.0",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.473.0",
+    "motion": "^12.12.2",
     "next": "^15.3.2",
     "nodemailer": "^6.10.1",
     "react": "^19.0.0",

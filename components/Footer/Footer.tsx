@@ -7,10 +7,6 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
-  Instagram,
   Clock,
   Shield,
   Award,
@@ -100,32 +96,32 @@ const businessHighlights = [
   }
 ];
 
-const socialLinks = [
-  { 
-    name: 'Facebook', 
-    href: '#', 
-    icon: <Facebook size={20} />,
-    color: 'hover:text-blue-500'
-  },
-  { 
-    name: 'Twitter', 
-    href: '#', 
-    icon: <Twitter size={20} />,
-    color: 'hover:text-sky-500'
-  },
-  { 
-    name: 'LinkedIn', 
-    href: '#', 
-    icon: <Linkedin size={20} />,
-    color: 'hover:text-blue-600'
-  },
-  { 
-    name: 'Instagram', 
-    href: '#', 
-    icon: <Instagram size={20} />,
-    color: 'hover:text-pink-500'
-  }
-];
+// const socialLinks = [
+//   { 
+//     name: 'Facebook', 
+//     href: '#', 
+//     icon: <Facebook size={20} />,
+//     color: 'hover:text-blue-500'
+//   },
+//   { 
+//     name: 'Twitter', 
+//     href: '#', 
+//     icon: <Twitter size={20} />,
+//     color: 'hover:text-sky-500'
+//   },
+//   { 
+//     name: 'LinkedIn', 
+//     href: '#', 
+//     icon: <Linkedin size={20} />,
+//     color: 'hover:text-blue-600'
+//   },
+//   { 
+//     name: 'Instagram', 
+//     href: '#', 
+//     icon: <Instagram size={20} />,
+//     color: 'hover:text-pink-500'
+//   }
+// ];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -216,7 +212,7 @@ export default function Footer() {
               </div>
 
               {/* Social Media Links */}
-              <div className="flex space-x-4 pt-4">
+              {/* <div className="flex space-x-4 pt-4">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.name}
@@ -230,7 +226,7 @@ export default function Footer() {
                     {social.icon}
                   </motion.a>
                 ))}
-              </div>
+              </div> */}
             </div>
           </motion.div>
 

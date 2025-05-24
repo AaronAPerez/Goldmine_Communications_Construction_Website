@@ -73,7 +73,7 @@ export default function FloatingNavigation() {
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain"
-                    priority
+                    // priority
                   />
                 </div>
               </Link>
@@ -125,7 +125,7 @@ export default function FloatingNavigation() {
                   alt="Goldmine Communications and Construction"
                   fill
                   className="object-contain"
-                  priority
+                  // priority
                 />
               </div>
             </Link>
