@@ -406,7 +406,7 @@ const ContactPage = () => {
               >
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <Image
-                    src="/images/logo-circular.png"
+                    src="/images/logo-circular.jpg"
                     alt="Goldmine Communications and Construction Logo"
                     fill
                     className="object-contain"
