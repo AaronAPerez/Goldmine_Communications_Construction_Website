@@ -45,7 +45,7 @@ const constructionServices: ConstructionService[] = [
     title: 'Site Development & Preparation',
     description: 'Comprehensive site preparation, excavation, and infrastructure development for all types of construction projects.',
     icon: <Building className="w-8 h-8" />,
-    projectImage: '/images/projects/IMG_20250522_183647 (1).jpg',
+    projectImage: '/images/projects/jack-hammer.jpg',
     projectName: 'Major Site Development Project',
     // galleryImages: [
     //   '/images/projects/IMG_20250522_183647 (1).jpg',
@@ -72,7 +72,7 @@ const constructionServices: ConstructionService[] = [
     title: 'Structural Concrete & Foundations',
     description: 'Expert concrete work including foundations, structural elements, and specialized concrete construction.',
     icon: <Target className="w-8 h-8" />,
-    projectImage: '/images/projects/IMG_20250522_183648 (10).jpg',
+    projectImage: '/images/projects/structual-concrete.jpg',
     projectName: 'Advanced Concrete Construction',
     // galleryImages: [
     //   '/images/projects/IMG_20250522_183648 (10).jpg',
@@ -99,7 +99,7 @@ const constructionServices: ConstructionService[] = [
     title: 'Infrastructure & Utility Systems',
     description: 'Complete infrastructure installation including utilities, communications, and specialized systems.',
     icon: <Wrench className="w-8 h-8" />,
-    projectImage: '/images/projects/IMG_20250522_183649 (17).jpg',
+    projectImage: '/images/projects/utility-system.jpg',
     projectName: 'Infrastructure Systems Project',
     // galleryImages: [
     //   '/images/projects/IMG_20250522_183649 (17).jpg',

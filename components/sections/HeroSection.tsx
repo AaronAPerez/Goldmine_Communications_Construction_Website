@@ -259,7 +259,7 @@ const HeroSection = () => {
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain p-2"
-                    priority
+                    // priority
                     sizes="(max-width: 640px) 128px, 144px"
                   />
                 </div>
@@ -444,7 +444,7 @@ const HeroSection = () => {
                       alt="Goldmine Communications and Construction"
                       fill
                       className="object-contain p-8"
-                      priority
+                      // priority
                     />
                   </div>
                 </div>
