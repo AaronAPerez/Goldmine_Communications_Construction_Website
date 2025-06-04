@@ -8,11 +8,7 @@ import Footer from '../components/Footer/Footer';
 import { Analytics } from "@vercel/analytics/react";
 import { ScrollToTop } from '../components/Navigation/ScrollToTop';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter'
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Goldmine Communications & Construction',
@@ -51,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} scroll-smooth`}>
+    <html lang="en" className="scroll-smooth">
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"

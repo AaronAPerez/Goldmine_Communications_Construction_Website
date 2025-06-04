@@ -2,16 +2,16 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useInView } from 'framer-motion';
-import { 
-  ArrowRight, 
-  Phone, 
-  ChevronLeft, 
-  ChevronRight, 
-  Play, 
-  Pause, 
-  Shield, 
-  Clock, 
-  Award, 
+import {
+  ArrowRight,
+  Phone,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+  Shield,
+  Clock,
+  Award,
   Target,
   Star,
   Zap
@@ -54,14 +54,14 @@ const heroSlides: HeroSlide[] = [
     subtitle: 'Clean Energy Technology',
     description: 'Advanced electric vehicle charging solutions and smart technology integration for sustainable transportation networks.',
     cta: {
-      primary: { 
-        text: 'Explore EV Solutions', 
+      primary: {
+        text: 'Explore EV Solutions',
         href: '/communications',
         icon: <Zap className="w-5 h-5" />
       },
-      secondary: { 
-        text: 'View Projects', 
-        href: '/projects' 
+      secondary: {
+        text: 'View Projects',
+        href: '/projects'
       }
     },
     priority: true
@@ -73,14 +73,14 @@ const heroSlides: HeroSlide[] = [
     subtitle: 'Network Infrastructure Excellence',
     description: 'Cutting-edge telecommunications, fiber optic systems, and 5G infrastructure for the connected world.',
     cta: {
-      primary: { 
-        text: 'Communications Services', 
+      primary: {
+        text: 'Communications Services',
         href: '/communications',
         icon: <ArrowRight className="w-5 h-5" />
       },
-      secondary: { 
-        text: 'Get Quote', 
-        href: '/contact' 
+      secondary: {
+        text: 'Get Quote',
+        href: '/contact'
       }
     }
   },
@@ -88,16 +88,16 @@ const heroSlides: HeroSlide[] = [
     id: 'construction',
     image: '/images/WorkOregonPics/construction.jpg',
     title: 'Professional Construction',
-    subtitle: 'Healthcare & Infrastructure Specialists',
+    subtitle: 'Site Development',
     description: 'Expert construction services with 15+ years of specialized experience in healthcare facilities and critical infrastructure.',
     cta: {
-      primary: { 
-        text: 'Construction Services', 
+      primary: {
+        text: 'Construction Services',
         href: '/construction',
         icon: <ArrowRight className="w-5 h-5" />
       },
-      secondary: { 
-        text: 'Free Consultation', 
+      secondary: {
+        text: 'Free Consultation',
         href: '/contact',
         icon: <Phone className="w-4 h-4" />
       }
@@ -123,14 +123,14 @@ const CarouselDots = ({ slides, currentIndex, onDotClick }: CarouselDotsProps) =
         className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none 
                    focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-black/50 
                    ${index === currentIndex
-                     ? 'bg-gold-400 scale-110 shadow-lg shadow-gold-400/50'
-                     : 'bg-white/50 hover:bg-white/70 hover:scale-105'
-                   }`}
+            ? 'bg-gold-400 scale-110 shadow-lg shadow-gold-400/50'
+            : 'bg-white/50 hover:bg-white/70 hover:scale-105'
+          }`}
         aria-label={`Go to slide ${index + 1}: ${slide.title}`}
       />
     ))}
   </div>
-); 
+);
 
 /**
  * Main Hero Section Component
@@ -140,7 +140,7 @@ const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [, setIsLoaded] = useState(false);
   const [, setImageLoadStates] = useState<boolean[]>(new Array(heroSlides.length).fill(false));
-  
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -205,7 +205,7 @@ const HeroSection = () => {
   const currentSlideData = heroSlides[currentSlide];
 
   return (
-  <section
+    <section
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden w-full max-w-full"
       aria-labelledby="hero-heading"
@@ -227,10 +227,10 @@ const HeroSection = () => {
               alt="Hero image"
               fill
               priority={true} // Critical for LCP  
-              fetchPriority="high" 
+              fetchPriority="high"
               onLoad={() => handleImageLoad(currentSlide)}
             />
-            
+
             {/* Enhanced overlays for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/70" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30" />
@@ -238,10 +238,10 @@ const HeroSection = () => {
         </AnimatePresence>
       </div>
 
-       {/* Main Content Container - Fixed width constraints */}
+      {/* Main Content Container - Fixed width constraints */}
       <div className="relative z-10 w-full max-w-full min-h-screen flex items-center pt-20 pb-32">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Mobile Company Branding - Constrained width */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -264,7 +264,7 @@ const HeroSection = () => {
                   />
                 </div>
               </div>
-              
+
               {/* Mobile Company Name */}
               <div className="text-center max-w-full">
                 <h2 className="text-xl sm:text-2xl font-bold text-gold-400 mb-1 text-shadow break-words">
@@ -279,7 +279,7 @@ const HeroSection = () => {
 
           {/* Desktop Layout Grid - Responsive constraints */}
           <div className="w-full max-w-full lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-12 lg:items-center">
-            
+
             {/* Content Column - Proper width constraints */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -311,8 +311,8 @@ const HeroSection = () => {
                   </motion.div>
 
                   {/* Main Title - Responsive text sizing */}
-                  <h1 
-                    id="hero-heading" 
+                  <h1
+                    id="hero-heading"
                     className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight
                              w-full max-w-full break-words"
                   >
@@ -444,7 +444,7 @@ const HeroSection = () => {
                       alt="Goldmine Communications and Construction"
                       fill
                       className="object-contain p-8"
-                      // priority
+                    // priority
                     />
                   </div>
                 </div>
@@ -564,7 +564,7 @@ const HeroSection = () => {
       )}
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.5, duration: 0.6 }}
@@ -599,10 +599,10 @@ const HeroSection = () => {
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Floating Particles Effect */}
-      <FloatingParticles/>
+      <FloatingParticles />
 
       {/* Screen reader announcement */}
       <div

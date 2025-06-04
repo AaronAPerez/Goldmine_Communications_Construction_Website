@@ -18,8 +18,8 @@ import {
 import Image from 'next/image';
 
 /**
- * Enhanced Project Interface
- * Includes all necessary properties for comprehensive project display
+ * Project Interface
+ * Includes all necessary properties for project display
  */
 interface Project {
   id: string;
@@ -31,16 +31,16 @@ interface Project {
   thumbnailUrl: string;
   galleryImages: string[];
   features: string[];
-  client?: string;
-  duration?: string;
-  teamSize?: number;
+  // client?: string;
+  // duration?: string;
+  // teamSize?: number;
   specifications?: {
     [key: string]: string;
   };
 }
 
 /**
- * Comprehensive project data using all uploaded images
+ * Project data using all uploaded images
  * Organized by different types of construction work
  */
 const projects: Project[] = [
@@ -50,27 +50,26 @@ const projects: Project[] = [
     description: 'Comprehensive implementation of EV charging stations with advanced infrastructure support and safety systems for sustainable transportation.',
     category: 'Infrastructure',
     location: 'Chemult, Oregon',
-    completionDate: '2024',
-    thumbnailUrl: '/images/projects/AvStation-card.jpg',
+    completionDate: 'October, 2024',
+    thumbnailUrl: '/images/projects/Oregon-AV-Station/AV-station/AvStation-card.jpg',
     galleryImages: [
-      '/images/WorkOregonPics/image16.jpg',
-      '/images/WorkOregonPics/image2.jpeg',
-      '/images/WorkOregonPics/image3.jpeg',
-      '/images/WorkOregonPics/image4.jpeg',
-      '/images/WorkOregonPics/image5.jpeg',
-      '/images/WorkOregonPics/image6.jpeg',
-      '/images/WorkOregonPics/image7.jpeg',
-      '/images/WorkOregonPics/image8.jpeg',
-      '/images/WorkOregonPics/image9.jpeg',
-      '/images/WorkOregonPics/image10.jpeg',
-      '/images/WorkOregonPics/image11.jpeg',
-      '/images/WorkOregonPics/image13.jpeg',
-      '/images/WorkOregonPics/image14.jpeg',
-      '/images/WorkOregonPics/image15.jpeg',
-      '/images/WorkOregonPics/image17.jpeg',
-      '/images/WorkOregonPics/image18.jpeg',
-      '/images/WorkOregonPics/image19.jpeg',
-      '/images/WorkOregonPics/image21.jpeg'
+      '/images/projects/Oregon-AV-Station/trench/trench-1.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-2.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-5.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-7.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-8.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-10.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-11.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-12.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-13.jpg',
+      '/images/projects/Oregon-AV-Station/trench/trench-16.jpg',
+      '/images/projects/Oregon-AV-Station/AV-station/Oregon-AvStations-hero.jpg',
+      '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-1.jpg',
+      '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-2.jpg',
+      '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-7.jpg',
+      '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-9.jpg',
+      '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-10.jpg',
+      '/images/projects/Oregon-AV-Station/site/site-1.jpg',
     ],
     features: [
       'High-capacity charging infrastructure',
@@ -84,74 +83,71 @@ const projects: Project[] = [
       'Charging Capacity': 'Up to 350kW DC Fast Charging',
       'Installation Type': 'Commercial Grade',
       'Safety Standards': 'UL Listed & Code Compliant',
-      'Project Duration': '6 months'
+      // 'Project Duration': '6 months'
     }
   },
-  // {
-  //   id: 'comprehensive-site-development-2024',
-  //   title: 'Comprehensive Site Development',
-  //   description: 'Large-scale site development project featuring extensive excavation, grading, access road construction, and complete infrastructure preparation for commercial development.',
-  //   category: 'Site Development',
-  //   location: 'Northern California',
-  //   completionDate: '2024',
-  //   client: 'Regional Development Authority',
-  //   duration: '18 months',
-  //   teamSize: 25,
-  //   thumbnailUrl: '/images/projects/IMG_20250522_183647 (3).jpg',
-  //   galleryImages: [
-  //     '/images/projects/IMG_20250522_183647 (1).jpg',
-  //     '/images/projects/IMG_20250522_183647 (2).jpg',
-  //     '/images/projects/IMG_20250522_183647 (3).jpg',
-  //     '/images/projects/IMG_20250522_183647 (4).jpg',
-  //     '/images/projects/IMG_20250522_183648 (2).jpg',
-  //     '/images/projects/IMG_20250522_183648 (3).jpg',
-  //     '/images/projects/IMG_20250522_183648 (4).jpg',
-  //     '/images/projects/IMG_20250522_183648 (5).jpg',
-  //     '/images/projects/IMG_20250522_183648 (6).jpg',
-  //     '/images/projects/IMG_20250522_183648 (7).jpg'
-  //   ],
-  //   features: [
-  //     'Multi-phase site excavation and grading',
-  //     'Access road and pathway construction',
-  //     'Utility corridor preparation',
-  //     'Environmental compliance and monitoring',
-  //     'Drainage system implementation',
-  //     'Site preparation for multiple structures',
-  //     'Soil stabilization and compaction',
-  //     'Safety protocol management throughout phases'
-  //   ],
-  //   specifications: {
-  //     'Project Type': 'Large-Scale Site Development',
-  //     'Site Area': '150+ acres',
-  //     'Excavation Volume': '500,000+ cubic yards',
-  //     'Access Roads': '5+ miles constructed',
-  //     'Project Duration': '18 months',
-  //     'Environmental Standards': 'Full compliance achieved',
-  //     'Safety Record': 'Zero incidents across all phases'
-  //   }
-  // },
+  {
+    id: 'comprehensive-site-development-2024',
+    title: 'Comprehensive Site Development',
+    description: 'Large-scale site development project featuring extensive excavation, grading, access road construction, and complete infrastructure preparation for commercial development.',
+    category: 'Site Development',
+    location: 'Bodega Bay, CA',
+    completionDate: 'May, 2025',
+    // client: 'Regional Development Authority',
+    // duration: '18 months',
+    // teamSize: 25,
+    thumbnailUrl:  '/images/projects/Bodega-Bay-CA/transport-1.jpg',
+    galleryImages: [
+      '/images/projects/Bodega-Bay-CA/jack-hammer-1.jpg',
+      '/images/projects/Bodega-Bay-CA/bulldozer-1.jpg',
+      '/images/projects/Bodega-Bay-CA/bulldozer-2.jpg',
+      '/images/projects/Bodega-Bay-CA/bulldozer-3.jpg',
+      '/images/projects/Bodega-Bay-CA/trench-1.jpg',
+      '/images/projects/Bodega-Bay-CA/trench-2.jpg',
+      '/images/projects/Bodega-Bay-CA/trench-3.jpg',
+      '/images/projects/Bodega-Bay-CA/transport-1.jpg',
+      '/images/projects/Bodega-Bay-CA/transport-2.jpg',
+      '/images/projects/Bodega-Bay-CA/case-1.jpg',
+    ],
+    features: [
+      'Multi-phase site excavation and grading',
+      'Access road and pathway construction',
+      'Utility corridor preparation',
+      'Environmental compliance and monitoring',
+      'Drainage system implementation',
+      'Site preparation for multiple structures',
+      'Soil stabilization and compaction',
+      'Safety protocol management throughout phases'
+    ],
+    specifications: {
+      'Project Type': 'Large-Scale Site Development',
+      'Site Area': '150+ acres',
+      'Excavation Volume': '500,000+ cubic yards',
+      'Access Roads': '5+ miles constructed',
+      // 'Project Duration': '18 months',
+      'Environmental Standards': 'Full compliance achieved',
+      'Safety Record': 'Zero incidents across all phases'
+    }
+  },
   {
     id: 'infrastructure-systems-installation-2024',
     title: 'Advanced Infrastructure Systems',
     description: 'Complex infrastructure installation project featuring telecommunications towers, utility systems, and specialized equipment placement with precision engineering.',
-    category: 'Infrastructure',
-    location: 'Central Valley, CA',
-    completionDate: '2024',
-    client: 'Communications Infrastructure Corp',
-    duration: '12 months',
-    teamSize: 20,
-    thumbnailUrl: '/images/projects/IMG_20250522_183648 (8).jpg',
+    category: 'Telecommunications',
+    location: 'Sparks, NV',
+    completionDate: 'March, 2025',
+    // client: 'Communications Infrastructure Corp',
+    // duration: '12 months',
+    // teamSize: 20,
+    thumbnailUrl:  '/images/projects/Sparks-NV/tower-tree-7.jpg',
     galleryImages: [
-      '/images/projects/IMG_20250522_183648 (8).jpg',
-      '/images/projects/IMG_20250522_183648 (10).jpg',
-      '/images/projects/IMG_20250522_183648 (11).jpg',
-      '/images/projects/IMG_20250522_183648 (12).jpg',
-      '/images/projects/IMG_20250522_183649 (1).jpg',
-      '/images/projects/IMG_20250522_183649 (2).jpg',
-      '/images/projects/IMG_20250522_183649 (3).jpg',
-      '/images/projects/IMG_20250522_183649 (4).jpg',
-      '/images/projects/IMG_20250522_183649 (5).jpg',
-      '/images/projects/IMG_20250522_183649 (6).jpg'
+      '/images/projects/Sparks-NV/tower-base-1.jpg',
+      '/images/projects/Sparks-NV/tower-tree-1.jpg',
+      '/images/projects/Sparks-NV/tower-tree-2.jpg',
+      '/images/projects/Sparks-NV/tower-tree-3.jpg',
+      '/images/projects/Sparks-NV/tower-tree-4.jpg',
+      '/images/projects/Sparks-NV/tower-tree-6.jpg',
+      '/images/projects/Sparks-NV/tower-tree-7.jpg',
     ],
     features: [
       'Telecommunications tower installation',
@@ -170,7 +166,7 @@ const projects: Project[] = [
       'Power Capacity': '500kW systems',
       'Communications': 'Multi-carrier capable',
       'Precision Tolerance': '±2mm placement accuracy',
-      'Completion Time': '12 months',
+      // 'Completion Time': '12 months',
       'System Reliability': '99.99% uptime guaranteed'
     }
   }
@@ -276,12 +272,12 @@ const ProjectCard = ({ project, index, onViewDetails }: ProjectCardProps) => {
             <Calendar className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
             <span>Completed {project.completionDate}</span>
           </div>
-          {project.client && (
+          {/* {project.client && (
             <div className="flex items-center text-sm text-gray-600">
               <Award className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
               <span className="truncate">{project.client}</span>
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Enhanced Action Button */}
@@ -493,7 +489,7 @@ export default function ProjectShowcase() {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8" role="tabpanel">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" role="tabpanel">
             <AnimatePresence mode="wait">
               {filteredProjects.map((project, index) => (
                 <ProjectCard
@@ -556,7 +552,7 @@ export default function ProjectShowcase() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 overflow-y-auto pt-16"
+            className="fixed inset-0 z-50 overflow-y-auto"
             role="dialog"
             aria-modal="true"
             onClick={closeModal}
@@ -578,7 +574,7 @@ export default function ProjectShowcase() {
             </div>
             
             {/* Enhanced Modal Content */}
-            <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center p-4">
+              <div className="relative min-h-screen flex items-center justify-center p-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -599,7 +595,7 @@ export default function ProjectShowcase() {
                 
                 <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-gold-400 to-gold-500 rounded-t-2xl"></div>
                 
-                <div className="p-8 pt-10">
+                <div className="p-4">
                   {/* Project Header */}
                   <div className="mb-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -633,7 +629,7 @@ export default function ProjectShowcase() {
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={currentImageIndex}
-                        initial={{ opacity: 0, scale: 1.05 }}
+                        initial={{ opacity: 0, scale: 1.1 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.4 }}
@@ -659,9 +655,10 @@ export default function ProjectShowcase() {
                               prev === 0 ? selectedProject.galleryImages.length - 1 : prev - 1
                             );
                           }}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full 
-                                   bg-white/95 hover:bg-white border border-gray-200 shadow-lg
+                          className="absolute left-1 top-1/2 -translate-y-1/2 p-2 rounded-full 
+                                   bg-white/90 hover:bg-white border border-gray-200 shadow-lg
                                    text-gray-700 hover:text-gray-900 transition-all duration-200"
+                                   aria-label='Previous Image'
                         >
                           <ChevronLeft className="w-6 h-6" />
                         </button>
@@ -672,18 +669,20 @@ export default function ProjectShowcase() {
                               (prev + 1) % selectedProject.galleryImages.length
                             );
                           }}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full 
-                                   bg-white/95 hover:bg-white border border-gray-200 shadow-lg
+                          className="absolute right-1 top-1/2 -translate-y-1/2 p-2 rounded-full 
+                                   bg-white/90 hover:bg-white border border-gray-200 shadow-lg
                                    text-gray-700 hover:text-gray-900 transition-all duration-200"
+                          aria-label='Next Image'
                         >
                           <ChevronRight className="w-6 h-6" />
                         </button>
 
                         {/* Image Counter */}
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3">
-                          <div className="px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 border border-gray-200 shadow-lg">
+                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-white rounded-full px-3 py-1">
+                       
                             {currentImageIndex + 1} of {selectedProject.galleryImages.length}
-                          </div>
+                        </div>
+
                           <div className="flex gap-1">
                             {selectedProject.galleryImages.map((_, index) => (
                               <button
@@ -700,7 +699,7 @@ export default function ProjectShowcase() {
                               />
                             ))}
                           </div>
-                        </div>
+                     
                       </>
                     )}
                   </div>
@@ -728,7 +727,7 @@ export default function ProjectShowcase() {
                               <span className="text-gray-600">{selectedProject.completionDate}</span>
                             </div>
                           </div>
-                          {selectedProject.client && (
+                          {/* {selectedProject.client && (
                             <div className="flex items-start">
                               <Award className="w-5 h-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
                               <div>
@@ -736,7 +735,7 @@ export default function ProjectShowcase() {
                                 <span className="text-gray-600">{selectedProject.client}</span>
                               </div>
                             </div>
-                          )}
+                          )} */}
                           <div className="flex items-start">
                             <Tag className="w-5 h-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
                             <div>

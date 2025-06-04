@@ -368,7 +368,7 @@ export default function AboutServicesSection() {
           </div>
 
           {/* Achievement Cards */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ delay: 0.8 }}
@@ -378,7 +378,7 @@ export default function AboutServicesSection() {
               <div className="text-3xl font-bold text-gold-600 mb-1">100+</div>
               <div className="text-sm text-gray-600">Projects Completed</div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
