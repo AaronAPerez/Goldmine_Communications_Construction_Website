@@ -2,15 +2,13 @@
 import React from 'react';
 import { Metadata } from 'next';
 
-import { 
-  Award, 
-  Clock, 
-  Users, 
+import {
+  Award,
   CheckCircle,
   ArrowRight,
   Building,
   Target,
-  Shield
+  Shield,
 } from 'lucide-react';
 import ProjectShowcase from '@/components/Projects/ProjectShowcase';
 
@@ -22,9 +20,9 @@ export const metadata: Metadata = {
   title: 'Our Projects Portfolio | Goldmine Communications & Construction',
   description: 'Explore our comprehensive portfolio of completed communications infrastructure and construction projects showcasing quality workmanship, innovative solutions, and client satisfaction.',
   keywords: [
-    'construction projects', 
-    'communications infrastructure', 
-    'portfolio', 
+    'construction projects',
+    'communications infrastructure',
+    'portfolio',
     'case studies',
     'infrastructure development',
     'commercial construction',
@@ -54,35 +52,6 @@ export const metadata: Metadata = {
   }
 };
 
-/**
- * Company statistics for the hero section
- */
-const companyStats = [
-  {
-    number: '15+',
-    label: 'Years Experience',
-    icon: <Clock className="w-6 h-6" />,
-    description: 'Proven track record'
-  },
-  {
-    number: '200+',
-    label: 'Projects Completed',
-    icon: <CheckCircle className="w-6 h-6" />,
-    description: 'Successful deliveries'
-  },
-  {
-    number: '50+',
-    label: 'Team Members',
-    icon: <Users className="w-6 h-6" />,
-    description: 'Expert professionals'
-  },
-  {
-    number: '99.9%',
-    label: 'Client Satisfaction',
-    icon: <Award className="w-6 h-6" />,
-    description: 'Excellence delivered'
-  }
-];
 
 /**
  * Our approach highlights
@@ -116,8 +85,8 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Enhanced Hero Section with Statistics */}
-      <section className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-24 overflow-hidden">
-        {/* Background Pattern */}
+      {/* <section className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-24 overflow-hidden">
+        {/* Background Pattern 
         <div className="absolute inset-0 opacity-10">
           <div 
             className="w-full h-full"
@@ -126,7 +95,7 @@ export default function ProjectsPage() {
               backgroundSize: '60px 60px'
             }}
           />
-        </div>
+        </div> 
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white mb-16">
@@ -144,7 +113,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Company Statistics Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {companyStats.map((stat) => (
               <div 
                 key={stat.label}
@@ -164,10 +133,10 @@ export default function ProjectsPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
 
-          {/* Call to Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      {/* Call to Action Buttons */}
+      {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#portfolio"
               className="inline-flex items-center px-8 py-4 bg-gold-400 hover:bg-gold-500 
@@ -186,12 +155,12 @@ export default function ProjectsPage() {
             >
               Start Your Project
             </a>
-          </div>
-        </div>
-      </section>
+          </div> */}
+      {/* </div>
+      </section> */}
 
       {/* Our Approach Section */}
-      <section className="py-24 bg-white">
+      {/* <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -222,12 +191,14 @@ export default function ProjectsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Main Projects Showcase Section */}
-      <section id="portfolio" className="py-24 bg-gray-50">
+      <section id="portfolio" className="py-6 bg-gray-50">
         <ProjectShowcase />
       </section>
+
+
 
       {/* Professional Credentials Section */}
       <section className="py-24 bg-gray-900">
@@ -236,7 +207,7 @@ export default function ProjectsPage() {
             Licensed, Bonded & Insured
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-            Your confidence is our foundation. We maintain all necessary licenses, 
+            Your confidence is our foundation. We maintain all necessary licenses,
             bonds, and insurance coverage to protect your investment.
           </p>
 
@@ -257,15 +228,53 @@ export default function ProjectsPage() {
               <p className="text-gray-300">Forward your estimate - we&apos;ll provide a competitive alternative!</p>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Contact Information */}
-          <div className="mt-12 pt-8 border-t border-white/20">
-            <div className="text-white/80">
-              <p className="text-lg font-semibold mb-2">Ready to discuss your next project?</p>
-              <p className="text-sm">
-                946 Lincoln Avenue, San Jose, CA 95125 | (925) 305-5980 | info@goldminecomm.net
+      <section className="pt-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Proven Approach
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Every project we undertake follows our time-tested methodology that ensures
+              exceptional results and client satisfaction.
+            </p>
+          </div>
+        </div>
+
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {approachHighlights.map((highlight) => (
+            <div
+              key={highlight.title}
+              className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300"
+            >
+              <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${highlight.color} text-white mb-6`}>
+                {highlight.icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {highlight.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {highlight.description}
               </p>
             </div>
+          ))}
+        </div>
+
+      </section>
+
+
+      {/* Contact Information */}
+      <section>
+        <div className="border-t border-white/20">
+          <div className="text-white/80">
+            <p className="text-lg font-semibold mb-2">Ready to discuss your next project?</p>
+            <p className="text-sm">
+              946 Lincoln Avenue, San Jose, CA 95125 | (925) 305-5980 | info@goldminecomm.net
+            </p>
           </div>
         </div>
       </section>
@@ -277,7 +286,7 @@ export default function ProjectsPage() {
             Transform Your Vision Into Reality
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-            Join our satisfied clients who have experienced the Goldmine difference. 
+            Join our satisfied clients who have experienced the Goldmine difference.
             Let&apos;s bring your next project to life with precision and excellence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -302,6 +311,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
