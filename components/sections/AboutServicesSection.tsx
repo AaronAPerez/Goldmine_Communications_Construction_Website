@@ -328,7 +328,7 @@ export default function AboutServicesSection() {
             {/* Large image - spans full height on left */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/projects/tree-tower.jpg"
+                src="/images/projects/Sparks-NV/tree-tower.jpg"
                 alt="Goldmine team working on telecommunications tree tower"
                 fill
                 className="object-fill"

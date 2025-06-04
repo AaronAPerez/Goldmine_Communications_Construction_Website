@@ -13,9 +13,7 @@ import {
   Target,
   Building,
   Wrench,
-  Eye
 } from 'lucide-react';
-import OptimizedImage from '@/components/common/OptimizedImage';
 
 /**
  * Construction Page Component
@@ -34,8 +32,8 @@ interface ConstructionService {
   icon: React.ReactNode;
   services: string[];
   color: string;
-  projectImages: string[];
-  projectName: string;
+  // projectImages: string[];
+  // projectName: string;
   specifications?: {
     [key: string]: string;
   };
@@ -48,15 +46,15 @@ const constructionServices: ConstructionService[] = [
     description: 'Comprehensive site preparation, excavation, grading, and access development for all types of construction projects.',
     icon: <Building className="w-8 h-8" />,
     color: 'from-blue-500 to-blue-600',
-    projectName: 'Large-Scale Site Development',
-    projectImages: [
-      '/images/projects/IMG_20250522_183647 (1).jpg',
-      '/images/projects/IMG_20250522_183647 (2).jpg',
-      '/images/projects/IMG_20250522_183647 (3).jpg',
-      '/images/projects/IMG_20250522_183647 (4).jpg',
-      '/images/projects/IMG_20250522_183648 (2).jpg',
-      '/images/projects/IMG_20250522_183648 (3).jpg'
-    ],
+    // projectName: 'Large-Scale Site Development',
+    // projectImages: [
+    //   '/images/projects/IMG_20250522_183647 (1).jpg',
+    //   '/images/projects/IMG_20250522_183647 (2).jpg',
+    //   '/images/projects/IMG_20250522_183647 (3).jpg',
+    //   '/images/projects/IMG_20250522_183647 (4).jpg',
+    //   '/images/projects/IMG_20250522_183648 (2).jpg',
+    //   '/images/projects/IMG_20250522_183648 (3).jpg'
+    // ],
     services: [
       'Multi-phase site excavation and grading',
       'Access road and pathway construction',
@@ -82,15 +80,15 @@ const constructionServices: ConstructionService[] = [
     description: 'Advanced infrastructure installation including telecommunications, utilities, and specialized systems integration.',
     icon: <Target className="w-8 h-8" />,
     color: 'from-green-500 to-green-600',
-    projectName: 'Infrastructure Systems Installation',
-    projectImages: [
-      '/images/projects/IMG_20250522_183648 (8).jpg',
-      '/images/projects/IMG_20250522_183648 (10).jpg',
-      '/images/projects/IMG_20250522_183648 (11).jpg',
-      '/images/projects/IMG_20250522_183648 (12).jpg',
-      '/images/projects/IMG_20250522_183649 (1).jpg',
-      '/images/projects/IMG_20250522_183649 (2).jpg'
-    ],
+    // projectName: 'Infrastructure Systems Installation',
+    // projectImages: [
+    //   '/images/projects/IMG_20250522_183648 (8).jpg',
+    //   '/images/projects/IMG_20250522_183648 (10).jpg',
+    //   '/images/projects/IMG_20250522_183648 (11).jpg',
+    //   '/images/projects/IMG_20250522_183648 (12).jpg',
+    //   '/images/projects/IMG_20250522_183649 (1).jpg',
+    //   '/images/projects/IMG_20250522_183649 (2).jpg'
+    // ],
     services: [
       'Telecommunications tower installation and integration',
       'Advanced utility system planning and installation',
@@ -117,15 +115,15 @@ const constructionServices: ConstructionService[] = [
     description: 'Expert concrete construction including foundations, structural elements, and specialized high-strength applications.',
     icon: <Shield className="w-8 h-8" />,
     color: 'from-orange-500 to-orange-600',
-    projectName: 'Advanced Concrete Construction',
-    projectImages: [
-      '/images/projects/IMG_20250522_183649 (11).jpg',
-      '/images/projects/IMG_20250522_183649 (12).jpg',
-      '/images/projects/IMG_20250522_183649 (13).jpg',
-      '/images/projects/IMG_20250522_183649 (14).jpg',
-      '/images/projects/IMG_20250522_183649 (15).jpg',
-      '/images/projects/IMG_20250522_183649 (16).jpg'
-    ],
+    // projectName: 'Advanced Concrete Construction',
+    // projectImages: [
+    //   '/images/projects/IMG_20250522_183649 (11).jpg',
+    //   '/images/projects/IMG_20250522_183649 (12).jpg',
+    //   '/images/projects/IMG_20250522_183649 (13).jpg',
+    //   '/images/projects/IMG_20250522_183649 (14).jpg',
+    //   '/images/projects/IMG_20250522_183649 (15).jpg',
+    //   '/images/projects/IMG_20250522_183649 (16).jpg'
+    // ],
     services: [
       'Deep foundation design and installation',
       'Structural concrete placement and finishing',
@@ -152,15 +150,15 @@ const constructionServices: ConstructionService[] = [
     description: 'Specialized heavy equipment transportation, rigging, and precision installation for complex industrial projects.',
     icon: <Truck className="w-8 h-8" />,
     color: 'from-purple-500 to-purple-600',
-    projectName: 'Equipment Installation & Transport',
-    projectImages: [
-      '/images/projects/IMG_20250522_183649 (23).jpg',
-      '/images/projects/IMG_20250522_183649 (24).jpg',
-      '/images/projects/IMG_20250522_183649 (25).jpg',
-      '/images/projects/IMG_20250522_183649 (26).jpg',
-      '/images/projects/IMG_20250522_183649 (27).jpg',
-      '/images/projects/IMG_20250522_183649.jpg'
-    ],
+    // projectName: 'Equipment Installation & Transport',
+    // projectImages: [
+    //   '/images/projects/IMG_20250522_183649 (23).jpg',
+    //   '/images/projects/IMG_20250522_183649 (24).jpg',
+    //   '/images/projects/IMG_20250522_183649 (25).jpg',
+    //   '/images/projects/IMG_20250522_183649 (26).jpg',
+    //   '/images/projects/IMG_20250522_183649 (27).jpg',
+    //   '/images/projects/IMG_20250522_183649.jpg'
+    // ],
     services: [
       'Heavy machinery transport and logistics coordination',
       'Precision equipment placement using advanced rigging',
@@ -187,15 +185,15 @@ const constructionServices: ConstructionService[] = [
     description: 'Technical construction services including precision cutting, drilling, demolition, and specialized installation work.',
     icon: <Wrench className="w-8 h-8" />,
     color: 'from-red-500 to-red-600',
-    projectName: 'Specialized Technical Work',
-    projectImages: [
-      '/images/projects/IMG_20250522_183649 (17).jpg',
-      '/images/projects/IMG_20250522_183649 (18).jpg',
-      '/images/projects/IMG_20250522_183649 (19).jpg',
-      '/images/projects/IMG_20250522_183649 (20).jpg',
-      '/images/projects/IMG_20250522_183649 (21).jpg',
-      '/images/projects/IMG_20250522_183649 (22).jpg'
-    ],
+    // projectName: 'Specialized Technical Work',
+    // projectImages: [
+    //   '/images/projects/IMG_20250522_183649 (17).jpg',
+    //   '/images/projects/IMG_20250522_183649 (18).jpg',
+    //   '/images/projects/IMG_20250522_183649 (19).jpg',
+    //   '/images/projects/IMG_20250522_183649 (20).jpg',
+    //   '/images/projects/IMG_20250522_183649 (21).jpg',
+    //   '/images/projects/IMG_20250522_183649 (22).jpg'
+    // ],
     services: [
       'Diamond blade concrete cutting and precision sawing',
       'Core drilling for utilities and structural penetrations',
@@ -258,7 +256,7 @@ interface ServiceCardProps {
 const ServiceCard = ({ service, index, isExpanded, onToggle }: ServiceCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true });
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  // const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   return (
     <motion.div
@@ -308,26 +306,26 @@ const ServiceCard = ({ service, index, isExpanded, onToggle }: ServiceCardProps)
         transition={{ duration: 0.3 }}
         className="overflow-hidden"
       >
-        <div className="p-6">
+        {/* <div className="p-6"> */}
           {/* Project Gallery */}
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
               <Eye className="w-5 h-5 text-gold-500 mr-2" />
               {service.projectName} - Project Gallery
-            </h4>
+            </h4> */}
             
             {/* Main Image */}
-            <div className="relative aspect-video rounded-lg overflow-hidden mb-4 bg-gray-100">
+            {/* <div className="relative aspect-video rounded-lg overflow-hidden mb-4 bg-gray-100">
               <OptimizedImage
                 src={service.projectImages[selectedImageIndex]}
                 alt={`${service.projectName} - Image ${selectedImageIndex + 1}`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 600px"
-              />
+              /> */}
               
               {/* Image Navigation */}
-              {service.projectImages.length > 1 && (
+              {/* {service.projectImages.length > 1 && (
                 <>
                   <button
                     onClick={() => setSelectedImageIndex((prev) => 
@@ -349,15 +347,15 @@ const ServiceCard = ({ service, index, isExpanded, onToggle }: ServiceCardProps)
                   </button>
                   
                   {/* Image Counter */}
-                  <div className="absolute bottom-2 right-2 px-2 py-1 bg-black/70 text-white text-xs rounded">
+                   {/* <div className="absolute bottom-2 right-2 px-2 py-1 bg-black/70 text-white text-xs rounded">
                     {selectedImageIndex + 1} / {service.projectImages.length}
                   </div>
                 </>
               )}
-            </div>
+            </div> */}
             
             {/* Thumbnail Navigation */}
-            {service.projectImages.length > 1 && (
+            {/* {service.projectImages.length > 1 && (
               <div className="flex gap-2 overflow-x-auto">
                 {service.projectImages.map((image, idx) => (
                   <button
@@ -377,8 +375,8 @@ const ServiceCard = ({ service, index, isExpanded, onToggle }: ServiceCardProps)
                   </button>
                 ))}
               </div>
-            )}
-          </div>
+            )} */}
+          {/* </div> */}
 
           {/* Services List */}
           <h4 className="font-semibold text-gray-900 mb-4">Services Included:</h4>
@@ -411,7 +409,7 @@ const ServiceCard = ({ service, index, isExpanded, onToggle }: ServiceCardProps)
               </dl>
             </div>
           )}
-        </div>
+        {/* </div> */}
       </motion.div>
     </motion.div>
   );
