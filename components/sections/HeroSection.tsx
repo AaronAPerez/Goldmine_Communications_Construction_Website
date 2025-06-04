@@ -49,7 +49,7 @@ interface HeroSlide {
 const heroSlides: HeroSlide[] = [
   {
     id: 'ev-charging',
-    image: '/images/WorkOregonPics/AvStations-hero.jpg',
+    image: '/images/projects/Oregon-AV-Station/AV-station/Oregon-AvStations-hero.jpg',
     title: 'Future-Ready EV Infrastructure',
     subtitle: 'Clean Energy Technology',
     description: 'Advanced electric vehicle charging solutions and smart technology integration for sustainable transportation networks.',
@@ -68,7 +68,7 @@ const heroSlides: HeroSlide[] = [
   },
   {
     id: 'communications',
-    image: '/images/projects/tree-post-hero.jpg',
+    image: '/images/projects/Sparks-NV/tree-post-hero.jpg',
     title: 'Advanced Communications',
     subtitle: 'Network Infrastructure Excellence',
     description: 'Cutting-edge telecommunications, fiber optic systems, and 5G infrastructure for the connected world.',
@@ -86,7 +86,7 @@ const heroSlides: HeroSlide[] = [
   },
   {
     id: 'construction',
-    image: '/images/WorkOregonPics/construction.jpg',
+    image: '/images/projects/Oregon-AV-Station/trench/trench-4.jpg',
     title: 'Professional Construction',
     subtitle: 'Site Development',
     description: 'Expert construction services with 15+ years of specialized experience in healthcare facilities and critical infrastructure.',
@@ -255,7 +255,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-gold-400/30 to-gold-600/30 rounded-full blur-xl" />
                 <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl border-3 border-gold-400/60 bg-white/10 backdrop-blur-sm">
                   <Image
-                    src="/images/logo-circular.jpg"
+                    src="/images/logo/logo-circular.jpg"
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain p-2"

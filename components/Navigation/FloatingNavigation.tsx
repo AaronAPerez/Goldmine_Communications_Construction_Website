@@ -69,7 +69,7 @@ export default function FloatingNavigation() {
               >
                 <div className="relative w-48 h-14">
                   <Image
-                    src="/images/logo-banner.jpg"
+                    src="/images/logo/logo-banner.jpg"
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain"

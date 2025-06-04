@@ -346,7 +346,7 @@ export default function AboutServicesSection() {
             <div className="flex flex-col gap-4">
               <div className="relative rounded-2xl overflow-hidden shadow-xl flex-1">
                 <Image
-                  src="/images/WorkOregonPics/image3.jpeg"
+                  src="/images/projects/Oregon-AV-Station/trench/trench-card.jpg"
                   alt="Advanced technology implementation"
                   fill
                   className="object-cover"
@@ -356,7 +356,7 @@ export default function AboutServicesSection() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl flex-1">
                 <Image
-                  src="/images/projects/AvStation-parking.jpg"
+                  src="/images/projects/Bodega-Bay-CA/bulldozer-1.jpg"
                   alt="EV charging infrastructure"
                   fill
                   className="object-cover"

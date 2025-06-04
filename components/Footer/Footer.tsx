@@ -155,7 +155,7 @@ export default function Footer() {
               <div className="flex items-center space-x-4">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm border-2 border-gold-400/30">
                   <Image
-                    src="/images/logo-circular.jpg"
+                    src="/images/logo/logo-circular.jpg"
                     alt="Goldmine Communications and Construction"
                     fill
                     className="object-contain p-1"
