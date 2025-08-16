@@ -7,7 +7,6 @@ import {
   ChevronRight, 
   Tag, 
   MapPin, 
-  Calendar, 
   X, 
   Eye,
   ArrowUpRight,
@@ -27,7 +26,7 @@ interface Project {
   description: string;
   category: string;
   location: string;
-  completionDate: string;
+  // completionDate: string;
   thumbnailUrl: string;
   galleryImages: string[];
   features: string[];
@@ -50,7 +49,7 @@ const projects: Project[] = [
     description: 'Comprehensive implementation of EV charging stations with advanced infrastructure support and safety systems for sustainable transportation.',
     category: 'Infrastructure',
     location: 'Chemult, Oregon',
-    completionDate: 'October, 2024',
+    // completionDate: 'October, 2024',
     thumbnailUrl: '/images/projects/Oregon-AV-Station/AV-station/AvStation-card.jpg',
     galleryImages: [
       '/images/projects/Oregon-AV-Station/trench/trench-1.jpg',
@@ -69,7 +68,6 @@ const projects: Project[] = [
       '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-7.jpg',
       '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-9.jpg',
       '/images/projects/Oregon-AV-Station/AV-station/AvStation-parking-10.jpg',
-      '/images/projects/Oregon-AV-Station/site/site-1.jpg',
     ],
     features: [
       'High-capacity charging infrastructure',
@@ -92,15 +90,15 @@ const projects: Project[] = [
     description: 'Large-scale site development project featuring extensive excavation, grading, access road construction, and complete infrastructure preparation for commercial development.',
     category: 'Site Development',
     location: 'Bodega Bay, CA',
-    completionDate: 'May, 2025',
+    // completionDate: 'May, 2025',
     // client: 'Regional Development Authority',
     // duration: '18 months',
     // teamSize: 25,
     thumbnailUrl:  '/images/projects/Bodega-Bay-CA/transport-1.jpg',
     galleryImages: [
       '/images/projects/Bodega-Bay-CA/jack-hammer-1.jpg',
-      '/images/projects/Bodega-Bay-CA/bulldozer-1.jpg',
-      '/images/projects/Bodega-Bay-CA/bulldozer-2.jpg',
+      '/images/projects/Bodega-Bay-CA/bulldozer-transport.jpg',
+      '/images/projects/Bodega-Bay-CA/bulldozer-trench.jpg',
       '/images/projects/Bodega-Bay-CA/bulldozer-3.jpg',
       '/images/projects/Bodega-Bay-CA/trench-1.jpg',
       '/images/projects/Bodega-Bay-CA/trench-2.jpg',
@@ -135,7 +133,7 @@ const projects: Project[] = [
     description: 'Complex infrastructure installation project featuring telecommunications towers, utility systems, and specialized equipment placement with precision engineering.',
     category: 'Telecommunications',
     location: 'Sparks, NV',
-    completionDate: 'March, 2025',
+    // completionDate: 'March, 2025',
     // client: 'Communications Infrastructure Corp',
     // duration: '12 months',
     // teamSize: 20,
@@ -143,7 +141,7 @@ const projects: Project[] = [
     galleryImages: [
       '/images/projects/Sparks-NV/tower-base-1.jpg',
       '/images/projects/Sparks-NV/tower-tree-1.jpg',
-      '/images/projects/Sparks-NV/tower-tree-2.jpg',
+      '/images/projects/Sparks-NV/tower-tree-install.jpg',
       '/images/projects/Sparks-NV/tower-tree-3.jpg',
       '/images/projects/Sparks-NV/tower-tree-4.jpg',
       '/images/projects/Sparks-NV/tower-tree-6.jpg',
@@ -268,10 +266,10 @@ const ProjectCard = ({ project, index, onViewDetails }: ProjectCardProps) => {
             <MapPin className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
             <span className="truncate">{project.location}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-600">
+          {/* <div className="flex items-center text-sm text-gray-600">
             <Calendar className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
             <span>Completed {project.completionDate}</span>
-          </div>
+          </div> */}
           {/* {project.client && (
             <div className="flex items-center text-sm text-gray-600">
               <Award className="w-4 h-4 mr-2 text-gold-600 flex-shrink-0" />
@@ -640,7 +638,7 @@ export default function ProjectShowcase() {
                           alt={`${selectedProject.title} - Image ${currentImageIndex + 1} of ${selectedProject.galleryImages.length}`}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 1200px) 100vw, 1200px"
+                          sizes="(max-width: 600px) 100vw, 600px"
                         />
                       </motion.div>
                     </AnimatePresence>
@@ -720,13 +718,13 @@ export default function ProjectShowcase() {
                               <span className="text-gray-600">{selectedProject.location}</span>
                             </div>
                           </div>
-                          <div className="flex items-start">
+                          {/* <div className="flex items-start">
                             <Calendar className="w-5 h-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
                             <div>
                               <span className="font-medium text-gray-900">Completed: </span>
                               <span className="text-gray-600">{selectedProject.completionDate}</span>
                             </div>
-                          </div>
+                          </div> */}
                           {/* {selectedProject.client && (
                             <div className="flex items-start">
                               <Award className="w-5 h-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />

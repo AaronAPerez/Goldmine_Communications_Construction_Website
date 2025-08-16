@@ -328,7 +328,7 @@ export default function AboutServicesSection() {
             {/* Large image - spans full height on left */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/projects/Sparks-NV/tree-tower.jpg"
+                src="/images/projects/Sparks-NV/tree-tower-network.jpg"
                 alt="Goldmine team working on telecommunications tree tower"
                 fill
                 className="object-fill"
@@ -346,7 +346,7 @@ export default function AboutServicesSection() {
             <div className="flex flex-col gap-4">
               <div className="relative rounded-2xl overflow-hidden shadow-xl flex-1">
                 <Image
-                  src="/images/projects/Oregon-AV-Station/trench/trench-card.jpg"
+                  src="/images/projects/Oregon-AV-Station/trench/trench-pipes.jpg"
                   alt="Advanced technology implementation"
                   fill
                   className="object-cover"
@@ -356,7 +356,7 @@ export default function AboutServicesSection() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl flex-1">
                 <Image
-                  src="/images/projects/Bodega-Bay-CA/bulldozer-1.jpg"
+                  src="/images/projects/Bodega-Bay-CA/bulldozer-4.jpg"
                   alt="EV charging infrastructure"
                   fill
                   className="object-cover"
