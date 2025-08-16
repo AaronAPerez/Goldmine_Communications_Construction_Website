@@ -121,7 +121,7 @@ export default function FloatingNavigation() {
             <Link href="/" className="flex-shrink-0">
               <div className="relative w-32 h-12">
                 <Image
-                  src="/images/logo-banner.jpg"
+                  src="/images/logo/logo-banner.jpg"
                   alt="Goldmine Communications and Construction"
                   fill
                   className="object-contain"
